@@ -1,0 +1,30 @@
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\bin\Debug\MySQL Managar.exe.config
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\bin\Debug\MySQL Managar.exe
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\bin\Debug\MySQL Managar.pdb
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\bin\Debug\EPPlus.dll
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\bin\Debug\mysql.data.dll
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\bin\Debug\mysql.data.entity.dll
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\bin\Debug\mysql.web.dll
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\bin\Debug\EPPlus.xml
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\obj\Debug\MySQL Manager.csprojResolveAssemblyReference.cache
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\obj\Debug\MySQL_Managar.frmConnection.resources
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\obj\Debug\MySQL_Managar.Properties.Resources.resources
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\obj\Debug\MySQL Manager.csproj.GenerateResource.Cache
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\obj\Debug\MySQL Managar.exe
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\obj\Debug\MySQL Managar.pdb
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\obj\Debug\MySQL_Managar.frmManagerMain.resources
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\bin\Debug\MySQL Managar.exe.config
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\obj\Debug\MySQL Managar.exe
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\obj\Debug\MySQL Managar.pdb
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\bin\Debug\MySQL Managar.exe
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\bin\Debug\MySQL Managar.pdb
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\bin\Debug\EPPlus.dll
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\bin\Debug\mysql.data.dll
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\bin\Debug\mysql.data.entity.dll
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\bin\Debug\mysql.web.dll
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\bin\Debug\EPPlus.xml
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\obj\Debug\MySQL Manager.csprojResolveAssemblyReference.cache
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\obj\Debug\MySQL_Managar.frmConnection.resources
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\obj\Debug\MySQL_Managar.frmManagerMain.resources
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\obj\Debug\MySQL_Managar.Properties.Resources.resources
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\obj\Debug\MySQL Manager.csproj.GenerateResource.Cache

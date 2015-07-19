@@ -1,0 +1,1 @@
+c:\users\mike\documents\visual studio 2013\Projects\MySQL Managar\MySQL Managar\bin\Debug\MySQL Managar.exe.config
