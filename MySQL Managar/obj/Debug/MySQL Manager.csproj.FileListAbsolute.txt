@@ -28,3 +28,6 @@ C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\
 C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\obj\Debug\MySQL_Managar.frmManagerMain.resources
 C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\obj\Debug\MySQL_Managar.Properties.Resources.resources
 C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQL Manager\MySQL Managar\obj\Debug\MySQL Manager.csproj.GenerateResource.Cache
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Managar\bin\Debug\MySQL Managar.exe.config
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Managar\obj\Debug\MySQL Managar.exe
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Managar\obj\Debug\MySQL Managar.pdb
