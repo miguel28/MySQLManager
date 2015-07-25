@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
 
-namespace MySQL_Managar
+namespace MySQL_Manager
 {
     public class DBConnection
     {
@@ -59,7 +59,6 @@ namespace MySQL_Managar
                 return false;
             }
         }
-
         //Close connection
         private bool CloseConnection()
         {
@@ -109,7 +108,6 @@ namespace MySQL_Managar
             }
 
         }
-
         public List<string> GetAllColumns(string table)
         {
             string query = "desc " + table;
@@ -144,7 +142,6 @@ namespace MySQL_Managar
             }
 
         }
-
         public List<string>[] SelectAll(string table, int cols)
         {
             string query = "SELECT * FROM " + table;
@@ -184,6 +181,57 @@ namespace MySQL_Managar
             }
         }
 
+        public void InsertReg(string table, List<string> Columns, List<string> data)
+        {
+            string query = "INSERT INTO " + table + " ";
+            query += "(";
+            foreach (string col in Columns)
+                query += col + ",";
+            query += ")";
 
+            query += " VALUES(";
+            foreach (string dat in data)
+                query += "\"" + dat + "\",";
+            query += ")";
+            query = query.Replace(",)", ")");
+
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+
+                //return list to be displayed
+            }
+        }
+        public void UpdateReg(string table, List<string> Columns, List<string> data)
+        {
+            string query = "UPDATE " + table + " SET ";
+            for (int i = 1; i < Columns.Count; i++)
+                query += Columns[i] + "=\"" + data[i] + "\", ";
+            query += "@ WHERE " + Columns[0] + "=\"" + data[0] + "\"";
+            query = query.Replace(", @", "");
+
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+            }
+        }
     }
 }

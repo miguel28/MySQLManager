@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
-namespace MySQL_Managar
+namespace MySQL_Manager
 {
     public partial class frmConnection : Form
     {
@@ -23,8 +24,9 @@ namespace MySQL_Managar
         {
             DBConnection con = new DBConnection((string)cboxServ.SelectedItem, (string)cboxDatabase.SelectedItem, txtUser.Text, txtPass.Text);
             frmManagerMain main = new frmManagerMain(con);
-            main.Show();
             this.Hide();
+            main.ShowDialog();
+            this.Show();
         }
     }
 }

@@ -7,8 +7,8 @@
     <ProjectGuid>{3C89CE52-EF24-424A-A3C7-89DEBBE0DAAD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MySQL_Managar</RootNamespace>
-    <AssemblyName>MySQL Managar</AssemblyName>
+    <RootNamespace>MySQL_Manager</RootNamespace>
+    <AssemblyName>MySQL Manager</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>database_mysql.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EPPlus">
       <HintPath>..\..\..\..\..\Desktop\Libraries\EPPlus 3.1.3\EPPlus.dll</HintPath>
@@ -44,6 +47,9 @@
     <Reference Include="mysql.web">
       <HintPath>..\..\..\..\..\Desktop\Libraries\mysql-connector-net-6.1.6-noinstall\mysql.web.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\OrderSimulationProject\OrderSimulation\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,12 +62,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code Generator\CodeGenerator.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="frmConnection.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmConnection.Designer.cs">
       <DependentUpon>frmConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditSetting.Designer.cs">
+      <DependentUpon>frmEditSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManagerMain.cs">
       <SubType>Form</SubType>
@@ -71,8 +84,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Code Generator\Configuration.cs" />
+    <Compile Include="Code Generator\TableSetting.cs" />
     <EmbeddedResource Include="frmConnection.resx">
       <DependentUpon>frmConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditSetting.resx">
+      <DependentUpon>frmEditSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManagerMain.resx">
       <DependentUpon>frmManagerMain.cs</DependentUpon>
@@ -85,6 +103,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -98,6 +117,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="database_mysql.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

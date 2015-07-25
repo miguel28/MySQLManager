@@ -1,4 +1,4 @@
-﻿namespace MySQL_Managar
+﻿namespace MySQL_Manager
 {
     partial class frmConnection
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConnection));
             this.btnCreateConnection = new System.Windows.Forms.Button();
             this.lblServer = new System.Windows.Forms.Label();
             this.lblDatabase = new System.Windows.Forms.Label();
@@ -100,6 +101,7 @@
             // 
             this.cboxDatabase.FormattingEnabled = true;
             this.cboxDatabase.Items.AddRange(new object[] {
+            "dummy_database",
             "restaurant_test",
             "empleos_test"});
             this.cboxDatabase.Location = new System.Drawing.Point(91, 45);
@@ -113,7 +115,7 @@
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(173, 20);
             this.txtUser.TabIndex = 7;
-            this.txtUser.Text = "restaurant";
+            this.txtUser.Text = "root";
             // 
             // txtPass
             // 
@@ -122,7 +124,6 @@
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(173, 20);
             this.txtPass.TabIndex = 8;
-            this.txtPass.Text = "restaurant1024";
             // 
             // frmConnection
             // 
@@ -138,6 +139,7 @@
             this.Controls.Add(this.lblDatabase);
             this.Controls.Add(this.lblServer);
             this.Controls.Add(this.btnCreateConnection);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmConnection";
             this.Text = "MySQL Connection";
             this.ResumeLayout(false);
