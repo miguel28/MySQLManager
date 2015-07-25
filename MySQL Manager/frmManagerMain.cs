@@ -131,7 +131,11 @@ namespace MySQL_Manager
                 int numRows = worksheet.Dimension.End.Row;
                 for (int i = 2; i <= numRows; i++)
                 {
-                    string id = worksheet.Cells[i, 1].Value.ToString();
+                    object o = worksheet.Cells[i, 1].Value;
+                    string id = "";
+                    if (o != null)
+                        id = worksheet.Cells[i, 1].Value.ToString();
+
                     if (string.IsNullOrEmpty(id)) // if is null insert a nuew row in the data base
                     {
                         List<string> nCols = new List<string>(cols);
@@ -139,7 +143,13 @@ namespace MySQL_Manager
 
                         List<string> data = new List<string>();
                         for (int j = 2; j <= cols.Count; j++)
-                            data.Add((string)worksheet.Cells[i, j].Value);
+                        {
+                            object val = worksheet.Cells[i, j].Value;
+                            if (val == null)
+                                data.Add("");
+                            else
+                                data.Add(val.ToString());
+                        }
 
                         FileterList(ref nCols);
                         FileterList(ref data);

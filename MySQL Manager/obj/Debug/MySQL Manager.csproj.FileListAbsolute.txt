@@ -60,3 +60,16 @@ C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\o
 C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmManagerMain.resources
 C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.Properties.Resources.resources
 C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.GenerateResource.Cache
+C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\bin\Debug\MySQL Manager.exe.config
+C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.exe
+C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.pdb
+C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\bin\Debug\MySQL Manager.exe
+C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\bin\Debug\MySQL Manager.pdb
+C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\bin\Debug\Newtonsoft.Json.dll
+C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\bin\Debug\EPPlus.xml
+C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmConnection.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmEditSetting.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmManagerMain.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.Properties.Resources.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.GenerateResource.Cache

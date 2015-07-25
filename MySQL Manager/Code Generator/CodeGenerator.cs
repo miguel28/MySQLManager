@@ -103,6 +103,13 @@ namespace MySQL_Manager
 		    s.AppendLine("	}");
 		    s.AppendLine("	");
 		    
+            s.Append("	public function getAll()");
+		    s.AppendLine("{");
+		    s.AppendLine("		$query = $this->db->get('" + setting.TableName + "');");
+		    s.AppendLine("		return $query->result_array();");
+		    s.AppendLine("	}");
+		    s.AppendLine("	");
+
             foreach (SpecialFunction func in setting.SpecialFunctions)
                 GenerateSpecialFunction(func);
 		
