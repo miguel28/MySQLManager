@@ -49,13 +49,13 @@ namespace MySQL_Manager
 		    //Append Insert Function
 		    s.Append("	public function insertEntry(");
 		
-		    for(int i = 0; i< cols.Count-1; i++)
+		    for(int i = 1; i< cols.Count-1; i++)
 			    s.Append("$" + cols[i] + ", ");
-		    s.AppendLine("$" + cols[cols.Count-1] + ");");
+		    s.AppendLine("$" + cols[cols.Count-1] + ")");
 		    s.AppendLine("	{");
 		    s.AppendLine("		$data = array(");
 		
-		    for(int i = 0; i< cols.Count-1; i++)
+		    for(int i = 1; i< cols.Count-1; i++)
 			    s.AppendLine("			'" + cols[i] + "' => $" + cols[i] + ",");
             s.AppendLine("			'" + cols[cols.Count - 1] + "' => $" + cols[cols.Count - 1]);
 		
@@ -67,7 +67,7 @@ namespace MySQL_Manager
 		
 		    //Append Delete Function
 		    s.Append("	public function deleteEntry(");
-		    s.AppendLine("$" + cols[0] + ");");
+		    s.AppendLine("$" + cols[0] + ")");
 		    s.AppendLine("	{");
 		    s.AppendLine("		$this->db->where('" + cols[0] + "', $" +  cols[0] + " );");
 		    s.AppendLine("		$this->db->delete('" + setting.TableName + "');");
@@ -79,7 +79,7 @@ namespace MySQL_Manager
 		
 		    for(int i = 0; i< cols.Count-1; i++) 
 			    s.Append("$" + cols[i] + ", ");
-		    s.AppendLine("$" + cols[cols.Count-1] + ");");
+		    s.AppendLine("$" + cols[cols.Count-1] + ")");
 		    s.AppendLine("	{");
 		    s.AppendLine("		$data = array(");
 		
@@ -95,16 +95,16 @@ namespace MySQL_Manager
 		
 		    //Append Get by ID Function
 		    s.Append("	public function getEntryById(");
-		    s.AppendLine("$" + cols[0] + ");");
+		    s.AppendLine("$" + cols[0] + ")");
 		    s.AppendLine("	{");
-		    s.AppendLine("		$conditions = array('" + cols[0] + "' => $" + cols[0] + ");;");
-		    s.AppendLine("		$this->db->get_where('" + setting.TableName + "', $conditions);");
+		    s.AppendLine("		$conditions = array('" + cols[0] + "' => $" + cols[0] + ");");
+			s.AppendLine("		$query = $this->db->get_where('" + setting.TableName + "', $conditions);");
 		    s.AppendLine("		return $query->row();");
 		    s.AppendLine("	}");
 		    s.AppendLine("	");
 		    
-            s.Append("	public function getAll()");
-		    s.AppendLine("{");
+            s.AppendLine("	public function getAll()");
+		    s.AppendLine("	{");
 		    s.AppendLine("		$query = $this->db->get('" + setting.TableName + "');");
 		    s.AppendLine("		return $query->result_array();");
 		    s.AppendLine("	}");
