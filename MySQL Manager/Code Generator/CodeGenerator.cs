@@ -83,12 +83,13 @@ namespace MySQL_Manager
 		    s.AppendLine("	{");
 		    s.AppendLine("		$data = array(");
 		
-		    for(int i = 0; i< cols.Count-1; i++) 
+		    for(int i = 1; i< cols.Count-1; i++) 
 			    s.AppendLine("			'" + cols[i] + "' => $" + cols[i] + ",");
 		    s.AppendLine("			'" + cols[cols.Count-1] + "' => $" + cols[cols.Count-1]);
 		
 		    s.AppendLine("		);");
-		    s.AppendLine("		$this->db->insert('" + setting.TableName + "', $data);");
+			s.AppendLine("		$this->db->where('" + cols[0] + "', $" + cols[0] + ");");
+		    s.AppendLine("		$this->db->update('" + setting.TableName + "', $data);");
 		    s.AppendLine("		return $this->db->insert_id();");
 		    s.AppendLine("	}");
 		    s.AppendLine("	");
