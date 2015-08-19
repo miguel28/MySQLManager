@@ -104,7 +104,7 @@ namespace MySQL_Manager
 		    s.AppendLine("	}");
 		    s.AppendLine("	");
 		    
-            s.AppendLine("	public function getAll()");
+            s.AppendLine("	public function getAllEntries()");
 		    s.AppendLine("	{");
 		    s.AppendLine("		$query = $this->db->get('" + setting.TableName + "');");
 		    s.AppendLine("		return $query->result_array();");
