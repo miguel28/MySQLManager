@@ -200,5 +200,16 @@ namespace MySQL_Manager
            
         }
 
+		private void EditCodeGenerator_Click(object sender, EventArgs e)
+		{
+			string table = (string)lstTables.SelectedItem;
+			if (!string.IsNullOrEmpty(table))
+			{
+				TableSetting setting = TableSetting.LoadTableSetting(table);
+				frmEditSetting form = new frmEditSetting(setting, dbCon);
+				form.ShowDialog();
+			}
+		}
+
     }
 }

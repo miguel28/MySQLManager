@@ -70,6 +70,12 @@
     <Compile Include="frmConnection.Designer.cs">
       <DependentUpon>frmConnection.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEditFunctionSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditFunctionSettings.Designer.cs">
+      <DependentUpon>frmEditFunctionSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEditSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     <Compile Include="Code Generator\TableSetting.cs" />
     <EmbeddedResource Include="frmConnection.resx">
       <DependentUpon>frmConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditFunctionSettings.resx">
+      <DependentUpon>frmEditFunctionSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditSetting.resx">
       <DependentUpon>frmEditSetting.cs</DependentUpon>

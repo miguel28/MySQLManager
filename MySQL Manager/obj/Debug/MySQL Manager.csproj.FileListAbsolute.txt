@@ -73,3 +73,4 @@ C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\o
 C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmManagerMain.resources
 C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.Properties.Resources.resources
 C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.GenerateResource.Cache
+C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmEditFunctionSettings.resources
