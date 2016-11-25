@@ -100,7 +100,7 @@ namespace MySQL_Manager
 		    s.AppendLine("	{");
 		    s.AppendLine("		$conditions = array('" + cols[0] + "' => $" + cols[0] + ");");
 			s.AppendLine("		$query = $this->db->get_where('" + setting.TableName + "', $conditions);");
-		    s.AppendLine("		return $query->row();");
+		    s.AppendLine("		return $query->row_array();");
 		    s.AppendLine("	}");
 		    s.AppendLine("	");
 		    

@@ -103,7 +103,8 @@
             this.cboxDatabase.Items.AddRange(new object[] {
             "dummy_database",
             "restaurant_test",
-            "empleos_test"});
+            "empleos_test",
+            "virtual_wallet_test"});
             this.cboxDatabase.Location = new System.Drawing.Point(91, 45);
             this.cboxDatabase.Name = "cboxDatabase";
             this.cboxDatabase.Size = new System.Drawing.Size(173, 21);
