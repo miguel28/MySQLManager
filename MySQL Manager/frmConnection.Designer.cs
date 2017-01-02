@@ -104,7 +104,9 @@
             "dummy_database",
             "restaurant_test",
             "empleos_test",
-            "virtual_wallet_test"});
+            "virtual_wallet_test",
+            "medic_record_test",
+            "valtrek_db_test"});
             this.cboxDatabase.Location = new System.Drawing.Point(91, 45);
             this.cboxDatabase.Name = "cboxDatabase";
             this.cboxDatabase.Size = new System.Drawing.Size(173, 21);

@@ -75,3 +75,21 @@ C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\o
 C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.GenerateResource.Cache
 C:\Users\Mike\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmEditFunctionSettings.resources
 C:\Users\User\Documents\Visual Studio 2013\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmEditFunctionSettings.resources
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csprojResolveAssemblyReference.cache
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmConnection.resources
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmEditFunctionSettings.resources
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmEditSetting.resources
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmManagerMain.resources
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.Properties.Resources.resources
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.GenerateResource.Cache
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.exe
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.pdb
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\bin\Debug\MySQL Manager.exe.config
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\bin\Debug\MySQL Manager.exe
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\bin\Debug\MySQL Manager.pdb
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.data.dll
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.web.dll
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\bin\Debug\Google.Protobuf.dll
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\bin\Debug\EPPlus.xml
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.data.xml
+C:\Users\Miguel\Documents\Visual Studio 2015\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.web.xml
