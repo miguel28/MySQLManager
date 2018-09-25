@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code Generator\JSONEmptyGen.cs" />
     <Compile Include="Code Generator\CodeGenerator.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="frmConnection.cs">

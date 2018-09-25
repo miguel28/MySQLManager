@@ -43,7 +43,7 @@
             // btnCreateConnection
             // 
             this.btnCreateConnection.Location = new System.Drawing.Point(121, 155);
-            this.btnCreateConnection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateConnection.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateConnection.Name = "btnCreateConnection";
             this.btnCreateConnection.Size = new System.Drawing.Size(124, 50);
             this.btnCreateConnection.TabIndex = 0;
@@ -98,7 +98,7 @@
             "localhost",
             "107.170.223.7"});
             this.cboxServ.Location = new System.Drawing.Point(121, 16);
-            this.cboxServ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboxServ.Margin = new System.Windows.Forms.Padding(4);
             this.cboxServ.Name = "cboxServ";
             this.cboxServ.Size = new System.Drawing.Size(229, 24);
             this.cboxServ.TabIndex = 5;
@@ -109,13 +109,14 @@
             this.cboxDatabase.Items.AddRange(new object[] {
             "dummy_database",
             "restaurant_test",
+            "prohealth_test",
             "empleos_test",
             "virtual_wallet_test",
             "medic_record_test",
             "valtrek_db_test",
             "library_control"});
             this.cboxDatabase.Location = new System.Drawing.Point(121, 55);
-            this.cboxDatabase.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboxDatabase.Margin = new System.Windows.Forms.Padding(4);
             this.cboxDatabase.Name = "cboxDatabase";
             this.cboxDatabase.Size = new System.Drawing.Size(229, 24);
             this.cboxDatabase.TabIndex = 6;
@@ -123,7 +124,7 @@
             // txtUser
             // 
             this.txtUser.Location = new System.Drawing.Point(121, 90);
-            this.txtUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUser.Margin = new System.Windows.Forms.Padding(4);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(229, 22);
             this.txtUser.TabIndex = 7;
@@ -132,7 +133,7 @@
             // txtPass
             // 
             this.txtPass.Location = new System.Drawing.Point(121, 123);
-            this.txtPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(229, 22);
@@ -153,7 +154,7 @@
             this.Controls.Add(this.lblServer);
             this.Controls.Add(this.btnCreateConnection);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmConnection";
             this.Text = "MySQL Connection";
             this.ResumeLayout(false);
