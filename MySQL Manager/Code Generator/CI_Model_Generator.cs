@@ -6,28 +6,13 @@ using System.Threading.Tasks;
 
 namespace MySQL_Manager
 {
-    public class CodeGenerator
+    public class CI_Model_CodeGenerator : ICodeGenerator
     {
-        private DBConnection dbCon;
-        private TableSetting setting;
-        private StringBuilder s;
-        private List<string> cols;
-        private string _genetaredCode = "";
-
-        public CodeGenerator(DBConnection db, TableSetting set)
+        public CI_Model_CodeGenerator()
         {
-            dbCon = db;
-            setting = set;
         }
 
-        public string GeneratedCode
-        {
-            get
-            {
-                return _genetaredCode;
-            }
-        }
-        public void GenerateCode()
+        public override void GenerateCode()
         {
             s = new StringBuilder();
             cols = dbCon.GetAllColumns(setting.TableName);
@@ -37,7 +22,9 @@ namespace MySQL_Manager
         private void GenerateBasicFunctions()
         {
             // Begin the Code Igniter class
-            s.AppendLine("class " + setting.ClassName + " extends CI_Model {");
+            string classname = setting.TableName.Replace("tbl", "Mdl");
+
+            s.AppendLine("class " + classname + " extends CI_Model {");
 		
 		    s.AppendLine("");
 		    s.AppendLine("	public function __construct()");

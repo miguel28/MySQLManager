@@ -185,19 +185,6 @@ namespace MySQL_Manager
                 list[i] = list[i].Replace("'", "\'");
         }
 
-        private void btnGenerateCode_Click(object sender, EventArgs e)
-        {
-            string table = (string)lstTables.SelectedItem;
-            if (!string.IsNullOrEmpty(table))
-            {
-                TableSetting setting = TableSetting.LoadTableSetting(table);
-                CodeGenerator generator = new CodeGenerator(dbCon, setting);
-                generator.GenerateCode();
-
-                txtGeneratedCode.Text = generator.GeneratedCode;
-            }
-        }
-
 		private void EditCodeGenerator_Click(object sender, EventArgs e)
 		{
 			string table = (string)lstTables.SelectedItem;
@@ -209,22 +196,15 @@ namespace MySQL_Manager
 			}
 		}
 
-        private void btnGenerateEmpty_Click(object sender, EventArgs e)
+        private void btnOpenCodeGenerator_Click(object sender, EventArgs e)
         {
             string table = (string)lstTables.SelectedItem;
             if (!string.IsNullOrEmpty(table))
             {
                 TableSetting setting = TableSetting.LoadTableSetting(table);
-                JSONEmptyGen generator = new JSONEmptyGen(dbCon, setting);
-                generator.GenerateCode();
-
-                txtGeneratedCode.Text = generator.GeneratedCode;
+                frmCodeGenerator dialog = new frmCodeGenerator(dbCon, setting);
+                dialog.ShowDialog();
             }
-        }
-
-        private void btnCopy_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(txtGeneratedCode.Text);
         }
     }
 }

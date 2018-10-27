@@ -6,28 +6,13 @@ using System.Threading.Tasks;
 
 namespace MySQL_Manager
 {
-    public class JSONEmptyGen
+    public class JSONEmptyGen : ICodeGenerator
     {
-        private DBConnection dbCon;
-        private TableSetting setting;
-        private StringBuilder s;
-        private List<string> cols;
-        private string _genetaredCode = "";
-
-        public JSONEmptyGen(DBConnection db, TableSetting set)
+        public JSONEmptyGen()
         {
-            dbCon = db;
-            setting = set;
         }
 
-        public string GeneratedCode
-        {
-            get
-            {
-                return _genetaredCode;
-            }
-        }
-        public void GenerateCode()
+        public override void GenerateCode()
         {
             s = new StringBuilder();
             cols = dbCon.GetAllColumns(setting.TableName);
@@ -47,7 +32,5 @@ namespace MySQL_Manager
 
             _genetaredCode = s.ToString();
         }
-        
-
     }
 }

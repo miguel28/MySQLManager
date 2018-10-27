@@ -113,3 +113,5 @@ C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.CopyComplete
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.exe
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.pdb
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmCodeGenerator.resources
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\bin\Debug\FastColoredTextBox.dll
