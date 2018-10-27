@@ -8,13 +8,8 @@ namespace MySQL_Manager
 {
     public class JSONEmptyGen : ICodeGenerator
     {
-        public JSONEmptyGen()
-        {
-        }
-
         public override void GenerateCode()
         {
-            s = new StringBuilder();
             cols = dbCon.GetAllColumns(setting.TableName);
             GenerateBasicFunctions();
         }

@@ -41,6 +41,10 @@
             this.txt_CI_Model_CodeGenerator = new FastColoredTextBoxNS.FastColoredTextBox();
             this.tabEmptyJSON = new System.Windows.Forms.TabPage();
             this.txt_JSONEmptyGen = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.tabCIController = new System.Windows.Forms.TabPage();
+            this.txt_CI_Controler_Generator = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.tabHTML = new System.Windows.Forms.TabPage();
+            this.txt_HTML_Generator = new FastColoredTextBoxNS.FastColoredTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.grpCodeGenerator.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -48,6 +52,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_CI_Model_CodeGenerator)).BeginInit();
             this.tabEmptyJSON.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_JSONEmptyGen)).BeginInit();
+            this.tabCIController.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_CI_Controler_Generator)).BeginInit();
+            this.tabHTML.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_HTML_Generator)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -127,6 +135,8 @@
             // 
             this.tabControl1.Controls.Add(this.tabCI_Model);
             this.tabControl1.Controls.Add(this.tabEmptyJSON);
+            this.tabControl1.Controls.Add(this.tabCIController);
+            this.tabControl1.Controls.Add(this.tabHTML);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(3, 126);
             this.tabControl1.Name = "tabControl1";
@@ -219,6 +229,89 @@
             this.txt_JSONEmptyGen.TabIndex = 1;
             this.txt_JSONEmptyGen.Zoom = 100;
             // 
+            // tabCIController
+            // 
+            this.tabCIController.Controls.Add(this.txt_CI_Controler_Generator);
+            this.tabCIController.Location = new System.Drawing.Point(4, 25);
+            this.tabCIController.Name = "tabCIController";
+            this.tabCIController.Size = new System.Drawing.Size(843, 427);
+            this.tabCIController.TabIndex = 2;
+            this.tabCIController.Text = "CI Controller";
+            this.tabCIController.UseVisualStyleBackColor = true;
+            // 
+            // txt_CI_Controler_Generator
+            // 
+            this.txt_CI_Controler_Generator.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.txt_CI_Controler_Generator.AutoScrollMinSize = new System.Drawing.Size(31, 18);
+            this.txt_CI_Controler_Generator.BackBrush = null;
+            this.txt_CI_Controler_Generator.CharHeight = 18;
+            this.txt_CI_Controler_Generator.CharWidth = 10;
+            this.txt_CI_Controler_Generator.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_CI_Controler_Generator.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txt_CI_Controler_Generator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_CI_Controler_Generator.Font = new System.Drawing.Font("Courier New", 9.75F);
+            this.txt_CI_Controler_Generator.IsReplaceMode = false;
+            this.txt_CI_Controler_Generator.Language = FastColoredTextBoxNS.Language.PHP;
+            this.txt_CI_Controler_Generator.Location = new System.Drawing.Point(0, 0);
+            this.txt_CI_Controler_Generator.Name = "txt_CI_Controler_Generator";
+            this.txt_CI_Controler_Generator.Paddings = new System.Windows.Forms.Padding(0);
+            this.txt_CI_Controler_Generator.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txt_CI_Controler_Generator.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txt_CI_Controler_Generator.ServiceColors")));
+            this.txt_CI_Controler_Generator.Size = new System.Drawing.Size(843, 427);
+            this.txt_CI_Controler_Generator.TabIndex = 0;
+            this.txt_CI_Controler_Generator.Zoom = 100;
+            // 
+            // tabHTML
+            // 
+            this.tabHTML.Controls.Add(this.txt_HTML_Generator);
+            this.tabHTML.Location = new System.Drawing.Point(4, 25);
+            this.tabHTML.Name = "tabHTML";
+            this.tabHTML.Size = new System.Drawing.Size(843, 427);
+            this.tabHTML.TabIndex = 3;
+            this.tabHTML.Text = "HTML";
+            this.tabHTML.UseVisualStyleBackColor = true;
+            // 
+            // txt_HTML_Generator
+            // 
+            this.txt_HTML_Generator.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.txt_HTML_Generator.AutoScrollMinSize = new System.Drawing.Size(31, 18);
+            this.txt_HTML_Generator.BackBrush = null;
+            this.txt_HTML_Generator.CharHeight = 18;
+            this.txt_HTML_Generator.CharWidth = 10;
+            this.txt_HTML_Generator.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_HTML_Generator.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txt_HTML_Generator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_HTML_Generator.IsReplaceMode = false;
+            this.txt_HTML_Generator.Language = FastColoredTextBoxNS.Language.HTML;
+            this.txt_HTML_Generator.Location = new System.Drawing.Point(0, 0);
+            this.txt_HTML_Generator.Name = "txt_HTML_Generator";
+            this.txt_HTML_Generator.Paddings = new System.Windows.Forms.Padding(0);
+            this.txt_HTML_Generator.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txt_HTML_Generator.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txt_HTML_Generator.ServiceColors")));
+            this.txt_HTML_Generator.Size = new System.Drawing.Size(843, 427);
+            this.txt_HTML_Generator.TabIndex = 1;
+            this.txt_HTML_Generator.Zoom = 100;
+            // 
             // frmCodeGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -234,6 +327,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_CI_Model_CodeGenerator)).EndInit();
             this.tabEmptyJSON.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txt_JSONEmptyGen)).EndInit();
+            this.tabCIController.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txt_CI_Controler_Generator)).EndInit();
+            this.tabHTML.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txt_HTML_Generator)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -251,5 +348,9 @@
         private FastColoredTextBoxNS.FastColoredTextBox txt_CI_Model_CodeGenerator;
         private System.Windows.Forms.ProgressBar progressBar;
         private FastColoredTextBoxNS.FastColoredTextBox txt_JSONEmptyGen;
+        private System.Windows.Forms.TabPage tabCIController;
+        private FastColoredTextBoxNS.FastColoredTextBox txt_CI_Controler_Generator;
+        private System.Windows.Forms.TabPage tabHTML;
+        private FastColoredTextBoxNS.FastColoredTextBox txt_HTML_Generator;
     }
 }

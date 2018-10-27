@@ -10,7 +10,7 @@ namespace MySQL_Manager
     {
         protected DBConnection dbCon;
         protected TableSetting setting;
-        protected StringBuilder s;
+        protected StringBuilder s = new StringBuilder();
         protected List<string> cols;
         protected string _genetaredCode = "";
 

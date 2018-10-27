@@ -8,13 +8,8 @@ namespace MySQL_Manager
 {
     public class CI_Model_CodeGenerator : ICodeGenerator
     {
-        public CI_Model_CodeGenerator()
-        {
-        }
-
         public override void GenerateCode()
         {
-            s = new StringBuilder();
             cols = dbCon.GetAllColumns(setting.TableName);
             GenerateBasicFunctions();
         }
@@ -35,7 +30,6 @@ namespace MySQL_Manager
 		
 		    //Append Insert Function
 		    s.Append("	public function insertEntry(");
-		
 		    for(int i = 1; i< cols.Count-1; i++)
 			    s.Append("$" + cols[i] + ", ");
 		    s.AppendLine("$" + cols[cols.Count-1] + ")");
@@ -51,38 +45,85 @@ namespace MySQL_Manager
 		    s.AppendLine("		return $this->db->insert_id();");
 		    s.AppendLine("	}");
 		    s.AppendLine("	");
-		
-		    //Append Delete Function
-		    s.Append("	public function deleteEntry(");
+
+            //Append InsertObj Function
+            s.Append    ("	public function insertEntry($info)");
+            s.AppendLine("	{");
+            s.AppendLine("		$data = array(");
+
+            for (int i = 1; i < cols.Count - 1; i++)
+                s.AppendLine("			'" + cols[i] + "' => $info['" + cols[i] + "'],");
+            s.AppendLine("			'" + cols[cols.Count - 1] + "' => $info['" + cols[cols.Count - 1] + "']");
+
+            s.AppendLine("		);");
+            s.AppendLine("		$this->db->insert('" + setting.TableName + "', $data);");
+            s.AppendLine("		return $this->db->insert_id();");
+            s.AppendLine("	}");
+            s.AppendLine("	");
+
+            //Append Delete Function
+            s.Append    ("	public function deleteEntry(");
 		    s.AppendLine("$" + cols[0] + ")");
 		    s.AppendLine("	{");
 		    s.AppendLine("		$this->db->where('" + cols[0] + "', $" +  cols[0] + " );");
 		    s.AppendLine("		$this->db->delete('" + setting.TableName + "');");
 		    s.AppendLine("	}");
 		    s.AppendLine("	");
-		
-		    // Append Update Function
-		    s.Append("	public function updateEntry(");
-		
-		    for(int i = 0; i< cols.Count-1; i++) 
-			    s.Append("$" + cols[i] + ", ");
-		    s.AppendLine("$" + cols[cols.Count-1] + ")");
-		    s.AppendLine("	{");
-		    s.AppendLine("		$data = array(");
-		
-		    for(int i = 1; i< cols.Count-1; i++) 
-			    s.AppendLine("			'" + cols[i] + "' => $" + cols[i] + ",");
-		    s.AppendLine("			'" + cols[cols.Count-1] + "' => $" + cols[cols.Count-1]);
-		
-		    s.AppendLine("		);");
-			s.AppendLine("		$this->db->where('" + cols[0] + "', $" + cols[0] + ");");
-		    s.AppendLine("		$this->db->update('" + setting.TableName + "', $data);");
-		    s.AppendLine("		return $this->db->insert_id();");
-		    s.AppendLine("	}");
-		    s.AppendLine("	");
-		
-		    //Append Get by ID Function
-		    s.Append("	public function getEntryById(");
+
+            // Append Update Function
+            s.AppendLine("	public function updateEntry(");
+
+            for (int i = 0; i < cols.Count - 1; i++)
+                s.Append("$" + cols[i] + ", ");
+            s.AppendLine("$" + cols[cols.Count - 1] + ")");
+            s.AppendLine("	{");
+            s.AppendLine("		$data = array(");
+
+            for (int i = 1; i < cols.Count - 1; i++)
+                s.AppendLine("			'" + cols[i] + "' => $" + cols[i] + ",");
+            s.AppendLine("			'" + cols[cols.Count - 1] + "' => $" + cols[cols.Count - 1]);
+
+            s.AppendLine("		);");
+            s.AppendLine("		$this->db->where('" + cols[0] + "', $" + cols[0] + ");");
+            s.AppendLine("		$this->db->update('" + setting.TableName + "', $data);");
+            s.AppendLine("		return $this->db->insert_id();");
+            s.AppendLine("	}");
+            s.AppendLine("	");
+
+            // Append UpdateObj Function
+            s.AppendLine("	public function updateEntry($info)");
+            s.AppendLine("	{");
+            s.AppendLine("		$data = array(");
+
+            for (int i = 1; i < cols.Count - 1; i++)
+                s.AppendLine("			'" + cols[i] + "' => $info['" + cols[i] + "'],");
+            s.AppendLine("			'" + cols[cols.Count - 1] + "' => $info['" + cols[cols.Count - 1] + "']");
+
+            s.AppendLine("		);");
+            s.AppendLine("		$this->db->where('" + cols[0] + "', $" + cols[0] + ");");
+            s.AppendLine("		$this->db->update('" + setting.TableName + "', $data);");
+            s.AppendLine("		return $this->db->insert_id();");
+            s.AppendLine("	}");
+            s.AppendLine("	");
+
+
+            //Append createOrUpdate Function
+            s.Append    ("	public function createOrUpdateEntry($info)");
+            s.AppendLine("	{");
+            s.AppendLine("		if($info['" + cols[0] + "'] === '' || if($info['" + cols[0] + "']==='0')");
+            s.AppendLine("		{");
+            s.AppendLine("		    $result_id = $this->insertEntry($info);");
+            s.AppendLine("		}");
+            s.AppendLine("		else");
+            s.AppendLine("		{");
+            s.AppendLine("		    $result_id = $info['" + cols[0] + "'];");
+            s.AppendLine("		    $this->updateEnrty($info);");
+            s.AppendLine("		}");
+            s.AppendLine("	}");
+            s.AppendLine("	");
+
+            //Append Get by ID Function
+            s.Append("	public function getEntryById(");
 		    s.AppendLine("$" + cols[0] + ")");
 		    s.AppendLine("	{");
 		    s.AppendLine("		$conditions = array('" + cols[0] + "' => $" + cols[0] + ");");
@@ -98,6 +139,14 @@ namespace MySQL_Manager
 		    s.AppendLine("	}");
 		    s.AppendLine("	");
 
+            s.AppendLine("	public function getAllEntriesArrayIDs($ids)");
+            s.AppendLine("	{");
+            s.AppendLine("		$this->db->where_in('service_req_id', $ids);");
+            s.AppendLine("		$query = $this->db->get('" + setting.TableName + "');");
+            s.AppendLine("		return $query->result_array();");
+            s.AppendLine("	}");
+            s.AppendLine("	");
+
             foreach (SpecialFunction func in setting.SpecialFunctions)
                 GenerateSpecialFunction(func);
 		
@@ -105,6 +154,7 @@ namespace MySQL_Manager
 		    s.AppendLine("");
             _genetaredCode = s.ToString();
         }
+
         private void GenerateSpecialFunction(SpecialFunction func)
         {
 		    List<string> funcs = func.Parameters;
@@ -130,6 +180,7 @@ namespace MySQL_Manager
 			        s.AppendLine("		return $query->result_array();");
 		        s.AppendLine("	}");
 		        s.AppendLine("	");
+
             }
         }
 

@@ -67,9 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code Generator\CodeGeneratorCollections.cs" />
+    <Compile Include="Code Generator\Generators\CI_Controler_Generator.cs" />
+    <Compile Include="Code Generator\Generators\HTML_Generator.cs" />
     <Compile Include="Code Generator\ICodeGenerator.cs" />
-    <Compile Include="Code Generator\JSONEmptyGen.cs" />
-    <Compile Include="Code Generator\CI_Model_Generator.cs" />
+    <Compile Include="Code Generator\Generators\JSONEmptyGen.cs" />
+    <Compile Include="Code Generator\Generators\CI_Model_Generator.cs" />
+    <Compile Include="Code Generator\StringReplacer.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="frmCodeGenerator.cs">
       <SubType>Form</SubType>
@@ -144,11 +147,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Code Generator\Templates\CI_Controller.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="database_mysql.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Code Generator\Templates\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

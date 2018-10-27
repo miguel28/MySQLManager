@@ -1,0 +1,21 @@
+﻿public function getAll%ELEMENT_NAME%()
+{
+	$this->load->model('%MODEL_NAME%');
+	$result = $this->%MODEL_NAME%->getAllEntries();
+	echo PositiveResponseJSON("SUCCESS", $result);
+}
+	
+public function get%ELEMENT_NAME%Info($%ELEMENT_NAME_low%_id)
+{
+	$this->load->model('%MODEL_NAME%');
+	$result = $this->%MODEL_NAME%->getEntryById($%ELEMENT_NAME_low%_id);
+	echo PositiveResponseJSON("SUCCESS", $result);
+}
+	
+public function update%ELEMENT_NAME%Info()
+{
+	$%ELEMENT_NAME_low%_info = json_decode($this->input->post('%ELEMENT_NAME_low%_info'), true);
+	$this->load->model("%MODEL_NAME%");
+	$insert_id = $this->%MODEL_NAME%->createOrUpdateEntry($%ELEMENT_NAME_low%_info);
+	echo PositiveResponseJSON('SUCCESS', $result_id);
+}
