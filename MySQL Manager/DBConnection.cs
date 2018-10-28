@@ -108,6 +108,7 @@ namespace MySQL_Manager
             }
 
         }
+
         public List<string> GetAllColumns(string table)
         {
             string query = "desc " + table;
@@ -140,8 +141,77 @@ namespace MySQL_Manager
             {
                 return tables;
             }
-
         }
+
+        public List<string> GetColsType(string table_name)
+        {
+            List<string> tables = new List<string>();
+            string query = "@ SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = '"
+                + table_name + "' AND TABLE_SCHEMA = '" + database + "'";
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    tables.Add((string)dataReader[0]);
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+
+                //return list to be displayed
+                return tables;
+            }
+            else
+            {
+                return tables;
+            }
+        }
+
+        public List<string> GetColsComment(string table_name)
+        {
+            List<string> tables = new List<string>();
+            string query = "@SHOW FULL COLUMNS FROM " + table_name;
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    tables.Add((string)dataReader[8]);
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+
+                //return list to be displayed
+                return tables;
+            }
+            else
+            {
+                return tables;
+            }
+        }
+
         public List<string>[] SelectAll(string table, int cols)
         {
             string query = "SELECT * FROM " + table;
