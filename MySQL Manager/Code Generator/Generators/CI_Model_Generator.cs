@@ -71,7 +71,7 @@ namespace MySQL_Manager
 		    s.AppendLine("	");
 
             // Append Update Function
-            s.AppendLine("	public function updateEntry(");
+            s.Append("	public function updateEntry(");
 
             for (int i = 0; i < cols.Count - 1; i++)
                 s.Append("$" + cols[i] + ", ");
@@ -141,7 +141,7 @@ namespace MySQL_Manager
 
             s.AppendLine("	public function getAllEntriesArrayIDs($ids)");
             s.AppendLine("	{");
-            s.AppendLine("		$this->db->where_in('service_req_id', $ids);");
+            s.AppendLine("		$this->db->where_in('" + cols[0] + "', $ids);");
             s.AppendLine("		$query = $this->db->get('" + setting.TableName + "');");
             s.AppendLine("		return $query->result_array();");
             s.AppendLine("	}");

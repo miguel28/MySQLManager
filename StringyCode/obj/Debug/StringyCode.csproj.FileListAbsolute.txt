@@ -1,0 +1,9 @@
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\StringyCode\bin\Debug\StringyCode.exe
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\StringyCode\bin\Debug\StringyCode.pdb
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.csprojAssemblyReference.cache
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.frmStringy.resources
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.Properties.Resources.resources
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.csproj.GenerateResource.cache
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.csproj.CoreCompileInputs.cache
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.exe
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.pdb

@@ -17,7 +17,21 @@ namespace MySQL_Manager
         private void GenerateBasicFunctions()
         {
             // Begin the Code Igniter class
-            s.AppendLine("$scope._" + setting.TableName + "_empty ={" );
+            string elementlow = setting.TableName.Replace("tbl_", "");
+            string element = elementlow[0].ToString().ToUpper() + elementlow.Substring(1);
+            string model_name = setting.TableName.Replace("tbl", "mdl");
+            string single = elementlow;
+
+            if (single.EndsWith("s"))
+                single = single.Substring(0, single.Length - 1);
+            string plural = elementlow;
+            if (!plural.EndsWith("s"))
+                plural = plural + 's';
+
+            string Plural = plural[0].ToString().ToUpper() + plural.Substring(1);
+            string Single = single[0].ToString().ToUpper() + single.Substring(1);
+
+            s.AppendLine("$scope._" + single + "_empty ={" );
 		    for(int i = 0; i< cols.Count -1; i++)
             {
                 s.AppendLine("\t" + cols[i] + " : '',");
