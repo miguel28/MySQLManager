@@ -115,7 +115,8 @@
             "medic_record_test",
             "valtrek_db_test",
             "library_control",
-            "im_projman_db_test"});
+            "im_projman_db_test",
+            "smart_plant_test"});
             this.cboxDatabase.Location = new System.Drawing.Point(121, 55);
             this.cboxDatabase.Margin = new System.Windows.Forms.Padding(4);
             this.cboxDatabase.Name = "cboxDatabase";

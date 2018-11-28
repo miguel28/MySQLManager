@@ -77,7 +77,7 @@ namespace MySQL_Manager
             s.AppendLine("				<a class=\"btn btn-info\" data-toggle=\"tooltip\" title=\"Edit\" href=\"javascript:void(0)\" ng-click=\"Edit_" + Single + "(" + single +")\">");
             s.AppendLine("					<i class=\"fa fa-edit \"></i>");
             s.AppendLine("				</a>");
-            s.AppendLine("				<a class=\"btn btn-danger\" data-toggle=\"tooltip\" title=\"Delete\" href=\"javascript:void(0)\"> ng-click=\"Delete_" + Single + "(" + single + ")\"");
+            s.AppendLine("				<a class=\"btn btn-danger\" data-toggle=\"tooltip\" title=\"Delete\" href=\"javascript:void(0)\" ng-click=\"Delete_" + Single + "(" + single + ")\">");
             s.AppendLine("					<i class=\"fa fa-trash-o \"></i>");
             s.AppendLine("				</a>");
             s.AppendLine("			</td>");

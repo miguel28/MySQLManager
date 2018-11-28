@@ -74,6 +74,7 @@ namespace MySQL_Manager
             }
         }
 
+        #region DatabaseInformation
         public List<string> GetAllTables()
         {
             string query = "SHOW TABLES";
@@ -245,7 +246,9 @@ namespace MySQL_Manager
                 return tables;
             }
         }
+        #endregion
 
+        #region Records
         public List<string>[] SelectAll(string table, int cols)
         {
             string query = "SELECT * FROM " + table;
@@ -337,5 +340,6 @@ namespace MySQL_Manager
                 this.CloseConnection();
             }
         }
+        #endregion
     }
 }

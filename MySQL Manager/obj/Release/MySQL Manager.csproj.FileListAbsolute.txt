@@ -1,0 +1,9 @@
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Release\MySQL Manager.csprojAssemblyReference.cache
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Release\MySQL_Manager.frmCodeGenerator.resources
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Release\MySQL_Manager.frmConnection.resources
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Release\MySQL_Manager.frmEditFunctionSettings.resources
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Release\MySQL_Manager.frmEditSetting.resources
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Release\MySQL_Manager.frmManagerMain.resources
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Release\MySQL_Manager.Properties.Resources.resources
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Release\MySQL Manager.csproj.GenerateResource.cache
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Release\MySQL Manager.csproj.CoreCompileInputs.cache

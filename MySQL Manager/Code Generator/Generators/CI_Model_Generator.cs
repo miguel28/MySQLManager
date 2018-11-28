@@ -47,7 +47,7 @@ namespace MySQL_Manager
 		    s.AppendLine("	");
 
             //Append InsertObj Function
-            s.Append    ("	public function insertEntry($info)");
+            s.Append    ("	public function insertEntryObj($info)");
             s.AppendLine("	{");
             s.AppendLine("		$data = array(");
 
@@ -91,7 +91,7 @@ namespace MySQL_Manager
             s.AppendLine("	");
 
             // Append UpdateObj Function
-            s.AppendLine("	public function updateEntry($info)");
+            s.AppendLine("	public function updateEntryObj($info)");
             s.AppendLine("	{");
             s.AppendLine("		$data = array(");
 
@@ -100,7 +100,7 @@ namespace MySQL_Manager
             s.AppendLine("			'" + cols[cols.Count - 1] + "' => $info['" + cols[cols.Count - 1] + "']");
 
             s.AppendLine("		);");
-            s.AppendLine("		$this->db->where('" + cols[0] + "', $" + cols[0] + ");");
+            s.AppendLine("		$this->db->where('" + cols[0] + "', $info['" + cols[0] + "']);");
             s.AppendLine("		$this->db->update('" + setting.TableName + "', $data);");
             s.AppendLine("		return $this->db->insert_id();");
             s.AppendLine("	}");
@@ -110,14 +110,14 @@ namespace MySQL_Manager
             //Append createOrUpdate Function
             s.Append    ("	public function createOrUpdateEntry($info)");
             s.AppendLine("	{");
-            s.AppendLine("		if($info['" + cols[0] + "'] === '' || if($info['" + cols[0] + "']==='0')");
+            s.AppendLine("		if($info['" + cols[0] + "'] === '' || $info['" + cols[0] + "']==='0')");
             s.AppendLine("		{");
-            s.AppendLine("		    $result_id = $this->insertEntry($info);");
+            s.AppendLine("		    $result_id = $this->insertEntryObj($info);");
             s.AppendLine("		}");
             s.AppendLine("		else");
             s.AppendLine("		{");
             s.AppendLine("		    $result_id = $info['" + cols[0] + "'];");
-            s.AppendLine("		    $this->updateEnrty($info);");
+            s.AppendLine("		    $this->updateEntryObj($info);");
             s.AppendLine("		}");
             s.AppendLine("	}");
             s.AppendLine("	");
