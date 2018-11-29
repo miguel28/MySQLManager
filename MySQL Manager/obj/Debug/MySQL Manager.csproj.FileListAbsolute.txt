@@ -116,3 +116,4 @@ C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmCodeGenerator.resources
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\bin\Debug\FastColoredTextBox.dll
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\CI_Controller.txt
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmCodeGeneratorFromJson.resources

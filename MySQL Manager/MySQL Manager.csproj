@@ -68,12 +68,19 @@
   <ItemGroup>
     <Compile Include="Code Generator\CodeGeneratorCollections.cs" />
     <Compile Include="Code Generator\Generators\CI_Controler_Generator.cs" />
+    <Compile Include="Code Generator\Generators\HTML_FromJsonObj.cs" />
     <Compile Include="Code Generator\Generators\HTML_Generator.cs" />
     <Compile Include="Code Generator\ICodeGenerator.cs" />
     <Compile Include="Code Generator\Generators\JSONEmptyGen.cs" />
     <Compile Include="Code Generator\Generators\CI_Model_Generator.cs" />
     <Compile Include="Code Generator\StringReplacer.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="frmCodeGeneratorFromJson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCodeGeneratorFromJson.Designer.cs">
+      <DependentUpon>frmCodeGeneratorFromJson.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCodeGenerator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +115,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Code Generator\Configuration.cs" />
     <Compile Include="Code Generator\TableSetting.cs" />
+    <EmbeddedResource Include="frmCodeGeneratorFromJson.resx">
+      <DependentUpon>frmCodeGeneratorFromJson.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCodeGenerator.resx">
       <DependentUpon>frmCodeGenerator.cs</DependentUpon>
     </EmbeddedResource>

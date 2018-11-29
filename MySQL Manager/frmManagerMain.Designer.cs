@@ -49,6 +49,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnOpenGenByJson = new System.Windows.Forms.Button();
             this.grpBackup.SuspendLayout();
             this.grpRestore.SuspendLayout();
             this.grpCodeGenerator.SuspendLayout();
@@ -218,6 +219,7 @@
             // 
             // grpCodeGenerator
             // 
+            this.grpCodeGenerator.Controls.Add(this.btnOpenGenByJson);
             this.grpCodeGenerator.Controls.Add(this.btnOpenCodeGenerator);
             this.grpCodeGenerator.Controls.Add(this.EditCodeGenerator);
             this.grpCodeGenerator.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -297,6 +299,17 @@
             this.panel1.Size = new System.Drawing.Size(665, 255);
             this.panel1.TabIndex = 5;
             // 
+            // btnOpenGenByJson
+            // 
+            this.btnOpenGenByJson.Location = new System.Drawing.Point(292, 22);
+            this.btnOpenGenByJson.Margin = new System.Windows.Forms.Padding(4);
+            this.btnOpenGenByJson.Name = "btnOpenGenByJson";
+            this.btnOpenGenByJson.Size = new System.Drawing.Size(128, 85);
+            this.btnOpenGenByJson.TabIndex = 5;
+            this.btnOpenGenByJson.Text = "Open Code Generator By Json";
+            this.btnOpenGenByJson.UseVisualStyleBackColor = true;
+            this.btnOpenGenByJson.Click += new System.EventHandler(this.btnOpenGenByJson_Click);
+            // 
             // frmManagerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -341,5 +354,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnOpenCodeGenerator;
+        private System.Windows.Forms.Button btnOpenGenByJson;
     }
 }

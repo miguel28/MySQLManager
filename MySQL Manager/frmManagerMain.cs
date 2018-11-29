@@ -202,9 +202,19 @@ namespace MySQL_Manager
             if (!string.IsNullOrEmpty(table))
             {
                 TableSetting setting = TableSetting.LoadTableSetting(table);
+                this.Hide();
                 frmCodeGenerator dialog = new frmCodeGenerator(dbCon, setting);
                 dialog.ShowDialog();
+                this.Show();
             }
+        }
+
+        private void btnOpenGenByJson_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmCodeGeneratorFromJson dialog = new frmCodeGeneratorFromJson();
+            dialog.ShowDialog();
+            this.Show();
         }
     }
 }
