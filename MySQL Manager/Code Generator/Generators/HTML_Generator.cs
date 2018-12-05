@@ -231,7 +231,7 @@ namespace MySQL_Manager
             s.AppendLine("$(document).ready(function() {");
             s.AppendLine("  SetupTableFilters();");
             s.AppendLine("  var scope = angular.element($(\"#myAppEl\")).scope();");
-            s.AppendLine("  scope.LoadAll" + Plural + "s();");
+            s.AppendLine("  scope.LoadAll" + Plural + "();");
             s.AppendLine("});");
 
             s.AppendLine("app.controller('DefaultController', function($scope, $http, $sce, $compile)");
@@ -337,7 +337,7 @@ namespace MySQL_Manager
             s.AppendLine("		);");
             s.AppendLine("	};");
 
-            s.AppendLine("  $scope.ConfirmDelete_" + Single + " = function()\"");
+            s.AppendLine("  $scope.ConfirmDelete_" + Single + " = function()");
             s.AppendLine("  {");
             s.AppendLine("		var url =  '<?php echo site_url('ctl_" + plural + "')?>/delete" + Single + "/';");
             s.AppendLine("		var call = AjaxJSON(url,true);");

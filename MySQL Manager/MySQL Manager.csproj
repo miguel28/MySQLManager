@@ -160,6 +160,9 @@
     <Content Include="Code Generator\Templates\CI_Controller.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="databases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="database_mysql.ico" />
   </ItemGroup>
   <ItemGroup />

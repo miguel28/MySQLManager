@@ -13,11 +13,31 @@ namespace MySQL_Manager
 {
     public partial class frmConnection : Form
     {
+        private List<string> databases = null;
+        private const string FILE = "databases.txt";
+
         public frmConnection()
         {
             InitializeComponent();
-            cboxServ.SelectedIndex = 0;
-            cboxDatabase.SelectedIndex = 0;
+            LoadDatabasesFile();
+
+            if (cboxServ.Items.Count > 0)
+                cboxServ.SelectedIndex = 0;
+
+            if (cboxDatabase.Items.Count>0)
+                cboxDatabase.SelectedIndex = 0;
+
+        }
+
+        private void LoadDatabasesFile()
+        {
+            if (File.Exists(FILE))
+            {
+                databases = File.ReadAllLines(FILE).ToList();
+
+            }
+            else databases = new List<string>();
+            cboxDatabase.DataSource = databases;
         }
 
         private void btnCreateConnection_Click(object sender, EventArgs e)
@@ -28,5 +48,7 @@ namespace MySQL_Manager
             main.ShowDialog();
             this.Show();
         }
+
+
     }
 }
