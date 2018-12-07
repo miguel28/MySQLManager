@@ -17,7 +17,7 @@ class Ctl_%plural% extends MR_Controller
 	/** Controller Views **/
 
 	/** Controller Data Handling **/
-	public function LoadAll%Plural%()
+	public function getAll%Plural%()
 	{
 		$this->load->model('%MODEL_NAME%');
 		$result = $this->%MODEL_NAME%->getAllEntries();
