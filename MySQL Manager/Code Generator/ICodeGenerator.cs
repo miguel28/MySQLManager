@@ -39,5 +39,15 @@ namespace MySQL_Manager
         {
             return this.GetType().ToString().Replace("MySQL_Manager.", "");
         }
+
+        public string SanitizeColumnName(string input, string common = "")
+        {
+            if (!string.IsNullOrEmpty(common))
+                input = input.Replace(common, "");
+            input = input.Replace("_", " ");
+            if (input.Length>=2)
+                input = input[0].ToString().ToUpper() + input.Substring(1);
+            return input;
+        }
     }
 }

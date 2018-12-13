@@ -33,9 +33,9 @@ class Ctl_%plural% extends MR_Controller
 	
 	public function update%Single%Info()
 	{
-		$%ELEMENT_NAME_low%_info = json_decode($this->input->post('%ELEMENT_NAME_low%_info'), true);
+		$%single%_info = json_decode($this->input->post('%single%_info'), true);
 		$this->load->model("%MODEL_NAME%");
-		$insert_id = $this->%MODEL_NAME%->createOrUpdateEntry($%ELEMENT_NAME_low%_info);
+		$insert_id = $this->%MODEL_NAME%->createOrUpdateEntry($%single%_info);
 		echo PositiveResponseJSON('SUCCESS', $insert_id);
 	}
 	

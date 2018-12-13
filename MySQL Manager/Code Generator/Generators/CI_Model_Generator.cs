@@ -19,7 +19,7 @@ namespace MySQL_Manager
             // Begin the Code Igniter class
             string classname = setting.TableName.Replace("tbl", "Mdl");
 
-            s.AppendLine("class " + classname + " extends CI_Model {");
+            s.AppendLine("class " + classname + "\textends CI_Model {");
 		
 		    s.AppendLine("");
 		    s.AppendLine("	public function __construct()");
@@ -65,7 +65,7 @@ namespace MySQL_Manager
             s.Append    ("	public function deleteEntry(");
 		    s.AppendLine("$" + cols[0] + ")");
 		    s.AppendLine("	{");
-		    s.AppendLine("		$this->db->where('" + cols[0] + "', $" +  cols[0] + " );");
+		    s.AppendLine("		$this->db->where('" + cols[0] + "', $" +  cols[0] + "\t);");
 		    s.AppendLine("		$this->db->delete('" + setting.TableName + "');");
 		    s.AppendLine("	}");
 		    s.AppendLine("	");

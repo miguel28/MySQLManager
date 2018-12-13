@@ -23,6 +23,7 @@ namespace MySQL_Manager
         private string plural;
         private string Single;
 
+        private string common;
         public void SetJson(string jsontxt, string el)
         {
             json = jsontxt;
@@ -72,6 +73,7 @@ namespace MySQL_Manager
                     
             }
 
+            common = cols[0].Replace("id", "");
 
             elementlow = _element.ToLower();
             element = elementlow[0].ToString().ToUpper() + elementlow.Substring(1);
@@ -110,7 +112,7 @@ namespace MySQL_Manager
                     if (colscomment[i].Contains("password"))
                     {
                         s.AppendLine("			<div class=\"form-group\">");
-                        s.AppendLine("			  <label for=\"txt_" + cols[i] + "\">" + cols[i] + ":</label>");
+                        s.AppendLine("			  <label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
                         s.AppendLine("			  <input type=\"password\" class=\"form-control\" id=\"txt_" + cols[i] + "\" maxlength=\"40\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
                         s.AppendLine("			</div>");
                     }
@@ -118,7 +120,7 @@ namespace MySQL_Manager
                     {
                         string len = ctype.Replace("varchar(", "").Replace(")", "");
                         s.AppendLine("			<div class=\"form-group\">");
-                        s.AppendLine("			  <label for=\"txt_" + cols[i] + "\">" + cols[i] + ":</label>");
+                        s.AppendLine("			  <label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
                         s.AppendLine("			  <input type=\"text\" class=\"form-control\" id=\"txt_" + cols[i] + "\" maxlength=\"" + len + "\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
                         s.AppendLine("			</div>");
                     }
@@ -126,18 +128,18 @@ namespace MySQL_Manager
                 else if (ctype.Contains("date"))
                 {
                     s.AppendLine("			<div class=\"form-group\">");
-                    s.AppendLine("				<label for=\"txt_" + cols[i] + "\"> " + cols[i] + ":</label>");
+                    s.AppendLine("				<label for=\"txt_" + cols[i] + "\"> " + SanitizeColumnName(cols[i], common) + ":</label>");
                     s.AppendLine("				<div class=\"input-group date form_date\" data-date=\"\" data-date-format=\"dd MM yyyy\" data-link-field=\"dtp1_" + cols[i] + "\" data-link-format=\"yyyy-mm-dd\">");
                     s.AppendLine("					<input id=\"kick\" class=\"form-control\" size=\"16\" type=\"text\" value=\"\" readonly ng-model=\"edit_" + single + "." + cols[i] + "\">");
                     s.AppendLine("					<span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-calendar\"></span></span>");
                     s.AppendLine("				</div>");
-                    s.AppendLine("				<input type=\"hidden\"  for=\"txt_" + cols[i] + "\" value=\"\" />");
+                    s.AppendLine("				<input type=\"hidden\"\tfor=\"txt_" + cols[i] + "\" value=\"\" />");
                     s.AppendLine("			</div>");
                 }
                 else
                 {
                     s.AppendLine("			<div class=\"form-group\">");
-                    s.AppendLine("			  <label for=\"txt_" + cols[i] + "\">" + cols[i] + ":</label>");
+                    s.AppendLine("			  <label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
                     s.AppendLine("			  <input type=\"text\" class=\"form-control\" id=\"txt_" + cols[i] + "\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
                     s.AppendLine("			</div>");
                 }
@@ -162,7 +164,7 @@ namespace MySQL_Manager
             s.AppendLine("			</div>");
             s.AppendLine("			<div class=\"modal-body\">");
             foreach (string col in cols)
-                s.AppendLine("				<p><b>" + col + ": </b>{{view_" + single + "." + col + "}}</p>");
+                s.AppendLine("				<p><b>" + SanitizeColumnName(col, common) + ": </b>{{view_" + single + "." + col + "}}</p>");
             s.AppendLine("			</div>");
             s.AppendLine("			<div class=\"modal-footer\">");
             s.AppendLine("				<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>");
@@ -200,39 +202,39 @@ namespace MySQL_Manager
             s.AppendLine("<script>");
             s.AppendLine("function SetupTableFilters()");
             s.AppendLine("{");
-            s.AppendLine("  tableFilterEngine('#filter', 'searchable', 'tr');");
+            s.AppendLine("\ttableFilterEngine('#filter', 'searchable', 'tr');");
             s.AppendLine("}\n");
 
             s.AppendLine("$(document).ready(function() {");
-            s.AppendLine("  SetupTableFilters();");
-            s.AppendLine("  var scope = angular.element($(\"#myAppEl\")).scope();");
-            s.AppendLine("  scope.LoadAll" + Plural + "s();");
+            s.AppendLine("\tSetupTableFilters();");
+            s.AppendLine("\tvar scope = angular.element($(\"#myAppEl\")).scope();");
+            s.AppendLine("\tscope.LoadAll" + Plural + "s();");
             s.AppendLine("});");
 
             s.AppendLine("app.controller('DefaultController', function($scope, $http, $sce, $compile)");
             s.AppendLine("{");
-            s.AppendLine("  $scope." + plural + " = [];");
+            s.AppendLine("\t$scope." + plural + " = [];");
             s.AppendLine();
 
-            s.AppendLine("  $scope.LoadAll" + Plural + " = function()");
-            s.AppendLine("  {");
-            s.AppendLine("      var url = '<?php echo site_url('ctl_" + plural + "')?>/getAll" + Plural + "/';");
-            s.AppendLine("      var call = AjaxJSON(url,true);");
-            s.AppendLine("      call.UseLock = false;");
-            s.AppendLine("      call.Call(");
-            s.AppendLine("      	function(result) {");
-            s.AppendLine("              if(result.success)");
-            s.AppendLine("              {");
-            s.AppendLine("                  $scope." + plural + " = result.data;");
-            s.AppendLine("                  $scope.$apply();");
-            s.AppendLine("              }");
-            s.AppendLine("              else");
-            s.AppendLine("              {");
-            s.AppendLine("                  $scope.ShowPopup(\"Could not load the information: \" + result.message);");
-            s.AppendLine("              }");
-            s.AppendLine("          }");
-            s.AppendLine("      );");
-            s.AppendLine("  };");
+            s.AppendLine("\t$scope.LoadAll" + Plural + " = function()");
+            s.AppendLine("\t{");
+            s.AppendLine("\t\tvar url = '<?php echo site_url('ctl_" + plural + "')?>/getAll" + Plural + "/';");
+            s.AppendLine("\t\tvar call = AjaxJSON(url,true);");
+            s.AppendLine("\t\tcall.UseLock = false;");
+            s.AppendLine("\t\tcall.Call(");
+            s.AppendLine("\t\t	function(result) {");
+            s.AppendLine("\t\t\t\tif(result.success)");
+            s.AppendLine("\t\t\t\t{");
+            s.AppendLine("\t\t\t\t\t$scope." + plural + " = result.data;");
+            s.AppendLine("\t\t\t\t\t$scope.$apply();");
+            s.AppendLine("\t\t\t\t}");
+            s.AppendLine("\t\t\t\telse");
+            s.AppendLine("\t\t\t\t{");
+            s.AppendLine("\t\t\t\t\t$scope.ShowPopup(\"Could not load the information: \" + result.message);");
+            s.AppendLine("\t\t\t\t}");
+            s.AppendLine("\t\t\t}");
+            s.AppendLine("\t\t);");
+            s.AppendLine("\t};");
             s.AppendLine();
 
             s.AppendLine("	$scope.edit_" + single + " = {};");
@@ -281,8 +283,8 @@ namespace MySQL_Manager
             s.AppendLine("	};");
             s.AppendLine();
 
-            s.AppendLine("  $scope.SaveChanges_" + Single + " = function()");
-            s.AppendLine("  {");
+            s.AppendLine("\t$scope.SaveChanges_" + Single + " = function()");
+            s.AppendLine("\t{");
             s.AppendLine("		if (!$scope.InfoCheck_" + Single + "())");
             s.AppendLine("		{");
             s.AppendLine("			$scope.ShowPopup(\"There are fields needed to fill!\");");
@@ -312,13 +314,13 @@ namespace MySQL_Manager
             s.AppendLine("		);");
             s.AppendLine("	};");
 
-            s.AppendLine("  $scope.ConfirmDelete_" + Single + " = function()\"");
-            s.AppendLine("  {");
+            s.AppendLine("\t$scope.ConfirmDelete_" + Single + " = function()\"");
+            s.AppendLine("\t{");
             s.AppendLine("		var url =  '<?php echo site_url('ctl_" + plural + "')?>/delete" + Single + "/';");
             s.AppendLine("		var call = AjaxJSON(url,true);");
             s.AppendLine("		var data =");
             s.AppendLine("		{");
-            s.AppendLine("			service_info: JSON.stringify($scope.delete_" + single + ")");
+            s.AppendLine("			" + single + ": JSON.stringify($scope.delete_" + single + ")");
             s.AppendLine("		};");
             s.AppendLine("		call.Data = data;");
             s.AppendLine("		call.UseLock = true;");
@@ -337,20 +339,20 @@ namespace MySQL_Manager
             s.AppendLine("		);");
             s.AppendLine("	};");
 
-            s.AppendLine("  $scope.View_" + Single + " = function(" + single + ")");
+            s.AppendLine("\t$scope.View_" + Single + " = function(" + single + ")");
             s.AppendLine("	{");
             s.AppendLine("		$scope.view_" + single + " = " + single + ";");
             s.AppendLine("		$('#modal_view_" + single + "').modal('show');");
             s.AppendLine("	};");
 
-            s.AppendLine("  $scope.Edit_" + Single + " = function(" + single + ")");
+            s.AppendLine("\t$scope.Edit_" + Single + " = function(" + single + ")");
             s.AppendLine("	{");
             s.AppendLine("		$scope.edit_" + single + " = " + single + ";");
             s.AppendLine("		$scope._edit_title_" + single + " = 'Edit " + single + "';");
             s.AppendLine("		$('#modal_edit_" + single + "').modal('show');");
             s.AppendLine("	};");
 
-            s.AppendLine("  $scope.Delete_" + Single + " = function(" + single + ")");
+            s.AppendLine("\t$scope.Delete_" + Single + " = function(" + single + ")");
             s.AppendLine("	{");
             s.AppendLine("		$scope.delete_" + single + " = " + single + ";");
             s.AppendLine("		$('#modal_delete_" + single + "').modal('show');");
@@ -359,12 +361,12 @@ namespace MySQL_Manager
 
             s.AppendLine(json);
 
-            s.AppendLine("  $scope.AddNew_" + Single + " = function()");
-            s.AppendLine("  {");
-            s.AppendLine("      $scope.edit_" + single + " = $scope._" + single + "_empty;");
-            s.AppendLine("      $scope._edit_title_" + single + " = 'Create new " + single + "';");
-            s.AppendLine("      $('#modal_edit_" + single + "').modal('show');");
-            s.AppendLine("  };");
+            s.AppendLine("\t$scope.AddNew_" + Single + " = function()");
+            s.AppendLine("\t{");
+            s.AppendLine("\t\t$scope.edit_" + single + " = $scope._" + single + "_empty;");
+            s.AppendLine("\t\t$scope._edit_title_" + single + " = 'Create new " + single + "';");
+            s.AppendLine("\t\t$('#modal_edit_" + single + "').modal('show');");
+            s.AppendLine("\t};");
 
             s.AppendLine("});");
             s.AppendLine("</script>");
