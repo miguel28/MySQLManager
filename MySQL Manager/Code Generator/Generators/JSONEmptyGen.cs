@@ -8,9 +8,16 @@ namespace MySQL_Manager
 {
     public class JSONEmptyGen : ICodeGenerator
     {
+        private List<string> default_values = null;
         public override void GenerateCode()
         {
             cols = dbCon.GetAllColumns(setting.TableName);
+            default_values = dbCon.GetDefaultValue(setting.TableName);
+            for (int i = 0; i < cols.Count - 1; i++)
+            {
+                if (string.IsNullOrEmpty(default_values[i]))
+                    default_values[i] = "";
+            }
             GenerateBasicFunctions();
         }
         
@@ -34,9 +41,9 @@ namespace MySQL_Manager
             s.AppendLine("$scope._" + single + "_empty ={" );
 		    for(int i = 0; i< cols.Count -1; i++)
             {
-                s.AppendLine("\t" + cols[i] + " : '',");
+                s.AppendLine("\t" + cols[i] + " : '" + default_values[i] + "',");
             }
-            s.AppendLine("\t" + cols.Last() + " : ''");
+            s.AppendLine("\t" + cols.Last() + " : '" + default_values.Last() + "'");
             s.AppendLine("};");
 
             _genetaredCode = s.ToString();

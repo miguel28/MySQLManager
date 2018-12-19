@@ -14,6 +14,14 @@ namespace MySQL_Manager
 
         private string common;
 
+        private string elementlow;
+        private string element;
+        private string single;
+        private string Plural;
+        private string plural;
+        private string model_name;
+        private string Single;
+
         public override void GenerateCode()
         {
             cols = dbCon.GetAllColumns(setting.TableName);
@@ -23,6 +31,20 @@ namespace MySQL_Manager
 
             common = cols[0].Replace("id", "");
 
+            elementlow = setting.TableName.Replace("tbl_", "");
+            element = elementlow[0].ToString().ToUpper() + elementlow.Substring(1);
+            model_name = setting.TableName.Replace("tbl", "mdl");
+            single = elementlow;
+
+            if (single.EndsWith("s"))
+                single = single.Substring(0, single.Length - 1);
+            string plural = elementlow;
+            if (!plural.EndsWith("s"))
+                plural = plural + 's';
+
+            Plural = plural[0].ToString().ToUpper() + plural.Substring(1);
+            Single = single[0].ToString().ToUpper() + single.Substring(1);
+
             GenerateListView();
             GenerateModals();
             GenerateJavaScript();
@@ -31,19 +53,6 @@ namespace MySQL_Manager
 
         private void GenerateListView()
         {
-            string elementlow = setting.TableName.Replace("tbl_", "");
-            string element = elementlow[0].ToString().ToUpper() + elementlow.Substring(1);
-            string model_name = setting.TableName.Replace("tbl", "mdl");
-            string single = elementlow;
-
-            if (single.EndsWith("s"))
-                single = single.Substring(0, single.Length - 1);
-            string plural = elementlow;
-            if (!plural.EndsWith("s"))
-                plural = plural + 's';
-
-            string Single = single[0].ToString().ToUpper() + single.Substring(1);
-
             s.AppendLine("<!-- List View " + single + " -->");
             s.AppendLine("<div class=\"btn-group\">");
             s.AppendLine("\t<a class=\"btn btn-success\" data-toggle=\"modal\" ng-click=\"AddNew_" + Single + "()\">Add New " + Single + "</a>");
@@ -95,20 +104,6 @@ namespace MySQL_Manager
 
         private void GenerateModals()
         {
-            string elementlow = setting.TableName.Replace("tbl_", "");
-            string element = elementlow[0].ToString().ToUpper() + elementlow.Substring(1);
-            string model_name = setting.TableName.Replace("tbl", "mdl");
-            string single = elementlow;
-
-            if (single.EndsWith("s"))
-                single = single.Substring(0, single.Length - 1);
-            string plural = elementlow;
-            if (!plural.EndsWith("s"))
-                plural = plural + 's';
-
-            string Plural = plural[0].ToString() + plural.Substring(1, plural.Length - 1);
-            string Single = single[0].ToString().ToUpper() + single.Substring(1);
-
             s.AppendLine("<!-- Modal edit " + single + " -->");
             s.AppendLine("<div class=\"modal fade\" id=\"modal_edit_" + single + "\" tabindex=\"-1\" role=\"dialog\">");
             s.AppendLine("	<div class=\"modal-dialog\" role=\"document\">");
@@ -130,6 +125,29 @@ namespace MySQL_Manager
                         s.AppendLine("			  <input type=\"password\" class=\"form-control\" id=\"txt_" + cols[i] + "\" maxlength=\"40\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
                         s.AppendLine("			</div>");
                     }
+                    else if (colscomment[i].Contains("COMBO="))
+                    {
+                        string[] data = colscomment[i].Replace("COMBO=(", "").Replace(");", "").Split(',');
+                        s.AppendLine("			<div class=\"form-group\">");
+                        s.AppendLine("				<label for=\"sel_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
+                        s.AppendLine("				<select class=\"form-control\" id=\"sel_" + cols[i] + "\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
+                        foreach (string input in data)
+                        {
+                            if (input.Contains("="))
+                            {
+                                string[] valuekey = input.Split('=');
+                                
+                                s.AppendLine("					<option value='" + valuekey[0] + "'>" + valuekey[1] + "</option>");
+                            }
+                            else
+                            {
+                                s.AppendLine("					<option value='" + input +"'>" + input + "</option>");
+                            }
+                            
+                        }
+                        s.AppendLine("				</select>");
+                        s.AppendLine("			</div>");
+                    }
                     else
                     {
                         string len = ctype.Replace("varchar(", "").Replace(")", "");
@@ -138,6 +156,12 @@ namespace MySQL_Manager
                         s.AppendLine("			  <input type=\"text\" class=\"form-control\" id=\"txt_" + cols[i] + "\" maxlength=\"" + len + "\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
                         s.AppendLine("			</div>");
                     }
+                }
+
+                else if (ctype.Contains("int(1)"))
+                {
+                    s.AppendLine("			<div class=\"checkbox\">");
+                    s.AppendLine("				<label><input type=\"checkbox\" value=\"\" ng-model=\"edit_" + single + "." + cols[i] + "\" ng-true-value=\"'1'\" ng-false-value=\"'0'\" > " + SanitizeColumnName(cols[i], common) + ":</label>");
                 }
                 else if (ctype.Contains("date"))
                 {
@@ -213,20 +237,6 @@ namespace MySQL_Manager
 
         public void GenerateJavaScript()
         {
-            string elementlow = setting.TableName.Replace("tbl_", "");
-            string element = elementlow[0].ToString().ToUpper() + elementlow.Substring(1);
-            string model_name = setting.TableName.Replace("tbl", "mdl");
-            string single = elementlow;
-
-            if (single.EndsWith("s"))
-                single = single.Substring(0, single.Length - 1);
-            string plural = elementlow;
-            if (!plural.EndsWith("s"))
-                plural = plural + 's';
-
-            string Plural = plural[0].ToString().ToUpper() + plural.Substring(1);
-            string Single = single[0].ToString().ToUpper() + single.Substring(1);
-
             s.AppendLine("<script>");
             s.AppendLine("function SetupTableFilters()");
             s.AppendLine("{");
@@ -291,31 +301,33 @@ namespace MySQL_Manager
 
             s.AppendLine("	$scope.InfoCheck_" + Single + " = function()");
             s.AppendLine("	{");
-            bool echecked = false;
-            s.Append("		return");
+            s.AppendLine("		var ret = [];");
+            s.AppendLine(@"		var decimal_patt = /\A[+-]?\d+(?:\.\d{1,2})?\z/;");
             for (int i = 1; i < cols.Count; i++)
             {
                 if (colsnulable[i].Contains("NO"))
                 {
-                    if(!echecked)
-                        s.AppendLine(" $scope.edit_" + single + "." + cols[i] + " !== \"\"");
-                    else
-                        s.AppendLine("				&& $scope.edit_" + single + "." + cols[i] + " !== \"\"");
-                    echecked = true;
+                    s.AppendLine("		if ($scope.edit_" + single + "." + cols[i] + " !== \"\") ret.push('" + SanitizeColumnName(cols[i]) + " is empty field'});");
+                }
+
+                if (colstype[i].Contains("double"))
+                {
+                    s.AppendLine("		if (decimal_patt.test($scope.edit_" + single + "." + cols[i] + ")) ret.push('" + SanitizeColumnName(cols[i]) + " has invalid format'});");
                 }
             }
+            s.AppendLine("		return ret;");
 
-            if (!echecked)
-                s.AppendLine(" true");
-            s.AppendLine(";");
             s.AppendLine("	};");
             s.AppendLine();
 
             s.AppendLine("\t$scope.SaveChanges_" + Single + " = function()");
-            s.AppendLine("\t{");
-            s.AppendLine("		if (!$scope.InfoCheck_" + Single + "())");
+            s.AppendLine("	{");
+            s.AppendLine("		var check_info = $scope.InfoCheck_" + Single + "();");
+            s.AppendLine("		if (check_info.lenght > 0)");
             s.AppendLine("		{");
-            s.AppendLine("			$scope.ShowPopup(\"There are fields needed to fill!\");");
+            s.AppendLine("			var msg = 'There are fields needed to fill or have invalid format! <br/>';");
+            s.AppendLine("			for(var i= 0; i< check_info.lenght; i++) msg += check_info[i] + ' <br/>';");
+            s.AppendLine("			$scope.ShowPopup(msg);");
             s.AppendLine("			return;");
             s.AppendLine("		}");
             s.AppendLine("		");

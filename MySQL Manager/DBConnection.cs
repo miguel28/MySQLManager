@@ -179,6 +179,44 @@ namespace MySQL_Manager
             }
         }
 
+        public List<string> GetDefaultValue(string table_name)
+        {
+            List<string> tables = new List<string>();
+            string query = "DESCRIBE "
+                + table_name;
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    if (!(dataReader[4] is DBNull))
+                        tables.Add((string)dataReader[4]);
+                    else
+                        tables.Add("");
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+
+                //return list to be displayed
+                return tables;
+            }
+            else
+            {
+                return tables;
+            }
+        }
+
         public List<string> GetColsComment(string table_name)
         {
             List<string> tables = new List<string>();
