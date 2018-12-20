@@ -38,7 +38,7 @@ namespace MySQL_Manager
 
             if (single.EndsWith("s"))
                 single = single.Substring(0, single.Length - 1);
-            string plural = elementlow;
+            plural = elementlow;
             if (!plural.EndsWith("s"))
                 plural = plural + 's';
 
@@ -157,11 +157,18 @@ namespace MySQL_Manager
                         s.AppendLine("			</div>");
                     }
                 }
-
                 else if (ctype.Contains("int(1)"))
                 {
                     s.AppendLine("			<div class=\"checkbox\">");
                     s.AppendLine("				<label><input type=\"checkbox\" value=\"\" ng-model=\"edit_" + single + "." + cols[i] + "\" ng-true-value=\"'1'\" ng-false-value=\"'0'\" > " + SanitizeColumnName(cols[i], common) + ":</label>");
+                    s.AppendLine("			</div>");
+                }
+                else if (ctype.Contains("text"))
+                {
+                    s.AppendLine("			<div class=\"form-group\">");
+                    s.AppendLine("				<label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
+                    s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" id=\"txt_" + cols[i] + "\" ng-model=\"edit_" + single + "." + cols[i] + "\"></textarea>");
+                    s.AppendLine("			</div>");
                 }
                 else if (ctype.Contains("date"))
                 {
@@ -201,8 +208,25 @@ namespace MySQL_Manager
             s.AppendLine("				<h3 class=\"modal-title\">View " + single + "</h3>");
             s.AppendLine("			</div>");
             s.AppendLine("			<div class=\"modal-body\">");
-            foreach (string col in cols)
-                s.AppendLine("				<p><b>" + SanitizeColumnName(col, common) + ": </b>{{view_" + single + "." + col + "}}</p>");
+            for (int i = 1; i < cols.Count; i++)
+            {
+                if (colstype[i].Contains("text"))
+                {
+                    s.AppendLine("			<div class=\"form-group\">");
+                    s.AppendLine("				<label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
+                    s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" readonly id=\"txt_" + cols[i] + "\" ng-value=\"edit_" + single + "." + cols[i] + "\"></textarea>");
+                    s.AppendLine("			</div>");
+                }
+                else if (colstype[i].Contains("int(1)"))
+                {
+                    s.AppendLine("				<p><b>" + SanitizeColumnName(cols[i], common) + ": </b>{{view_" + single + "." + cols[i] + " === '1' ? 'Yes' : 'No'}}</p>");
+                }
+                else
+                {
+                    s.AppendLine("				<p><b>" + SanitizeColumnName(cols[i], common) + ": </b>{{view_" + single + "." + cols[i] + "}}</p>");
+                }
+            }
+               
             s.AppendLine("			</div>");
             s.AppendLine("			<div class=\"modal-footer\">");
             s.AppendLine("				<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>");
@@ -220,8 +244,24 @@ namespace MySQL_Manager
             s.AppendLine("				<h3 class=\"modal-title\">Are you sure to delete this register " + single + "</h3>");
             s.AppendLine("			</div>");
             s.AppendLine("			<div class=\"modal-body\">");
-            foreach (string col in cols)
-                s.AppendLine("				<p><b>" + SanitizeColumnName(col, common) + ": </b>{{delete_" + single + "." + col + "}}</p>");
+            for (int i = 1; i < cols.Count; i++)
+            {
+                if (colstype[i].Contains("text"))
+                {
+                    s.AppendLine("			<div class=\"form-group\">");
+                    s.AppendLine("				<label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
+                    s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" readonly id=\"txt_" + cols[i] + "\" ng-value=\"edit_" + single + "." + cols[i] + "\"></textarea>");
+                    s.AppendLine("			</div>");
+                }
+                else if (colstype[i].Contains("int(1)"))
+                {
+                    s.AppendLine("				<p><b>" + SanitizeColumnName(cols[i], common) + ": </b>{{view_" + single + "." + cols[i] + " === '1' ? 'Yes' : 'No'}}</p>");
+                }
+                else
+                {
+                    s.AppendLine("				<p><b>" + SanitizeColumnName(cols[i], common) + ": </b>{{view_" + single + "." + cols[i] + "}}</p>");
+                }
+            }
             s.AppendLine("			</div>");
             s.AppendLine("			<div class=\"modal-footer\">");
             s.AppendLine("				<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>");
@@ -278,7 +318,7 @@ namespace MySQL_Manager
             s.AppendLine("	$scope.edit_" + single + " = {};");
             s.AppendLine("	$scope.Load" + Single + " = function(id)");
             s.AppendLine("	{");
-            s.AppendLine("		if ((typeof id == 'undefined') || (id === '0') || (id === ''))");
+            s.AppendLine("		if ((typeof id === 'undefined') || (id === '0') || (id === ''))");
             s.AppendLine("			return;");
             s.AppendLine();
             s.AppendLine("		var url =  '<?php echo site_url('ctl_" + plural + "')?>/get" + Single + "Info/' + id;");
@@ -307,12 +347,12 @@ namespace MySQL_Manager
             {
                 if (colsnulable[i].Contains("NO"))
                 {
-                    s.AppendLine("		if ($scope.edit_" + single + "." + cols[i] + " !== \"\") ret.push('" + SanitizeColumnName(cols[i]) + " is empty field'});");
+                    s.AppendLine("		if ($scope.edit_" + single + "." + cols[i] + " !== \"\") ret.push('" + SanitizeColumnName(cols[i]) + " is empty field');");
                 }
 
                 if (colstype[i].Contains("double"))
                 {
-                    s.AppendLine("		if (decimal_patt.test($scope.edit_" + single + "." + cols[i] + ")) ret.push('" + SanitizeColumnName(cols[i]) + " has invalid format'});");
+                    s.AppendLine("		if (decimal_patt.test($scope.edit_" + single + "." + cols[i] + ")) ret.push('" + SanitizeColumnName(cols[i]) + " has invalid format');");
                 }
             }
             s.AppendLine("		return ret;");

@@ -168,18 +168,25 @@
         '\"',
         '\'',
         '\''};
+            this.txt_CI_Model_CodeGenerator.AutoIndentCharsPatterns = "\r\n^\\s*\\$[\\w\\.\\[\\]\\\'\\\"]+\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n";
             this.txt_CI_Model_CodeGenerator.AutoScrollMinSize = new System.Drawing.Size(31, 18);
             this.txt_CI_Model_CodeGenerator.BackBrush = null;
+            this.txt_CI_Model_CodeGenerator.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
             this.txt_CI_Model_CodeGenerator.CharHeight = 18;
             this.txt_CI_Model_CodeGenerator.CharWidth = 10;
             this.txt_CI_Model_CodeGenerator.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_CI_Model_CodeGenerator.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txt_CI_Model_CodeGenerator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_CI_Model_CodeGenerator.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txt_CI_Model_CodeGenerator.IsReplaceMode = false;
             this.txt_CI_Model_CodeGenerator.Language = FastColoredTextBoxNS.Language.PHP;
+            this.txt_CI_Model_CodeGenerator.LeftBracket = '(';
+            this.txt_CI_Model_CodeGenerator.LeftBracket2 = '{';
             this.txt_CI_Model_CodeGenerator.Location = new System.Drawing.Point(3, 3);
             this.txt_CI_Model_CodeGenerator.Name = "txt_CI_Model_CodeGenerator";
             this.txt_CI_Model_CodeGenerator.Paddings = new System.Windows.Forms.Padding(0);
+            this.txt_CI_Model_CodeGenerator.RightBracket = ')';
+            this.txt_CI_Model_CodeGenerator.RightBracket2 = '}';
             this.txt_CI_Model_CodeGenerator.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.txt_CI_Model_CodeGenerator.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txt_CI_Model_CodeGenerator.ServiceColors")));
             this.txt_CI_Model_CodeGenerator.Size = new System.Drawing.Size(837, 421);
@@ -210,19 +217,24 @@
         '\"',
         '\'',
         '\''};
-            this.txt_JSONEmptyGen.AutoScrollMinSize = new System.Drawing.Size(31, 18);
+            this.txt_JSONEmptyGen.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n";
+            this.txt_JSONEmptyGen.AutoScrollMinSize = new System.Drawing.Size(2, 18);
             this.txt_JSONEmptyGen.BackBrush = null;
+            this.txt_JSONEmptyGen.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
             this.txt_JSONEmptyGen.CharHeight = 18;
             this.txt_JSONEmptyGen.CharWidth = 10;
             this.txt_JSONEmptyGen.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_JSONEmptyGen.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txt_JSONEmptyGen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_JSONEmptyGen.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txt_JSONEmptyGen.IsReplaceMode = false;
             this.txt_JSONEmptyGen.Language = FastColoredTextBoxNS.Language.JS;
+            this.txt_JSONEmptyGen.LeftBracket = '(';
+            this.txt_JSONEmptyGen.LeftBracket2 = '{';
             this.txt_JSONEmptyGen.Location = new System.Drawing.Point(3, 3);
             this.txt_JSONEmptyGen.Name = "txt_JSONEmptyGen";
             this.txt_JSONEmptyGen.Paddings = new System.Windows.Forms.Padding(0);
+            this.txt_JSONEmptyGen.RightBracket = ')';
+            this.txt_JSONEmptyGen.RightBracket2 = '}';
             this.txt_JSONEmptyGen.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.txt_JSONEmptyGen.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txt_JSONEmptyGen.ServiceColors")));
             this.txt_JSONEmptyGen.Size = new System.Drawing.Size(837, 421);
@@ -252,19 +264,24 @@
         '\"',
         '\'',
         '\''};
-            this.txt_CI_Controler_Generator.AutoScrollMinSize = new System.Drawing.Size(31, 18);
+            this.txt_CI_Controler_Generator.AutoIndentCharsPatterns = "\r\n^\\s*\\$[\\w\\.\\[\\]\\\'\\\"]+\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n";
+            this.txt_CI_Controler_Generator.AutoScrollMinSize = new System.Drawing.Size(2, 18);
             this.txt_CI_Controler_Generator.BackBrush = null;
+            this.txt_CI_Controler_Generator.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
             this.txt_CI_Controler_Generator.CharHeight = 18;
             this.txt_CI_Controler_Generator.CharWidth = 10;
             this.txt_CI_Controler_Generator.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_CI_Controler_Generator.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txt_CI_Controler_Generator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_CI_Controler_Generator.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txt_CI_Controler_Generator.IsReplaceMode = false;
             this.txt_CI_Controler_Generator.Language = FastColoredTextBoxNS.Language.PHP;
+            this.txt_CI_Controler_Generator.LeftBracket = '(';
+            this.txt_CI_Controler_Generator.LeftBracket2 = '{';
             this.txt_CI_Controler_Generator.Location = new System.Drawing.Point(0, 0);
             this.txt_CI_Controler_Generator.Name = "txt_CI_Controler_Generator";
             this.txt_CI_Controler_Generator.Paddings = new System.Windows.Forms.Padding(0);
+            this.txt_CI_Controler_Generator.RightBracket = ')';
+            this.txt_CI_Controler_Generator.RightBracket2 = '}';
             this.txt_CI_Controler_Generator.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.txt_CI_Controler_Generator.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txt_CI_Controler_Generator.ServiceColors")));
             this.txt_CI_Controler_Generator.Size = new System.Drawing.Size(843, 427);
@@ -294,18 +311,25 @@
         '\"',
         '\'',
         '\''};
-            this.txt_HTML_Generator.AutoScrollMinSize = new System.Drawing.Size(31, 18);
+            this.txt_HTML_Generator.AutoIndentCharsPatterns = "";
+            this.txt_HTML_Generator.AutoScrollMinSize = new System.Drawing.Size(2, 18);
             this.txt_HTML_Generator.BackBrush = null;
             this.txt_HTML_Generator.CharHeight = 18;
             this.txt_HTML_Generator.CharWidth = 10;
+            this.txt_HTML_Generator.CommentPrefix = null;
             this.txt_HTML_Generator.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_HTML_Generator.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txt_HTML_Generator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_HTML_Generator.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txt_HTML_Generator.IsReplaceMode = false;
             this.txt_HTML_Generator.Language = FastColoredTextBoxNS.Language.HTML;
+            this.txt_HTML_Generator.LeftBracket = '<';
+            this.txt_HTML_Generator.LeftBracket2 = '(';
             this.txt_HTML_Generator.Location = new System.Drawing.Point(0, 0);
             this.txt_HTML_Generator.Name = "txt_HTML_Generator";
             this.txt_HTML_Generator.Paddings = new System.Windows.Forms.Padding(0);
+            this.txt_HTML_Generator.RightBracket = '>';
+            this.txt_HTML_Generator.RightBracket2 = ')';
             this.txt_HTML_Generator.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.txt_HTML_Generator.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txt_HTML_Generator.ServiceColors")));
             this.txt_HTML_Generator.Size = new System.Drawing.Size(843, 427);
@@ -318,6 +342,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(857, 585);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCodeGenerator";
             this.Text = "Code Generator";
             this.tableLayoutPanel1.ResumeLayout(false);

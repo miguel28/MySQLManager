@@ -32,20 +32,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCodeGeneratorFromJson));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.grpCodeGenerator = new System.Windows.Forms.GroupBox();
+            this.txtElementName = new System.Windows.Forms.TextBox();
+            this.txtJsonInput = new FastColoredTextBoxNS.FastColoredTextBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.btnCopy = new System.Windows.Forms.Button();
             this.btnGenerateCode = new System.Windows.Forms.Button();
-            this.txtJsonInput = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabHTML = new System.Windows.Forms.TabPage();
             this.txt_HTML_FromJsonObj = new FastColoredTextBoxNS.FastColoredTextBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.txtElementName = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.grpCodeGenerator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtJsonInput)).BeginInit();
+            this.tabControl1.SuspendLayout();
             this.tabHTML.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_HTML_FromJsonObj)).BeginInit();
-            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -81,6 +81,51 @@
             this.grpCodeGenerator.TabStop = false;
             this.grpCodeGenerator.Text = "Code Generator";
             // 
+            // txtElementName
+            // 
+            this.txtElementName.Location = new System.Drawing.Point(325, 23);
+            this.txtElementName.Name = "txtElementName";
+            this.txtElementName.Size = new System.Drawing.Size(100, 22);
+            this.txtElementName.TabIndex = 5;
+            this.txtElementName.Text = "Element";
+            // 
+            // txtJsonInput
+            // 
+            this.txtJsonInput.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.txtJsonInput.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n";
+            this.txtJsonInput.AutoScrollMinSize = new System.Drawing.Size(31, 18);
+            this.txtJsonInput.BackBrush = null;
+            this.txtJsonInput.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
+            this.txtJsonInput.CharHeight = 18;
+            this.txtJsonInput.CharWidth = 10;
+            this.txtJsonInput.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtJsonInput.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtJsonInput.Font = new System.Drawing.Font("Courier New", 9.75F);
+            this.txtJsonInput.IsReplaceMode = false;
+            this.txtJsonInput.Language = FastColoredTextBoxNS.Language.JS;
+            this.txtJsonInput.LeftBracket = '(';
+            this.txtJsonInput.LeftBracket2 = '{';
+            this.txtJsonInput.Location = new System.Drawing.Point(8, 22);
+            this.txtJsonInput.Name = "txtJsonInput";
+            this.txtJsonInput.Paddings = new System.Windows.Forms.Padding(0);
+            this.txtJsonInput.RightBracket = ')';
+            this.txtJsonInput.RightBracket2 = '}';
+            this.txtJsonInput.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txtJsonInput.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txtJsonInput.ServiceColors")));
+            this.txtJsonInput.Size = new System.Drawing.Size(282, 145);
+            this.txtJsonInput.TabIndex = 2;
+            this.txtJsonInput.Zoom = 100;
+            // 
             // progressBar
             // 
             this.progressBar.Location = new System.Drawing.Point(556, 22);
@@ -112,41 +157,15 @@
             this.btnGenerateCode.UseVisualStyleBackColor = true;
             this.btnGenerateCode.Click += new System.EventHandler(this.btnGenerateCode_Click);
             // 
-            // txtJsonInput
+            // tabControl1
             // 
-            this.txtJsonInput.AutoCompleteBracketsList = new char[] {
-        '(',
-        ')',
-        '{',
-        '}',
-        '[',
-        ']',
-        '\"',
-        '\"',
-        '\'',
-        '\''};
-            this.txtJsonInput.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n";
-            this.txtJsonInput.AutoScrollMinSize = new System.Drawing.Size(31, 18);
-            this.txtJsonInput.BackBrush = null;
-            this.txtJsonInput.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
-            this.txtJsonInput.CharHeight = 18;
-            this.txtJsonInput.CharWidth = 10;
-            this.txtJsonInput.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtJsonInput.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.txtJsonInput.IsReplaceMode = false;
-            this.txtJsonInput.Language = FastColoredTextBoxNS.Language.JS;
-            this.txtJsonInput.LeftBracket = '(';
-            this.txtJsonInput.LeftBracket2 = '{';
-            this.txtJsonInput.Location = new System.Drawing.Point(8, 22);
-            this.txtJsonInput.Name = "txtJsonInput";
-            this.txtJsonInput.Paddings = new System.Windows.Forms.Padding(0);
-            this.txtJsonInput.RightBracket = ')';
-            this.txtJsonInput.RightBracket2 = '}';
-            this.txtJsonInput.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.txtJsonInput.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txtJsonInput.ServiceColors")));
-            this.txtJsonInput.Size = new System.Drawing.Size(282, 145);
-            this.txtJsonInput.TabIndex = 2;
-            this.txtJsonInput.Zoom = 100;
+            this.tabControl1.Controls.Add(this.tabHTML);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(3, 196);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(851, 386);
+            this.tabControl1.TabIndex = 7;
             // 
             // tabHTML
             // 
@@ -180,6 +199,7 @@
             this.txt_HTML_FromJsonObj.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_HTML_FromJsonObj.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txt_HTML_FromJsonObj.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_HTML_FromJsonObj.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txt_HTML_FromJsonObj.IsReplaceMode = false;
             this.txt_HTML_FromJsonObj.Language = FastColoredTextBoxNS.Language.HTML;
             this.txt_HTML_FromJsonObj.LeftBracket = '<';
@@ -195,39 +215,22 @@
             this.txt_HTML_FromJsonObj.TabIndex = 1;
             this.txt_HTML_FromJsonObj.Zoom = 100;
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabHTML);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(3, 196);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(851, 386);
-            this.tabControl1.TabIndex = 7;
-            // 
-            // txtElementName
-            // 
-            this.txtElementName.Location = new System.Drawing.Point(325, 23);
-            this.txtElementName.Name = "txtElementName";
-            this.txtElementName.Size = new System.Drawing.Size(100, 22);
-            this.txtElementName.TabIndex = 5;
-            this.txtElementName.Text = "Element";
-            // 
             // frmCodeGeneratorFromJson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(857, 585);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCodeGeneratorFromJson";
             this.Text = "Code Generator";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.grpCodeGenerator.ResumeLayout(false);
             this.grpCodeGenerator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtJsonInput)).EndInit();
+            this.tabControl1.ResumeLayout(false);
             this.tabHTML.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txt_HTML_FromJsonObj)).EndInit();
-            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
