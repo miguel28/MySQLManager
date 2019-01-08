@@ -39,7 +39,7 @@ class Ctl_%plural% extends MR_Controller
 		echo PositiveResponseJSON('SUCCESS', $insert_id);
 	}
 	
-	public function delete%Single%Info()
+	public function delete%Single%()
 	{
 		$%ELEMENT_NAME_low%_info = json_decode($this->input->post('%ELEMENT_NAME_low%_info'), true);
 		reset($%ELEMENT_NAME_low%_info);

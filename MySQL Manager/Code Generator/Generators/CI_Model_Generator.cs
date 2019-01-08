@@ -119,6 +119,7 @@ namespace MySQL_Manager
             s.AppendLine("		    $result_id = $info['" + cols[0] + "'];");
             s.AppendLine("		    $this->updateEntryObj($info);");
             s.AppendLine("		}");
+            s.AppendLine("		return $result_id");
             s.AppendLine("	}");
             s.AppendLine("	");
 
