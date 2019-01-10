@@ -59,7 +59,8 @@ namespace MySQL_Manager
         private void btnCopy_Click(object sender, EventArgs e)
         {
             FastColoredTextBox txt = (FastColoredTextBox)tabControl1.SelectedTab.Controls[0];
-            Clipboard.SetText(txt.Text);
+            if (!string.IsNullOrEmpty(txt.Text))
+                Clipboard.SetText(txt.Text);
         }
     }
 }
