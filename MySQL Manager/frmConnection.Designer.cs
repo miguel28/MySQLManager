@@ -38,11 +38,13 @@
             this.cboxDatabase = new System.Windows.Forms.ComboBox();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
+            this.radMicrosoftSQL = new System.Windows.Forms.RadioButton();
+            this.radMySQL = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // btnCreateConnection
             // 
-            this.btnCreateConnection.Location = new System.Drawing.Point(121, 155);
+            this.btnCreateConnection.Location = new System.Drawing.Point(121, 190);
             this.btnCreateConnection.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateConnection.Name = "btnCreateConnection";
             this.btnCreateConnection.Size = new System.Drawing.Size(124, 50);
@@ -93,6 +95,8 @@
             // 
             // cboxServ
             // 
+            this.cboxServ.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboxServ.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboxServ.FormattingEnabled = true;
             this.cboxServ.Items.AddRange(new object[] {
             "localhost",
@@ -126,6 +130,8 @@
             // 
             // txtUser
             // 
+            this.txtUser.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtUser.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtUser.Location = new System.Drawing.Point(121, 90);
             this.txtUser.Margin = new System.Windows.Forms.Padding(4);
             this.txtUser.Name = "txtUser";
@@ -142,11 +148,35 @@
             this.txtPass.Size = new System.Drawing.Size(229, 22);
             this.txtPass.TabIndex = 8;
             // 
+            // radMicrosoftSQL
+            // 
+            this.radMicrosoftSQL.AutoSize = true;
+            this.radMicrosoftSQL.Location = new System.Drawing.Point(197, 153);
+            this.radMicrosoftSQL.Name = "radMicrosoftSQL";
+            this.radMicrosoftSQL.Size = new System.Drawing.Size(114, 21);
+            this.radMicrosoftSQL.TabIndex = 9;
+            this.radMicrosoftSQL.Text = "MicrosoftSQL";
+            this.radMicrosoftSQL.UseVisualStyleBackColor = true;
+            // 
+            // radMySQL
+            // 
+            this.radMySQL.AutoSize = true;
+            this.radMySQL.Checked = true;
+            this.radMySQL.Location = new System.Drawing.Point(91, 153);
+            this.radMySQL.Name = "radMySQL";
+            this.radMySQL.Size = new System.Drawing.Size(75, 21);
+            this.radMySQL.TabIndex = 10;
+            this.radMySQL.TabStop = true;
+            this.radMySQL.Text = "MySQL";
+            this.radMySQL.UseVisualStyleBackColor = true;
+            // 
             // frmConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 210);
+            this.ClientSize = new System.Drawing.Size(377, 253);
+            this.Controls.Add(this.radMySQL);
+            this.Controls.Add(this.radMicrosoftSQL);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.cboxDatabase);
@@ -176,6 +206,8 @@
         private System.Windows.Forms.ComboBox cboxDatabase;
         private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.RadioButton radMicrosoftSQL;
+        private System.Windows.Forms.RadioButton radMySQL;
     }
 }
 

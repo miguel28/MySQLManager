@@ -8,15 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FastColoredTextBoxNS;
+using MySQL_Manager.Database;
 
 namespace MySQL_Manager
 {
     public partial class frmCodeGenerator : Form
     {
         private TableSetting tableSetting;
-        private DBConnection dbCon;
+        private IDBConnection dbCon;
 
-        public frmCodeGenerator(DBConnection db, TableSetting setting)
+        public frmCodeGenerator(IDBConnection db, TableSetting setting)
         {
             InitializeComponent();
             tableSetting = setting;

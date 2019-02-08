@@ -74,7 +74,10 @@
     <Compile Include="Code Generator\Generators\JSONEmptyGen.cs" />
     <Compile Include="Code Generator\Generators\CI_Model_Generator.cs" />
     <Compile Include="Code Generator\StringReplacer.cs" />
-    <Compile Include="DBConnection.cs" />
+    <Compile Include="Database\AutcompleteClass.cs" />
+    <Compile Include="Database\MySQLDBConnection.cs" />
+    <Compile Include="Database\IDBConnection.cs" />
+    <Compile Include="Database\SQLDBConnection.cs" />
     <Compile Include="frmCodeGeneratorFromJson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +149,7 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

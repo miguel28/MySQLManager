@@ -9,18 +9,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using OfficeOpenXml;
+using MySQL_Manager.Database;
 
 namespace MySQL_Manager
 {
     public partial class frmManagerMain : Form
     {
-        private DBConnection dbCon;
+        private IDBConnection dbCon;
 
-        public frmManagerMain(DBConnection db)
+        public frmManagerMain(IDBConnection db)
         {
             InitializeComponent();
             dbCon = db;
             lstTables.DataSource = dbCon.GetAllTables();
+
+            if (lstTables.Items.Count == 0)
+                MessageBox.Show("No Tables were found check connection settings! ", "Get Table Errors", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             txtFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         }
         private void btnBackup_Click(object sender, EventArgs e)

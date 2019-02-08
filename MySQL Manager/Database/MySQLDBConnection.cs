@@ -7,18 +7,14 @@ using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
 
-namespace MySQL_Manager
+namespace MySQL_Manager.Database
 {
-    public class DBConnection
+    public class MySQLDBConnection : IDBConnection
     {
         private MySqlConnection connection;
-        private string server;
-        private string database;
-        private string uid;
-        private string password;
 
         //Constructor
-        public DBConnection(string serv, string db, string user, string pass)
+        public MySQLDBConnection(string serv, string db, string user, string pass)
         {
             server = serv;
             database = db;
@@ -32,7 +28,7 @@ namespace MySQL_Manager
         }
 
         //open connection to database
-        private bool OpenConnection()
+        protected override bool OpenConnection()
         {
             try
             {
@@ -60,7 +56,7 @@ namespace MySQL_Manager
             }
         }
         //Close connection
-        private bool CloseConnection()
+        protected override bool CloseConnection()
         {
             try
             {
@@ -75,7 +71,7 @@ namespace MySQL_Manager
         }
 
         #region DatabaseInformation
-        public List<string> GetAllTables()
+        public override List<string> GetAllTables()
         {
             string query = "SHOW TABLES";
             List<string> tables = new List<string>();
@@ -110,7 +106,7 @@ namespace MySQL_Manager
 
         }
 
-        public List<string> GetAllColumns(string table)
+        public override List<string> GetAllColumns(string table)
         {
             string query = "desc " + table;
             List<string> tables = new List<string>();
@@ -144,7 +140,7 @@ namespace MySQL_Manager
             }
         }
 
-        public List<string> GetColsType(string table_name)
+        public override List<string> GetColsType(string table_name)
         {
             List<string> tables = new List<string>();
             string query = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = '"
@@ -179,7 +175,7 @@ namespace MySQL_Manager
             }
         }
 
-        public List<string> GetDefaultValue(string table_name)
+        public override List<string> GetDefaultValue(string table_name)
         {
             List<string> tables = new List<string>();
             string query = "DESCRIBE "
@@ -217,7 +213,7 @@ namespace MySQL_Manager
             }
         }
 
-        public List<string> GetColsComment(string table_name)
+        public override List<string> GetColsComment(string table_name)
         {
             List<string> tables = new List<string>();
             string query = "SHOW FULL COLUMNS FROM " + table_name;
@@ -251,7 +247,7 @@ namespace MySQL_Manager
             }
         }
 
-        public List<string> GetColsNullable(string table_name)
+        public override List<string> GetColsNullable(string table_name)
         {
             List<string> tables = new List<string>();
             string query = "SHOW FULL COLUMNS FROM " + table_name;
@@ -287,7 +283,7 @@ namespace MySQL_Manager
         #endregion
 
         #region Records
-        public List<string>[] SelectAll(string table, int cols)
+        public override List<string>[] SelectAll(string table, int cols)
         {
             string query = "SELECT * FROM " + table;
 
@@ -326,7 +322,7 @@ namespace MySQL_Manager
             }
         }
 
-        public void InsertReg(string table, List<string> Columns, List<string> data)
+        public override void InsertReg(string table, List<string> Columns, List<string> data)
         {
             string query = "INSERT INTO " + table + " ";
             query += "(";
@@ -356,7 +352,7 @@ namespace MySQL_Manager
                 //return list to be displayed
             }
         }
-        public void UpdateReg(string table, List<string> Columns, List<string> data)
+        public override void UpdateReg(string table, List<string> Columns, List<string> data)
         {
             string query = "UPDATE " + table + " SET ";
             for (int i = 1; i < Columns.Count; i++)

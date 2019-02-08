@@ -8,15 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MySQL_Manager.Database;
+
 namespace MySQL_Manager
 {
 	public partial class frmEditFunctionSettings : Form
 	{
 		public SpecialFunction function;
 		private string tableName;
-		private DBConnection dbCon;
+		private IDBConnection dbCon;
 
-		public frmEditFunctionSettings(SpecialFunction _function, DBConnection _dbCon, string _tableName)
+		public frmEditFunctionSettings(SpecialFunction _function, IDBConnection _dbCon, string _tableName)
 		{
 			InitializeComponent();
 			function = _function;

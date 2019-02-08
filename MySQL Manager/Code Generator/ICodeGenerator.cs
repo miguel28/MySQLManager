@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySQL_Manager.Database;
 
 namespace MySQL_Manager
 {
     public abstract class ICodeGenerator: IDisposable
     {
-        protected DBConnection dbCon;
+        protected IDBConnection dbCon;
         protected TableSetting setting;
         protected StringBuilder s = new StringBuilder();
         protected List<string> cols;
         protected string _genetaredCode = "";
 
-        public void SetData(DBConnection db, TableSetting set)
+        public void SetData(IDBConnection db, TableSetting set)
         {
             dbCon = db;
             setting = set;

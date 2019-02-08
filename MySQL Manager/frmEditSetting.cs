@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySQL_Manager.Database;
 
 namespace MySQL_Manager
 {
     public partial class frmEditSetting : Form
     {
 		TableSetting setting;
-		DBConnection dbCon;
-		public frmEditSetting(TableSetting _setting, DBConnection _dbCon)
+		IDBConnection dbCon;
+		public frmEditSetting(TableSetting _setting, IDBConnection _dbCon)
         {
             InitializeComponent();
 			setting = _setting;

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.ComponentModel;
+using MySQL_Manager.Database;
 
 namespace MySQL_Manager
 {
@@ -85,7 +86,7 @@ namespace MySQL_Manager
             ProgressChange.Invoke(e.ProgressPercentage, (string)e.UserState);
         }
 
-        public void SetData(DBConnection db, TableSetting set)
+        public void SetData(IDBConnection db, TableSetting set)
         {
             this.ForEach(x => x.SetData(db, set));
         }

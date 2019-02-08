@@ -9,12 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
+using MySQL_Manager.Database;
+
 namespace MySQL_Manager
 {
     public partial class frmConnection : Form
     {
-        private List<string> databases = null;
         private const string FILE = "databases.txt";
+        private const string FILE_SERVERS = "servers.txt";
+        private const string FILE_USERS = "users.txt";
+        private AutcompleteClass databases = new AutcompleteClass(FILE);
+        private AutcompleteClass servers = new AutcompleteClass(FILE_SERVERS);
+        private AutcompleteClass users = new AutcompleteClass(FILE_USERS);
 
         public frmConnection()
         {
@@ -31,18 +37,57 @@ namespace MySQL_Manager
 
         private void LoadDatabasesFile()
         {
-            if (File.Exists(FILE))
-            {
-                databases = File.ReadAllLines(FILE).ToList();
+            databases.Load();
+            if (databases.HasData)
+                cboxDatabase.DataSource = databases.Data;
 
+            servers.Load();
+            if (servers.HasData)
+                cboxServ.DataSource = servers.Data;
+
+            users.Load();
+            if (users.HasData)
+            {
+                AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+                collection.AddRange(users.Data.ToArray());
+
+                txtUser.AutoCompleteCustomSource = collection;
             }
-            else databases = new List<string>();
-            cboxDatabase.DataSource = databases;
+        }
+
+        private void CommitChangedDB()
+        {
+            if (cboxDatabase.SelectedIndex >= 0)
+                databases.AddIfNotExist(cboxDatabase.Items[cboxDatabase.SelectedIndex] as String);
+
+            if (!string.IsNullOrEmpty(cboxDatabase.SelectedText))
+                databases.AddIfNotExist(cboxDatabase.SelectedText);
+
+            if (!string.IsNullOrEmpty(cboxDatabase.Text))
+                databases.AddIfNotExist(cboxDatabase.Text);
+
+            if (cboxServ.SelectedIndex >= 0)
+                servers.AddIfNotExist(cboxServ.Items[cboxServ.SelectedIndex] as String);
+
+            if (!string.IsNullOrEmpty(cboxServ.SelectedText))
+                servers.AddIfNotExist(cboxServ.SelectedText);
+
+            if (!string.IsNullOrEmpty(cboxServ.Text))
+                servers.AddIfNotExist(cboxServ.Text);
+
+            if (!string.IsNullOrEmpty(txtUser.Text))
+                users.AddIfNotExist(txtUser.Text);
         }
 
         private void btnCreateConnection_Click(object sender, EventArgs e)
         {
-            DBConnection con = new DBConnection((string)cboxServ.SelectedItem, (string)cboxDatabase.SelectedItem, txtUser.Text, txtPass.Text);
+            IDBConnection con = null;
+            if (radMySQL.Checked)
+                con = new MySQLDBConnection(cboxServ.Text, cboxDatabase.Text, txtUser.Text, txtPass.Text);
+            else 
+                con = new SQLDBConnection(cboxServ.Text, cboxDatabase.Text, txtUser.Text, txtPass.Text);
+            CommitChangedDB();
+
             frmManagerMain main = new frmManagerMain(con);
             this.Hide();
             main.ShowDialog();
