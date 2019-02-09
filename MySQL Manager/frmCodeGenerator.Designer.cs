@@ -45,6 +45,12 @@
             this.txt_CI_Controler_Generator = new FastColoredTextBoxNS.FastColoredTextBox();
             this.tabHTML = new System.Windows.Forms.TabPage();
             this.txt_HTML_Generator = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.tabASPCOREModel = new System.Windows.Forms.TabPage();
+            this.tabASPCoreClassModel = new System.Windows.Forms.TabPage();
+            this.tabASPCoreController = new System.Windows.Forms.TabPage();
+            this.txt_ASPCore_Model_Generator = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.txt_ASPCore_ModelClass_Generator = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.txt_ASPCore_Controller_Generator = new FastColoredTextBoxNS.FastColoredTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.grpCodeGenerator.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -56,6 +62,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_CI_Controler_Generator)).BeginInit();
             this.tabHTML.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_HTML_Generator)).BeginInit();
+            this.tabASPCOREModel.SuspendLayout();
+            this.tabASPCoreClassModel.SuspendLayout();
+            this.tabASPCoreController.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_ASPCore_Model_Generator)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_ASPCore_ModelClass_Generator)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_ASPCore_Controller_Generator)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -137,6 +149,9 @@
             this.tabControl1.Controls.Add(this.tabEmptyJSON);
             this.tabControl1.Controls.Add(this.tabCIController);
             this.tabControl1.Controls.Add(this.tabHTML);
+            this.tabControl1.Controls.Add(this.tabASPCOREModel);
+            this.tabControl1.Controls.Add(this.tabASPCoreClassModel);
+            this.tabControl1.Controls.Add(this.tabASPCoreController);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(3, 126);
             this.tabControl1.Name = "tabControl1";
@@ -177,7 +192,6 @@
             this.txt_CI_Model_CodeGenerator.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_CI_Model_CodeGenerator.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txt_CI_Model_CodeGenerator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_CI_Model_CodeGenerator.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txt_CI_Model_CodeGenerator.IsReplaceMode = false;
             this.txt_CI_Model_CodeGenerator.Language = FastColoredTextBoxNS.Language.PHP;
             this.txt_CI_Model_CodeGenerator.LeftBracket = '(';
@@ -226,6 +240,7 @@
             this.txt_JSONEmptyGen.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_JSONEmptyGen.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txt_JSONEmptyGen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_JSONEmptyGen.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txt_JSONEmptyGen.IsReplaceMode = false;
             this.txt_JSONEmptyGen.Language = FastColoredTextBoxNS.Language.JS;
             this.txt_JSONEmptyGen.LeftBracket = '(';
@@ -273,6 +288,7 @@
             this.txt_CI_Controler_Generator.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_CI_Controler_Generator.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txt_CI_Controler_Generator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_CI_Controler_Generator.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txt_CI_Controler_Generator.IsReplaceMode = false;
             this.txt_CI_Controler_Generator.Language = FastColoredTextBoxNS.Language.PHP;
             this.txt_CI_Controler_Generator.LeftBracket = '(';
@@ -312,7 +328,7 @@
         '\'',
         '\''};
             this.txt_HTML_Generator.AutoIndentCharsPatterns = "";
-            this.txt_HTML_Generator.AutoScrollMinSize = new System.Drawing.Size(2, 18);
+            this.txt_HTML_Generator.AutoScrollMinSize = new System.Drawing.Size(31, 18);
             this.txt_HTML_Generator.BackBrush = null;
             this.txt_HTML_Generator.CharHeight = 18;
             this.txt_HTML_Generator.CharWidth = 10;
@@ -320,7 +336,6 @@
             this.txt_HTML_Generator.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txt_HTML_Generator.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.txt_HTML_Generator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_HTML_Generator.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.txt_HTML_Generator.IsReplaceMode = false;
             this.txt_HTML_Generator.Language = FastColoredTextBoxNS.Language.HTML;
             this.txt_HTML_Generator.LeftBracket = '<';
@@ -335,6 +350,147 @@
             this.txt_HTML_Generator.Size = new System.Drawing.Size(843, 427);
             this.txt_HTML_Generator.TabIndex = 1;
             this.txt_HTML_Generator.Zoom = 100;
+            // 
+            // tabASPCOREModel
+            // 
+            this.tabASPCOREModel.Controls.Add(this.txt_ASPCore_Model_Generator);
+            this.tabASPCOREModel.Location = new System.Drawing.Point(4, 25);
+            this.tabASPCOREModel.Name = "tabASPCOREModel";
+            this.tabASPCOREModel.Size = new System.Drawing.Size(843, 427);
+            this.tabASPCOREModel.TabIndex = 4;
+            this.tabASPCOREModel.Text = "ASPCORE Model";
+            this.tabASPCOREModel.UseVisualStyleBackColor = true;
+            // 
+            // tabASPCoreClassModel
+            // 
+            this.tabASPCoreClassModel.Controls.Add(this.txt_ASPCore_ModelClass_Generator);
+            this.tabASPCoreClassModel.Location = new System.Drawing.Point(4, 25);
+            this.tabASPCoreClassModel.Name = "tabASPCoreClassModel";
+            this.tabASPCoreClassModel.Size = new System.Drawing.Size(843, 427);
+            this.tabASPCoreClassModel.TabIndex = 5;
+            this.tabASPCoreClassModel.Text = "ASPCoreClassModel";
+            this.tabASPCoreClassModel.UseVisualStyleBackColor = true;
+            // 
+            // tabASPCoreController
+            // 
+            this.tabASPCoreController.Controls.Add(this.txt_ASPCore_Controller_Generator);
+            this.tabASPCoreController.Location = new System.Drawing.Point(4, 25);
+            this.tabASPCoreController.Name = "tabASPCoreController";
+            this.tabASPCoreController.Size = new System.Drawing.Size(843, 427);
+            this.tabASPCoreController.TabIndex = 6;
+            this.tabASPCoreController.Text = "ASPCoreController";
+            this.tabASPCoreController.UseVisualStyleBackColor = true;
+            // 
+            // txt_ASPCore_Model_Generator
+            // 
+            this.txt_ASPCore_Model_Generator.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.txt_ASPCore_Model_Generator.AutoIndentCharsPatterns = "";
+            this.txt_ASPCore_Model_Generator.AutoScrollMinSize = new System.Drawing.Size(31, 18);
+            this.txt_ASPCore_Model_Generator.BackBrush = null;
+            this.txt_ASPCore_Model_Generator.CharHeight = 18;
+            this.txt_ASPCore_Model_Generator.CharWidth = 10;
+            this.txt_ASPCore_Model_Generator.CommentPrefix = null;
+            this.txt_ASPCore_Model_Generator.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_ASPCore_Model_Generator.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txt_ASPCore_Model_Generator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_ASPCore_Model_Generator.IsReplaceMode = false;
+            this.txt_ASPCore_Model_Generator.Language = FastColoredTextBoxNS.Language.CSharp;
+            this.txt_ASPCore_Model_Generator.LeftBracket = '<';
+            this.txt_ASPCore_Model_Generator.LeftBracket2 = '(';
+            this.txt_ASPCore_Model_Generator.Location = new System.Drawing.Point(0, 0);
+            this.txt_ASPCore_Model_Generator.Name = "txt_ASPCore_Model_Generator";
+            this.txt_ASPCore_Model_Generator.Paddings = new System.Windows.Forms.Padding(0);
+            this.txt_ASPCore_Model_Generator.RightBracket = '>';
+            this.txt_ASPCore_Model_Generator.RightBracket2 = ')';
+            this.txt_ASPCore_Model_Generator.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txt_ASPCore_Model_Generator.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txt_ASPCore_Model_Generator.ServiceColors")));
+            this.txt_ASPCore_Model_Generator.Size = new System.Drawing.Size(843, 427);
+            this.txt_ASPCore_Model_Generator.TabIndex = 2;
+            this.txt_ASPCore_Model_Generator.Zoom = 100;
+            // 
+            // txt_ASPCore_ModelClass_Generator
+            // 
+            this.txt_ASPCore_ModelClass_Generator.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.txt_ASPCore_ModelClass_Generator.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n^\\s*(case|default)\\s*[^:]" +
+    "*(?<range>:)\\s*(?<range>[^;]+);\r\n";
+            this.txt_ASPCore_ModelClass_Generator.AutoScrollMinSize = new System.Drawing.Size(31, 18);
+            this.txt_ASPCore_ModelClass_Generator.BackBrush = null;
+            this.txt_ASPCore_ModelClass_Generator.CharHeight = 18;
+            this.txt_ASPCore_ModelClass_Generator.CharWidth = 10;
+            this.txt_ASPCore_ModelClass_Generator.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_ASPCore_ModelClass_Generator.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txt_ASPCore_ModelClass_Generator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_ASPCore_ModelClass_Generator.IsReplaceMode = false;
+            this.txt_ASPCore_ModelClass_Generator.Language = FastColoredTextBoxNS.Language.CSharp;
+            this.txt_ASPCore_ModelClass_Generator.LeftBracket = '(';
+            this.txt_ASPCore_ModelClass_Generator.LeftBracket2 = '{';
+            this.txt_ASPCore_ModelClass_Generator.Location = new System.Drawing.Point(0, 0);
+            this.txt_ASPCore_ModelClass_Generator.Name = "txt_ASPCore_ModelClass_Generator";
+            this.txt_ASPCore_ModelClass_Generator.Paddings = new System.Windows.Forms.Padding(0);
+            this.txt_ASPCore_ModelClass_Generator.RightBracket = ')';
+            this.txt_ASPCore_ModelClass_Generator.RightBracket2 = '}';
+            this.txt_ASPCore_ModelClass_Generator.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txt_ASPCore_ModelClass_Generator.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txt_ASPCore_ModelClass_Generator.ServiceColors")));
+            this.txt_ASPCore_ModelClass_Generator.Size = new System.Drawing.Size(843, 427);
+            this.txt_ASPCore_ModelClass_Generator.TabIndex = 3;
+            this.txt_ASPCore_ModelClass_Generator.Zoom = 100;
+            // 
+            // txt_ASPCore_Controller_Generator
+            // 
+            this.txt_ASPCore_Controller_Generator.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.txt_ASPCore_Controller_Generator.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n^\\s*(case|default)\\s*[^:]" +
+    "*(?<range>:)\\s*(?<range>[^;]+);\r\n";
+            this.txt_ASPCore_Controller_Generator.AutoScrollMinSize = new System.Drawing.Size(31, 18);
+            this.txt_ASPCore_Controller_Generator.BackBrush = null;
+            this.txt_ASPCore_Controller_Generator.CharHeight = 18;
+            this.txt_ASPCore_Controller_Generator.CharWidth = 10;
+            this.txt_ASPCore_Controller_Generator.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_ASPCore_Controller_Generator.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txt_ASPCore_Controller_Generator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_ASPCore_Controller_Generator.IsReplaceMode = false;
+            this.txt_ASPCore_Controller_Generator.Language = FastColoredTextBoxNS.Language.CSharp;
+            this.txt_ASPCore_Controller_Generator.LeftBracket = '(';
+            this.txt_ASPCore_Controller_Generator.LeftBracket2 = '{';
+            this.txt_ASPCore_Controller_Generator.Location = new System.Drawing.Point(0, 0);
+            this.txt_ASPCore_Controller_Generator.Name = "txt_ASPCore_Controller_Generator";
+            this.txt_ASPCore_Controller_Generator.Paddings = new System.Windows.Forms.Padding(0);
+            this.txt_ASPCore_Controller_Generator.RightBracket = ')';
+            this.txt_ASPCore_Controller_Generator.RightBracket2 = '}';
+            this.txt_ASPCore_Controller_Generator.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txt_ASPCore_Controller_Generator.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txt_ASPCore_Controller_Generator.ServiceColors")));
+            this.txt_ASPCore_Controller_Generator.Size = new System.Drawing.Size(843, 427);
+            this.txt_ASPCore_Controller_Generator.TabIndex = 4;
+            this.txt_ASPCore_Controller_Generator.Zoom = 100;
             // 
             // frmCodeGenerator
             // 
@@ -356,6 +512,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_CI_Controler_Generator)).EndInit();
             this.tabHTML.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txt_HTML_Generator)).EndInit();
+            this.tabASPCOREModel.ResumeLayout(false);
+            this.tabASPCoreClassModel.ResumeLayout(false);
+            this.tabASPCoreController.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txt_ASPCore_Model_Generator)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_ASPCore_ModelClass_Generator)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_ASPCore_Controller_Generator)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -377,5 +539,11 @@
         private FastColoredTextBoxNS.FastColoredTextBox txt_CI_Controler_Generator;
         private System.Windows.Forms.TabPage tabHTML;
         private FastColoredTextBoxNS.FastColoredTextBox txt_HTML_Generator;
+        private System.Windows.Forms.TabPage tabASPCOREModel;
+        private System.Windows.Forms.TabPage tabASPCoreClassModel;
+        private System.Windows.Forms.TabPage tabASPCoreController;
+        private FastColoredTextBoxNS.FastColoredTextBox txt_ASPCore_Model_Generator;
+        private FastColoredTextBoxNS.FastColoredTextBox txt_ASPCore_ModelClass_Generator;
+        private FastColoredTextBoxNS.FastColoredTextBox txt_ASPCore_Controller_Generator;
     }
 }

@@ -67,6 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code Generator\CodeGeneratorCollections.cs" />
+    <Compile Include="Code Generator\Generators\ASPCore_Controller_Generator.cs" />
+    <Compile Include="Code Generator\Generators\ASPCore_Model_Generator.cs" />
+    <Compile Include="Code Generator\Generators\ASPCore_ModelClass_Generator.cs" />
     <Compile Include="Code Generator\Generators\CI_Controler_Generator.cs" />
     <Compile Include="Code Generator\Generators\HTML_FromJsonObj.cs" />
     <Compile Include="Code Generator\Generators\HTML_Generator.cs" />
@@ -74,6 +77,15 @@
     <Compile Include="Code Generator\Generators\JSONEmptyGen.cs" />
     <Compile Include="Code Generator\Generators\CI_Model_Generator.cs" />
     <Compile Include="Code Generator\StringReplacer.cs" />
+    <Content Include="Code Generator\Templates\ASPNetCore_Controller_Template.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Code Generator\Templates\ASPNetCore_Model_Template.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Code Generator\Templates\ASPNetCore_ModelClass_Template.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Database\AutcompleteClass.cs" />
     <Compile Include="Database\MySQLDBConnection.cs" />
     <Compile Include="Database\IDBConnection.cs" />

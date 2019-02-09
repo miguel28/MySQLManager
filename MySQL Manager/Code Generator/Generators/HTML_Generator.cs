@@ -321,9 +321,12 @@ namespace MySQL_Manager
             s.AppendLine("		if ((typeof id === 'undefined') || (id === '0') || (id === ''))");
             s.AppendLine("			return;");
             s.AppendLine();
-            s.AppendLine("		var url =  '<?php echo site_url('ctl_" + plural + "')?>/get" + Single + "Info/' + id;");
+            s.AppendLine("		var url =  '<?php echo site_url('ctl_" + plural + "')?>/get" + Single + "Info/';");
+
             s.AppendLine("		var call = AjaxJSON(url,true);");
             s.AppendLine("		call.UseLock = false;");
+            s.AppendLine("		call.Data = {id: id};");
+
             s.AppendLine("		call.Call(");
             s.AppendLine("			function(result) {");
             s.AppendLine("				if(result.success)");

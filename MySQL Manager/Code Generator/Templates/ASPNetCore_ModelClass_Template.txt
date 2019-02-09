@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ModelNameSpace
+{
+    [Table("%table_name%")]
+    public class %class_name%
+    {
+        [Key]
+%fields%
+    }
+}
+
+/////////////////////////////////////
+/// DBSET Generator
+/*
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+
+namespace ModelNameSpace
+{
+    public class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext()
+        {
+        }
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        { }
+
+%db_set%
+    }
+}
+*/

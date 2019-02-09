@@ -24,8 +24,9 @@ class Ctl_%plural% extends MR_Controller
 		echo PositiveResponseJSON("SUCCESS", $result);
 	}
 	
-	public function get%Single%Info($%ELEMENT_NAME_low%_id)
+	public function get%Single%Info()
 	{
+		$%ELEMENT_NAME_low%_id = $this->input->post('id')
 		$this->load->model('%MODEL_NAME%');
 		$result = $this->%MODEL_NAME%->getEntryById($%ELEMENT_NAME_low%_id);
 		echo PositiveResponseJSON("SUCCESS", $result);

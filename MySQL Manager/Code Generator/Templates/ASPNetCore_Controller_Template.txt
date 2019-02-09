@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ModelNameSpace
+{
+    public class %Plural%Controller
+    {
+		private readonly ApplicationDBContext _context;
+		public %Plural%Controller(ApplicationDBContext context)
+        {
+            _context = context;
+        }
+		/** Controller Views **/
+
+		public IActionResult Index()
+        {
+            return View();
+        }
+
+		/** Controller Views **/
+
+		/** Controller Data Handling **/
+		[HttpPost]
+		public IActionResult getAll%Plural%()
+		{
+			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
+			var data = sqlData.GetAllEntries();
+			return Json(HResponse.Positive("SUCCESS", data))
+		}
+
+		[HttpPost]
+		public IActionResult get%Single%Info()
+		{
+			PostData data = new PostData(Request.Body);
+			string id = post.Get("id");
+			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
+			var data = sqlData.GetEntryById(Convert.ToInt64(id));
+			return Json(HResponse.Positive("SUCCESS", data))
+		}
+
+		[HttpPost]
+		public IActionResult update%Single%Info()
+		{
+			PostData data = new PostData(Request.Body);
+			%Single% %single%_info = post.ParseObject<%Single%>();
+			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
+			var data = sqlData.CreateOrUpdate(%single%_info);
+			return Json(HResponse.Positive("SUCCESS", data))
+		}
+
+		[HttpPost]
+		public IActionResult delete%Single%Info()
+		{
+			PostData data = new PostData(Request.Body);
+			%Single% %single%_info = post.ParseObject<%Single%>();
+			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
+			var data = sqlData.DeleteEntry(%single%_info.%id_field%);
+			return Json(HResponse.Positive("SUCCESS", data))
+		}
+
+		/** Controller Data Handling **/
+    }
+}

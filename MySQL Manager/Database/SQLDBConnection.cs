@@ -168,7 +168,10 @@ where st.name = '{0}'", table_name);
                 //Read the data and store them in the list
                 while (dataReader.Read())
                 {
-                    tables.Add((string)dataReader[2]);
+                    if (dataReader[2] is DBNull)
+                        tables.Add("");
+                    else
+                        tables.Add((string)dataReader[2]);
                 }
 
                 //close Data Reader

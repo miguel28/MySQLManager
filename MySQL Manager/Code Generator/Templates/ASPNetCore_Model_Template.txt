@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ModelNameSpace
+{
+    public class %model_name%
+    {
+        private ApplicationDBContext _context { get; set; }
+        public Mdl_Users(ApplicationDBContext context)
+        {
+            _context = context;
+        }
+
+        public void InsertEntry(%Single% data)
+        {
+            _context.Add(data);
+            _context.SaveChanges();
+        }
+
+		public void DeleteEntry(%Int64 id)
+        {
+            _context.Remove(_context.%Plural%.Find(id));
+            _context.SaveChanges();
+        }
+
+		public void Update(%Single% data)
+        {
+            _context.%Plural%.Update(data);
+            _context.SaveChanges();
+        }
+
+		public void CreateOrUpdate(%Single% data)
+        {
+			if (data.%id_field% = 0)
+			{
+				InsertEntry(%Single% data);
+			}
+			else
+			{
+				Update(%Single% data);
+			}
+            
+            _context.SaveChanges();
+        }
+
+        public %Single% GetEntryByID(Int64 ID)
+        {
+            return _context.Users.FirstOrDefault(e => e.%id_field% == ID);
+        }
+
+        public IEnumerable<%Single%> GetAllEntries()
+        {
+            return _context.%Plural%.ToList<User>();
+        }
+    }
+}

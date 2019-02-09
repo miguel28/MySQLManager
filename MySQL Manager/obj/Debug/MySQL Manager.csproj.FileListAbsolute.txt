@@ -119,3 +119,6 @@ C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmCodeGeneratorFromJson.resources
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\bin\Debug\databases.txt
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\ASPNetCore_Controller_Template.txt
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\ASPNetCore_Model_Template.txt
+C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\ASPNetCore_ModelClass_Template.txt
