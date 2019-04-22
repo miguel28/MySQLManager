@@ -9,12 +9,18 @@ namespace MySQL_Manager
     public class JSONEmptyGen : ICodeGenerator
     {
         private List<string> default_values = null;
+        private List<string> types = null;
         public override void GenerateCode()
         {
             cols = dbCon.GetAllColumns(setting.TableName);
             default_values = dbCon.GetDefaultValue(setting.TableName);
+            types = dbCon.GetColsType(setting.TableName);
+
             for (int i = 0; i < cols.Count - 1; i++)
             {
+                string type = types[i].ToLower();
+                if (type.Contains("int") || type.Contains("double"))
+                    default_values[i] = "0";
                 if (string.IsNullOrEmpty(default_values[i]))
                     default_values[i] = "";
             }
@@ -41,9 +47,19 @@ namespace MySQL_Manager
             s.AppendLine("$scope._" + single + "_empty ={" );
 		    for(int i = 0; i< cols.Count -1; i++)
             {
-                s.AppendLine("\t" + cols[i] + " : '" + default_values[i] + "',");
+                string type = types[i].ToLower();
+                if (type.Contains("int") || type.Contains("double"))
+                    s.AppendLine("\t" + cols[i] + " : " + default_values[i] + ",");
+                else
+                    s.AppendLine("\t" + cols[i] + " : '" + default_values[i] + "',");
             }
-            s.AppendLine("\t" + cols.Last() + " : '" + default_values.Last() + "'");
+            string type1 = types.Last().ToLower();
+            if (type1.Contains("int") || type1.Contains("double"))
+                s.AppendLine("\t" + cols.Last() + " : " + default_values.Last() + "");
+            else
+                s.AppendLine("\t" + cols.Last() + " : '" + default_values.Last() + "'");
+
+
             s.AppendLine("};");
 
             _genetaredCode = s.ToString();

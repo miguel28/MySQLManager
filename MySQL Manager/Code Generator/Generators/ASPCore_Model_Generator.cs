@@ -58,6 +58,7 @@ namespace MySQL_Manager
             replacer.AddField("%Single%", Single);
             replacer.AddField("%Plural%", Plural);
             replacer.AddField("%id_field%", cols[0]);
+            replacer.AddField("%table_name%", setting.TableName);
 
             _genetaredCode = replacer.Process();
         }

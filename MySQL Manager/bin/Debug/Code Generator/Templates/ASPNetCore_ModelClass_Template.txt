@@ -39,10 +39,6 @@ namespace ModelNameSpace
         { }
 
 %db_set%
-
     }
 }
-
-
-
 */

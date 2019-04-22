@@ -2,23 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.FileProviders;
+
+using OfficeOpenXml;
+using OfficeOpenXml.Table;
 
 namespace ModelNameSpace
 {
-    public class %Plural%Controller
+    public class %Plural%Controller : Controller
     {
-		private readonly ApplicationDBContext _context;
-		public %Plural%Controller(ApplicationDBContext context)
+		private readonly ApplicationDbContext _context;
+		public %Plural%Controller(ApplicationDbContext context)
         {
             _context = context;
         }
-		/** Controller Views **/
 
+		/** Controller Views **/
 		public IActionResult Index()
         {
             return View();
         }
-
 		/** Controller Views **/
 
 		/** Controller Data Handling **/
@@ -27,39 +33,268 @@ namespace ModelNameSpace
 		{
 			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
 			var data = sqlData.GetAllEntries();
-			return Json(HResponse.Positive("SUCCESS", data))
+			return Json(HResponse.Positive("SUCCESS", data));
 		}
 
 		[HttpPost]
 		public IActionResult get%Single%Info()
 		{
-			PostData data = new PostData(Request.Body);
+			PostData post = new PostData(Request.Body);
 			string id = post.Get("id");
 			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
 			var data = sqlData.GetEntryById(Convert.ToInt64(id));
-			return Json(HResponse.Positive("SUCCESS", data))
+
+			if (data != null)
+				return Json(HResponse.Positive("SUCCESS", data));
+			else
+				return Json(HResponse.Positive("DATA_COULD_NOT_BE_PARSED", data));
 		}
 
 		[HttpPost]
 		public IActionResult update%Single%Info()
 		{
-			PostData data = new PostData(Request.Body);
-			%Single% %single%_info = post.ParseObject<%Single%>();
+			PostData post = new PostData(Request.Body);
+			%Single% data = post.ParseObject<%Single%>("%single%_info");
 			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
-			var data = sqlData.CreateOrUpdate(%single%_info);
-			return Json(HResponse.Positive("SUCCESS", data))
+			
+			if (data != null)
+			{
+				sqlData.CreateOrUpdate(data);
+				return Json(HResponse.Positive("SUCCESS", data));
+			}
+			else
+				return Json(HResponse.Positive("DATA_COULD_NOT_BE_PARSED", data));
 		}
 
 		[HttpPost]
 		public IActionResult delete%Single%Info()
 		{
-			PostData data = new PostData(Request.Body);
-			%Single% %single%_info = post.ParseObject<%Single%>();
+			PostData post = new PostData(Request.Body);
+			%Single% data = post.ParseObject<%Single%>("%single%_info");
 			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
-			var data = sqlData.DeleteEntry(%single%_info.%id_field%);
-			return Json(HResponse.Positive("SUCCESS", data))
+			
+			if (data != null)
+			{
+				sqlData.DeleteEntry(data.%id_field%);
+				return Json(HResponse.Positive("SUCCESS", data));
+			}
+			else
+				return Json(HResponse.Positive("DATA_COULD_NOT_BE_PARSED", data));
 		}
 
+		[HttpPost]
+		public IActionResult deleteAllEntries()
+		{
+			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
+			
+			try
+			{
+				sqlData.Truncate();
+				return Json(HResponse.Positive("SUCCESS"));
+			}
+			catch (Exception ex)
+			{
+				return Json(HResponse.Negative("Error" + ex.ToString()));
+			}
+		}
+
+		private const string XlsxContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+        
+		public IActionResult ExportAllDataToExcel()
+		{
+			byte[] reportBytes;
+			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
+			var data = sqlData.GetAllEntries();
+
+            using (var package = createExcelPackage(data))
+            {
+                reportBytes = package.GetAsByteArray();
+            }
+            return File(reportBytes, XlsxContentType, "%Plural%.xlsx");
+		}
+
+		private const int num_columns = %columns%;
+		private ExcelPackage createExcelPackage(IEnumerable<%Single%> reports)
+        {
+            var package = new ExcelPackage();
+            package.Workbook.Properties.Title = "%Single%";
+            package.Workbook.Properties.Author = "Repair System";
+
+            var worksheet = package.Workbook.Worksheets.Add("%Single%");
+
+            //First add the headers
+			%headers%
+
+            int i = 2;
+            foreach(var report in reports)
+            {
+				%line_data%
+                i++;
+            }
+
+            // AutoFitColumns
+            worksheet.Cells[1, 1, num_columns, 4].AutoFitColumns();
+
+            return package;
+        }
+
+		[HttpPost]
+		public IActionResult ImportExcel(IFormFile file)
+		{
+			if (file == null || file.Length == 0)
+				return Json(HResponse.Negative("no files uploaded"));
+
+			try
+			{
+				Stream stream = file.OpenReadStream();
+				ExcelPackage package = new ExcelPackage(stream);
+				ImportExcel(package);
+				return Json(HResponse.Positive("SUCCESS"));
+			}
+			catch(Exception ex)
+			{
+				return Json(HResponse.Negative("Error Uploading file" + ex.ToString()));
+			}
+		}
+
+		private void ImportExcel(ExcelPackage package)
+        {
+            var worksheet = package.Workbook.Worksheets.First();
+            int rows = worksheet.Dimension.Rows;
+            int columns = worksheet.Dimension.Columns;
+
+            if (columns != num_columns)
+                throw new Exception("Invalid Number of colums");
+
+			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
+
+            for(int i = 2; i<rows; i++)
+            {
+				%Single% element = new %Single%();
+				int col = 1;
+				try
+				{
+					%line_data2%
+					sqlData.CreateOrUpdate(element);
+				}
+				catch(Exception ex)
+				{
+					throw new XlsxException(i, col, "Error Importing Excel", ex);
+				}
+            }
+        }
+		
 		/** Controller Data Handling **/
     }
 }
+
+
+/**
+		<form asp-controller="%Plural%" asp-action="ImportExcel" method="post"  
+			  enctype="multipart/form-data">  
+			<input type="file" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />  
+			<button class="btn btn-success" type="submit">Upload Excel to Import</button>  
+		</form> 
+		<br/><br/>
+
+		<div class="btn-group">
+            <a class="btn btn-success" data-toggle="modal" ng-click="AddNew_%Single%()">Add New Fail</a>
+            <a class="btn btn-default" ng-click="DownloadExcel_%Plural%()">Download Excel</a>
+			<a class="btn btn-danger" ng-click="DeleteAll_%Plural%()">Delete All</a>
+        </div>
+
+		<div class="col-sm-12 text-left"> 
+			<button class="btn btn-success" ng-click="ShowUploadDialog_%Plural%()" >Upload Excel File</button>
+			<input id="uploader_%plural%" type="file" multiple style="visibility:hidden;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+		</div>
+		
+		<!-- Modal delete all %Plural% -->
+        <div class="modal fade" id="modal_delete_all_%plural%" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Are you sure to delete the entire TABLE %table_name%</h3>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" ng-click="ConfirmDeleteAll_%Plural%()">DELETE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal delete all  %Plural% -->
+
+		<script>
+		$(document).ready(function() 
+		{ 
+			var scope = angular.element(document.getElementById("myAppEl")).scope();
+			$('#uploader_%plural%').change(function(e) {
+				e.preventDefault();
+				$.each(this.files,function(k,file) {
+					scope.UploadFile_%Plural%(file);
+				});
+			});
+		}
+
+		$scope.ShowUploadDialog_%Plural% = function()
+		{
+		  $('#uploader_%plural%').click();
+		};
+
+		$scope.UploadFile_%Plural% = function(file) 
+		{
+			var url = "@Url.Action("ImportExcel","%Plural%")";
+		
+		
+			var fd = new FormData();
+			fd.append('file_data',file);
+
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', url);
+			xhr.onload = function() {
+				
+  			};
+			xhr.upload.onprogress = function(e){
+				
+			};
+			xhr.send(fd);
+			if (xhr.status == 200)
+			{
+				$scope.ShowPopup("File Uploaded");
+			}
+			else 
+			{
+				$scope.ShowPopup("Failed Uploading File");
+			}
+		};
+
+		$scope.DownloadExcel_%Plural% = function () {
+            var url = "@Url.Action("ExportAllDataToExcel", "%Plural%")";
+            window.location.href = url;
+        };
+
+		$scope.DeleteAll_%Plural% = function () {
+            $('#modal_delete_all_%plural%').modal('show');
+        };
+
+		$scope.ConfirmDeleteAll_%Plural% = function () {
+            var url = "@Url.Action("deleteAllEntries", "%Plural%")";
+
+            var call = AjaxJSON(url, true);
+            call.UseLock = false;
+            call.Call(
+                function (result) {
+                    if (result.success) {
+                        window.location.reload();
+                    }
+                    else {
+                        $scope.ShowPopup("Could not load the information: " + result.message);
+                    }
+                }
+            );
+        };
+
+		</script>
+		**/

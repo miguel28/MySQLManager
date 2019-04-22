@@ -350,7 +350,7 @@ namespace MySQL_Manager
             {
                 if (colsnulable[i].Contains("NO"))
                 {
-                    s.AppendLine("		if ($scope.edit_" + single + "." + cols[i] + " !== \"\") ret.push('" + SanitizeColumnName(cols[i]) + " is empty field');");
+                    s.AppendLine("		if ($scope.edit_" + single + "." + cols[i] + " === \"\") ret.push('" + SanitizeColumnName(cols[i]) + " is empty field');");
                 }
 
                 if (colstype[i].Contains("double"))
@@ -366,10 +366,10 @@ namespace MySQL_Manager
             s.AppendLine("\t$scope.SaveChanges_" + Single + " = function()");
             s.AppendLine("	{");
             s.AppendLine("		var check_info = $scope.InfoCheck_" + Single + "();");
-            s.AppendLine("		if (check_info.lenght > 0)");
+            s.AppendLine("		if (check_info.length > 0)");
             s.AppendLine("		{");
             s.AppendLine("			var msg = 'There are fields needed to fill or have invalid format! <br/>';");
-            s.AppendLine("			for(var i= 0; i< check_info.lenght; i++) msg += check_info[i] + ' <br/>';");
+            s.AppendLine("			for(var i= 0; i< check_info.length; i++) msg += check_info[i] + ' <br/>';");
             s.AppendLine("			$scope.ShowPopup(msg);");
             s.AppendLine("			return;");
             s.AppendLine("		}");
@@ -403,7 +403,7 @@ namespace MySQL_Manager
             s.AppendLine("		var call = AjaxJSON(url,true);");
             s.AppendLine("		var data =");
             s.AppendLine("		{");
-            s.AppendLine("			" + single + ": JSON.stringify($scope.delete_" + single + ")");
+            s.AppendLine("			" + single + "_info: JSON.stringify($scope.delete_" + single + ")");
             s.AppendLine("		};");
             s.AppendLine("		call.Data = data;");
             s.AppendLine("		call.UseLock = true;");
@@ -448,7 +448,7 @@ namespace MySQL_Manager
 
             s.AppendLine("\t$scope.AddNew_" + Single + " = function()");
             s.AppendLine("\t{");
-            s.AppendLine("\t\t$scope.edit_" + single + " = $scope._" + single + "_empty;");
+            s.AppendLine("\t\t$scope.edit_" + single + " = JSON.parse(JSON.stringify($scope._" + single + "_empty));");
             s.AppendLine("\t\t$scope._edit_title_" + single + " = 'Create new " + single + "';");
             s.AppendLine("\t\t$('#modal_edit_" + single + "').modal('show');");
             s.AppendLine("\t};");

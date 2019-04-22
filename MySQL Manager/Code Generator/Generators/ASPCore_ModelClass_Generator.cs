@@ -72,6 +72,15 @@ namespace MySQL_Manager
                     type = "string";
                 }
 
+                if (type.Contains("date"))
+                {
+                    type = "Nullable<DateTime>";
+                }
+                else if (type.Contains("time"))
+                {
+                    type = "Nullable<TimeSpan>";
+                }
+
                 s.AppendLine(string.Format("\t\t public {0} {1} {2}get; set;{3}", type, cols[i], "{", "}"));
             }
             replacer.AddField("%table_name%", setting.TableName);
