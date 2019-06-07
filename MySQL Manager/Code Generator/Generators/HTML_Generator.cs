@@ -157,7 +157,7 @@ namespace MySQL_Manager
                         s.AppendLine("			</div>");
                     }
                 }
-                else if (ctype.Contains("int(1)"))
+                else if (ctype.Contains("int(1)") || ctype.Contains("tinyint"))
                 {
                     s.AppendLine("			<div class=\"checkbox\">");
                     s.AppendLine("				<label><input type=\"checkbox\" value=\"\" ng-model=\"edit_" + single + "." + cols[i] + "\" ng-true-value=\"'1'\" ng-false-value=\"'0'\" > " + SanitizeColumnName(cols[i], common) + ":</label>");
@@ -217,7 +217,7 @@ namespace MySQL_Manager
                     s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" readonly id=\"txt_" + cols[i] + "\" ng-value=\"edit_" + single + "." + cols[i] + "\"></textarea>");
                     s.AppendLine("			</div>");
                 }
-                else if (colstype[i].Contains("int(1)"))
+                else if (colstype[i].Contains("int(1)") || colstype[i].Contains("tinyint"))
                 {
                     s.AppendLine("				<p><b>" + SanitizeColumnName(cols[i], common) + ": </b>{{view_" + single + "." + cols[i] + " === '1' ? 'Yes' : 'No'}}</p>");
                 }
@@ -253,7 +253,7 @@ namespace MySQL_Manager
                     s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" readonly id=\"txt_" + cols[i] + "\" ng-value=\"edit_" + single + "." + cols[i] + "\"></textarea>");
                     s.AppendLine("			</div>");
                 }
-                else if (colstype[i].Contains("int(1)"))
+                else if (colstype[i].Contains("int(1)") || colstype[i].Contains("tinyint"))
                 {
                     s.AppendLine("				<p><b>" + SanitizeColumnName(cols[i], common) + ": </b>{{view_" + single + "." + cols[i] + " === '1' ? 'Yes' : 'No'}}</p>");
                 }

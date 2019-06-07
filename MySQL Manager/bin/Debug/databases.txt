@@ -11,3 +11,4 @@ smart_plant_test
 julio_cafe_test
 management
 repair_db_test
+code_bar_system
