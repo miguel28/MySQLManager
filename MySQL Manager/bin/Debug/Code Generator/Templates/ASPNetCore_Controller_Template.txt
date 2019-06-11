@@ -47,7 +47,7 @@ namespace ModelNameSpace
 			if (data != null)
 				return Json(HResponse.Positive("SUCCESS", data));
 			else
-				return Json(HResponse.Positive("DATA_COULD_NOT_BE_PARSED", data));
+				return Json(HResponse.Negative("DATA_COULD_NOT_BE_PARSED", data));
 		}
 
 		[HttpPost]
@@ -63,7 +63,7 @@ namespace ModelNameSpace
 				return Json(HResponse.Positive("SUCCESS", data));
 			}
 			else
-				return Json(HResponse.Positive("DATA_COULD_NOT_BE_PARSED", data));
+				return Json(HResponse.Negative("DATA_COULD_NOT_BE_PARSED", data));
 		}
 
 		[HttpPost]
@@ -79,7 +79,7 @@ namespace ModelNameSpace
 				return Json(HResponse.Positive("SUCCESS", data));
 			}
 			else
-				return Json(HResponse.Positive("DATA_COULD_NOT_BE_PARSED", data));
+				return Json(HResponse.Negative("DATA_COULD_NOT_BE_PARSED", data));
 		}
 
 		[HttpPost]
