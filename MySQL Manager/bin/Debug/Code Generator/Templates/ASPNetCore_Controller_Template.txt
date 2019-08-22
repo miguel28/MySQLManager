@@ -168,7 +168,7 @@ namespace ModelNameSpace
 
 			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
 
-            for(int i = 2; i<rows; i++)
+            for(int i = 2; i<=rows; i++)
             {
 				%Single% element = new %Single%();
 				int col = 1;
