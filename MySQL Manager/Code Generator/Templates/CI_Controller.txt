@@ -26,7 +26,7 @@ class Ctl_%plural% extends MR_Controller
 	
 	public function get%Single%Info()
 	{
-		$%ELEMENT_NAME_low%_id = $this->input->post('id')
+		$%ELEMENT_NAME_low%_id = $this->input->post('id');
 		$this->load->model('%MODEL_NAME%');
 		$result = $this->%MODEL_NAME%->getEntryById($%ELEMENT_NAME_low%_id);
 		echo PositiveResponseJSON("SUCCESS", $result);
@@ -40,7 +40,7 @@ class Ctl_%plural% extends MR_Controller
 		echo PositiveResponseJSON('SUCCESS', $insert_id);
 	}
 	
-	public function delete%Single%()
+	public function delete%Single%Info()
 	{
 		$%ELEMENT_NAME_low%_info = json_decode($this->input->post('%ELEMENT_NAME_low%_info'), true);
 		reset($%ELEMENT_NAME_low%_info);

@@ -214,7 +214,7 @@ namespace MySQL_Manager
                 {
                     s.AppendLine("			<div class=\"form-group\">");
                     s.AppendLine("				<label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
-                    s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" readonly id=\"txt_" + cols[i] + "\" ng-value=\"edit_" + single + "." + cols[i] + "\"></textarea>");
+                    s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" readonly id=\"txt_" + cols[i] + "\" ng-value=\"view_" + single + "." + cols[i] + "\"></textarea>");
                     s.AppendLine("			</div>");
                 }
                 else if (colstype[i].Contains("int(1)") || colstype[i].Contains("tinyint"))
@@ -250,16 +250,16 @@ namespace MySQL_Manager
                 {
                     s.AppendLine("			<div class=\"form-group\">");
                     s.AppendLine("				<label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
-                    s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" readonly id=\"txt_" + cols[i] + "\" ng-value=\"edit_" + single + "." + cols[i] + "\"></textarea>");
+                    s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" readonly id=\"txt_" + cols[i] + "\" ng-value=\"delete_" + single + "." + cols[i] + "\"></textarea>");
                     s.AppendLine("			</div>");
                 }
                 else if (colstype[i].Contains("int(1)") || colstype[i].Contains("tinyint"))
                 {
-                    s.AppendLine("				<p><b>" + SanitizeColumnName(cols[i], common) + ": </b>{{view_" + single + "." + cols[i] + " === '1' ? 'Yes' : 'No'}}</p>");
+                    s.AppendLine("				<p><b>" + SanitizeColumnName(cols[i], common) + ": </b>{{delete_" + single + "." + cols[i] + " === '1' ? 'Yes' : 'No'}}</p>");
                 }
                 else
                 {
-                    s.AppendLine("				<p><b>" + SanitizeColumnName(cols[i], common) + ": </b>{{view_" + single + "." + cols[i] + "}}</p>");
+                    s.AppendLine("				<p><b>" + SanitizeColumnName(cols[i], common) + ": </b>{{delete_" + single + "." + cols[i] + "}}</p>");
                 }
             }
             s.AppendLine("			</div>");
@@ -270,7 +270,7 @@ namespace MySQL_Manager
             s.AppendLine("		</div>");
             s.AppendLine("	</div>");
             s.AppendLine("</div>");
-            s.AppendLine("<!-- Modal view " + single + " -->");
+            s.AppendLine("<!-- Modal delete " + single + " -->");
 
             s.AppendLine();
         }
