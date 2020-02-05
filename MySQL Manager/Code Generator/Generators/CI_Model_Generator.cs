@@ -110,7 +110,7 @@ namespace MySQL_Manager
             //Append createOrUpdate Function
             s.Append    ("	public function createOrUpdateEntry($info)");
             s.AppendLine("	{");
-            s.AppendLine("		if($info['" + cols[0] + "'] === '' || $info['" + cols[0] + "']==='0')");
+            s.AppendLine("		if($info['" + cols[0] + "'] === '' || $info['" + cols[0] + "']==='0' || $info['" + cols[0] + "']===0)");
             s.AppendLine("		{");
             s.AppendLine("		    $result_id = $this->insertEntryObj($info);");
             s.AppendLine("		}");
@@ -147,6 +147,30 @@ namespace MySQL_Manager
             s.AppendLine("		return $query->result_array();");
             s.AppendLine("	}");
             s.AppendLine("	");
+            
+            for(int i = 1; i< cols.Count; i++)
+            {
+                s.Append("	public function getBy_" + cols[i] + "(");
+                s.AppendLine("$" + cols[i] + ")");
+                s.AppendLine("	{");
+                s.AppendLine("		$conditions = array('" + cols[i] + "' => $" + cols[i] + ");");
+                s.AppendLine("		$query = $this->db->get_where('" + setting.TableName + "', $conditions);");
+                s.AppendLine("		return $query->row_array();");
+                s.AppendLine("	}");
+                s.AppendLine("	");
+            }
+
+            for (int i = 1; i < cols.Count; i++)
+            {
+                s.Append("	public function countBy_" + cols[i] + "(");
+                s.AppendLine("$" + cols[i] + ")");
+                s.AppendLine("	{");
+                s.AppendLine("		$this->db->where('" + cols[i] + "', $" + cols[i] + ");");
+                s.AppendLine("		$this->db->from('" + setting.TableName + "');");
+                s.AppendLine("		return $this->db->count_all_results();");
+                s.AppendLine("	}");
+                s.AppendLine("	");
+            }
 
             foreach (SpecialFunction func in setting.SpecialFunctions)
                 GenerateSpecialFunction(func);

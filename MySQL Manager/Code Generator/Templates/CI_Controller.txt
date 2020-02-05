@@ -42,11 +42,11 @@ class Ctl_%plural% extends MR_Controller
 	
 	public function delete%Single%Info()
 	{
-		$%ELEMENT_NAME_low%_info = json_decode($this->input->post('%ELEMENT_NAME_low%_info'), true);
-		reset($%ELEMENT_NAME_low%_info);
-		$first_key = key($%ELEMENT_NAME_low%_info);
+		$%single%_info = json_decode($this->input->post('%single%_info'), true);
+		reset($%single%_info);
+		$first_key = key($%single%_info);
 		$this->load->model("%MODEL_NAME%");
-		$this->%MODEL_NAME%->deleteEntry($%ELEMENT_NAME_low%_info[$first_key]);
+		$this->%MODEL_NAME%->deleteEntry($%single%_info[$first_key]);
 		echo PositiveResponseJSON('SUCCESS');
 	}
 	/** Controller Data Handling **/

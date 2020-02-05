@@ -57,6 +57,7 @@ namespace MySQL_Manager
             s.AppendLine("<div class=\"btn-group\">");
             s.AppendLine("\t<a class=\"btn btn-success\" data-toggle=\"modal\" ng-click=\"AddNew_" + Single + "()\">Add New " + Single + "</a>");
             s.AppendLine("</div>");
+            s.AppendLine("<br/><br/>");
             s.AppendLine();
             s.AppendLine("<div class=\"input-group\" style=\"padding-left: 2rem; width: 95%;\">");
             s.AppendLine("\t<span class=\"input-group-addon\">Filter</span>");
@@ -82,7 +83,7 @@ namespace MySQL_Manager
             s.AppendLine("	<tbody class=\"searchable\">");
             s.AppendLine("		<tr ng-repeat=\"" + single + " in " + plural + "\" ng-class=\" parseInt(" + single + "." + cols[0] + ") % 2 === 0 ? 'odd' : 'even' \">");
             foreach (string col in cols)
-                s.AppendLine("			<td>{{" + single + "." + col + "}}</td>");
+                s.AppendLine("		<td>{{" + single + "." + col + "}}</td>");
 
             s.AppendLine("				<td class=\"center \">");
             s.AppendLine("				<a class=\"btn btn-success\" data-toggle=\"tooltip\" title=\"View\" href=\"\" ng-click=\"View_" + Single + "(" + single + ")\">");
@@ -109,6 +110,7 @@ namespace MySQL_Manager
             s.AppendLine("	<div class=\"modal-dialog\" role=\"document\">");
             s.AppendLine("		<div class=\"modal-content\">");
             s.AppendLine("			<div class=\"modal-header\">");
+            s.AppendLine("				<button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>");
             s.AppendLine("				<h3 class=\"modal-title\">{{_edit_title_" + single + "}}</h3>");
             s.AppendLine("			</div>");
             s.AppendLine("			<div class=\"modal-body\">");
@@ -121,40 +123,41 @@ namespace MySQL_Manager
                     if(colscomment[i].Contains("password"))
                     {
                         s.AppendLine("			<div class=\"form-group\">");
-                        s.AppendLine("			  <label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
-                        s.AppendLine("			  <input type=\"password\" class=\"form-control\" id=\"txt_" + cols[i] + "\" maxlength=\"40\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
+                        s.AppendLine("				<label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
+                        s.AppendLine("				<input type=\"password\" class=\"form-control\" id=\"txt_" + cols[i] + "\" maxlength=\"40\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
                         s.AppendLine("			</div>");
                     }
                     else if (colscomment[i].Contains("COMBO="))
                     {
                         string[] data = colscomment[i].Replace("COMBO=(", "").Replace(");", "").Split(',');
-                        s.AppendLine("			<div class=\"form-group\">");
-                        s.AppendLine("				<label for=\"sel_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
-                        s.AppendLine("				<select class=\"form-control\" id=\"sel_" + cols[i] + "\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
+                        s.AppendLine("				<div class=\"form-group\">");
+                        s.AppendLine("					<label for=\"sel_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
+                        s.AppendLine("					<select class=\"form-control\" id=\"sel_" + cols[i] + "\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
                         foreach (string input in data)
                         {
-                            if (input.Contains("="))
+                            string iinput = input.Trim();
+                            if (iinput.Contains("="))
                             {
-                                string[] valuekey = input.Split('=');
+                                string[] valuekey = iinput.Split('=');
                                 
-                                s.AppendLine("					<option value='" + valuekey[0] + "'>" + valuekey[1] + "</option>");
+                                s.AppendLine("						<option value='" + valuekey[0] + "'>" + valuekey[1] + "</option>");
                             }
                             else
                             {
-                                s.AppendLine("					<option value='" + input +"'>" + input + "</option>");
+                                s.AppendLine("						<option value='" + iinput + "'>" + iinput + "</option>");
                             }
                             
                         }
-                        s.AppendLine("				</select>");
-                        s.AppendLine("			</div>");
+                        s.AppendLine("					</select>");
+                        s.AppendLine("				</div>");
                     }
                     else
                     {
                         string len = ctype.Replace("varchar(", "").Replace(")", "");
-                        s.AppendLine("			<div class=\"form-group\">");
-                        s.AppendLine("			  <label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
-                        s.AppendLine("			  <input type=\"text\" class=\"form-control\" id=\"txt_" + cols[i] + "\" maxlength=\"" + len + "\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
-                        s.AppendLine("			</div>");
+                        s.AppendLine("				<div class=\"form-group\">");
+                        s.AppendLine("					<label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
+                        s.AppendLine("					<input type=\"text\" class=\"form-control\" id=\"txt_" + cols[i] + "\" maxlength=\"" + len + "\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
+                        s.AppendLine("				</div>");
                     }
                 }
                 else if (ctype.Contains("int(1)") || ctype.Contains("tinyint"))
@@ -165,28 +168,28 @@ namespace MySQL_Manager
                 }
                 else if (ctype.Contains("text"))
                 {
-                    s.AppendLine("			<div class=\"form-group\">");
-                    s.AppendLine("				<label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
-                    s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" id=\"txt_" + cols[i] + "\" ng-model=\"edit_" + single + "." + cols[i] + "\"></textarea>");
-                    s.AppendLine("			</div>");
+                    s.AppendLine("				<div class=\"form-group\">");
+                    s.AppendLine("					<label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
+                    s.AppendLine("					<textarea class=\"form-control\" rows=\"5\" id=\"txt_" + cols[i] + "\" ng-model=\"edit_" + single + "." + cols[i] + "\"></textarea>");
+                    s.AppendLine("				</div>");
                 }
                 else if (ctype.Contains("date"))
                 {
-                    s.AppendLine("			<div class=\"form-group\">");
-                    s.AppendLine("				<label for=\"txt_" + cols[i] + "\"> " + SanitizeColumnName(cols[i], common) + ":</label>");
-                    s.AppendLine("				<div class=\"input-group date form_date\" data-date=\"\" data-date-format=\"dd MM yyyy\" data-link-field=\"dtp1_" + cols[i] + "\" data-link-format=\"yyyy-mm-dd\">");
-                    s.AppendLine("					<input id=\"kick\" class=\"form-control\" size=\"16\" type=\"text\" value=\"\" readonly ng-model=\"edit_" + single + "." + cols[i] + "\">");
-                    s.AppendLine("					<span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-calendar\"></span></span>");
+                    s.AppendLine("				<div class=\"form-group\">");
+                    s.AppendLine("					<label for=\"txt_" + cols[i] + "\"> " + SanitizeColumnName(cols[i], common) + ":</label>");
+                    s.AppendLine("					<div class=\"input-group date form_date\" data-date=\"\" data-date-format=\"dd MM yyyy\" data-link-field=\"dtp1_" + cols[i] + "\" data-link-format=\"yyyy-mm-dd\">");
+                    s.AppendLine("						<input id=\"kick\" class=\"form-control\" size=\"16\" type=\"text\" value=\"\" readonly ng-model=\"edit_" + single + "." + cols[i] + "\">");
+                    s.AppendLine("						<span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-calendar\"></span></span>");
+                    s.AppendLine("					</div>");
+                    s.AppendLine("					<input type=\"hidden\"\tfor=\"txt_" + SanitizeColumnName(cols[i], common) + "\" value=\"\" />");
                     s.AppendLine("				</div>");
-                    s.AppendLine("				<input type=\"hidden\"\tfor=\"txt_" + SanitizeColumnName(cols[i], common) + "\" value=\"\" />");
-                    s.AppendLine("			</div>");
                 }
                 else
                 {
-                    s.AppendLine("			<div class=\"form-group\">");
-                    s.AppendLine("			  <label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
-                    s.AppendLine("			  <input type=\"text\" class=\"form-control\" id=\"txt_" + cols[i] + "\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
-                    s.AppendLine("			</div>");
+                    s.AppendLine("				<div class=\"form-group\">");
+                    s.AppendLine("					<label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
+                    s.AppendLine("					<input type=\"text\" class=\"form-control\" id=\"txt_" + cols[i] + "\" ng-model=\"edit_" + single + "." + cols[i] + "\">");
+                    s.AppendLine("				</div>");
                 }
             }
             s.AppendLine("			</div>");
@@ -206,6 +209,7 @@ namespace MySQL_Manager
             s.AppendLine("		<div class=\"modal-content\">");
             s.AppendLine("			<div class=\"modal-header\">");
             s.AppendLine("				<h3 class=\"modal-title\">View " + single + "</h3>");
+            s.AppendLine("				<button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>");
             s.AppendLine("			</div>");
             s.AppendLine("			<div class=\"modal-body\">");
             for (int i = 1; i < cols.Count; i++)
@@ -241,7 +245,8 @@ namespace MySQL_Manager
             s.AppendLine("	<div class=\"modal-dialog\" role=\"document\">");
             s.AppendLine("		<div class=\"modal-content\">");
             s.AppendLine("			<div class=\"modal-header\">");
-            s.AppendLine("				<h3 class=\"modal-title\">Are you sure to delete this register " + single + "</h3>");
+            s.AppendLine("				<button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>");
+            s.AppendLine("				<h3 class=\"modal-title\">Are you sure to delete this register " + single + "?</h3>");
             s.AppendLine("			</div>");
             s.AppendLine("			<div class=\"modal-body\">");
             for (int i = 1; i < cols.Count; i++)
@@ -250,7 +255,7 @@ namespace MySQL_Manager
                 {
                     s.AppendLine("			<div class=\"form-group\">");
                     s.AppendLine("				<label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
-                    s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" readonly id=\"txt_" + cols[i] + "\" ng-value=\"delete_" + single + "." + cols[i] + "\"></textarea>");
+                    s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" readonly id=\"txt_" + cols[i] + "\" ng-model=\"delete_" + single + "." + cols[i] + "\"></textarea>");
                     s.AppendLine("			</div>");
                 }
                 else if (colstype[i].Contains("int(1)") || colstype[i].Contains("tinyint"))
