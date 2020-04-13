@@ -155,7 +155,7 @@ namespace MySQL_Manager
                 s.AppendLine("	{");
                 s.AppendLine("		$conditions = array('" + cols[i] + "' => $" + cols[i] + ");");
                 s.AppendLine("		$query = $this->db->get_where('" + setting.TableName + "', $conditions);");
-                s.AppendLine("		return $query->row_array();");
+                s.AppendLine("		return $query->result_array();");
                 s.AppendLine("	}");
                 s.AppendLine("	");
             }

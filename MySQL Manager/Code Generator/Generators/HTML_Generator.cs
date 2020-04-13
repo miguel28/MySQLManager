@@ -435,7 +435,7 @@ namespace MySQL_Manager
 
             s.AppendLine("\t$scope.Edit_" + Single + " = function(" + single + ")");
             s.AppendLine("	{");
-            s.AppendLine("		$scope.edit_" + single + " = " + single + ";");
+            s.AppendLine("		$scope.edit_" + single + " = jsonCopy(" + single + ");");
             s.AppendLine("		$scope._edit_title_" + single + " = 'Edit " + single +"';" );
             s.AppendLine("		$('#modal_edit_" + single + "').modal('show');");
             s.AppendLine("	};");
