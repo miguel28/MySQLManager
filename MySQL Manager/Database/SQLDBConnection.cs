@@ -22,7 +22,20 @@ namespace MySQL_Manager.Database
 
             connection = new SqlConnection(connectionString);
         }
-        
+
+        public SQLDBConnection(DBConnectionInfo info)
+        {
+            server = info.Server;
+            database = info.Database;
+            uid = info.User;
+            password = info.Password;
+            string connectionString;
+            connectionString = string.Format("Data Source={0}; Initial Catalog={1};User ID={2};Password={3};Connection Timeout={4};", server, database, uid, password, info.ConnectionTimeout);
+
+            connection = new SqlConnection(connectionString);
+
+        }
+
         protected override bool OpenConnection()
         {
             try
@@ -37,10 +50,13 @@ namespace MySQL_Manager.Database
                 //The two most common error numbers when connecting are as follows:
                 //0: Cannot connect to server.
                 //1045: Invalid user name and/or password.
-                switch (ex.Number)
+                /*switch (ex.Number)
                 {
                     case 0:
                         MessageBox.Show("Cannot connect to server.  Contact administrator " + ex.ToString() );
+                        break;
+                    case 53:
+                        MessageBox.Show("Cannot connect to server. Timeout Contact administrator " + ex.ToString());
                         break;
                     case 2:
                         MessageBox.Show("Cannot connect to server. Server NotFound   Contact administrator" + ex.ToString());
@@ -48,7 +64,7 @@ namespace MySQL_Manager.Database
                     case 1045:
                         MessageBox.Show("Invalid username/password, please try again" + ex.ToString());
                         break;
-                }
+                }*/
                 return false;
             }
         }
@@ -306,7 +322,7 @@ WHERE TABLE_NAME = '{0}' AND TABLE_CATALOG = '{1}'", table_name, database);
             }
         }
 
-        public override void InsertReg(string table, List<string> Columns, List<string> data)
+        public override bool InsertReg(string table, List<string> Columns, List<string> data)
         {
             string query = "INSERT INTO " + table + " ";
             query += "(";
@@ -316,25 +332,34 @@ WHERE TABLE_NAME = '{0}' AND TABLE_CATALOG = '{1}'", table_name, database);
 
             query += " VALUES(";
             foreach (string dat in data)
-                query += "\"" + dat + "\",";
+                query += "'" + dat + "',";
             query += ")";
             query = query.Replace(",)", ")");
 
             if (this.OpenConnection() == true)
             {
-                //Create Command
-                SqlCommand cmd = new SqlCommand(query, connection);
-                //Create a data reader and Execute the command
-                SqlDataReader dataReader = cmd.ExecuteReader();
+                try
+                {
+                    //Create Command
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    //Create a data reader and Execute the command
+                    SqlDataReader dataReader = cmd.ExecuteReader();
 
-                //close Data Reader
-                dataReader.Close();
+                    //close Data Reader
+                    dataReader.Close();
 
-                //close Connection
-                this.CloseConnection();
+                    //close Connection
+                    this.CloseConnection();
 
-                //return list to be displayed
+                    //return list to be displayed
+                }
+                catch(Exception ex)
+                {
+                    return false;
+                }
+                return true;
             }
+            else return false;
         }
 
         public override List<string>[] SelectAll(string table, int cols)
@@ -380,8 +405,8 @@ WHERE TABLE_NAME = '{0}' AND TABLE_CATALOG = '{1}'", table_name, database);
         {
             string query = "UPDATE " + table + " SET ";
             for (int i = 1; i < Columns.Count; i++)
-                query += Columns[i] + "=\"" + data[i] + "\", ";
-            query += "@ WHERE " + Columns[0] + "=\"" + data[0] + "\"";
+                query += Columns[i] + "='" + data[i] + "', ";
+            query += "@ WHERE " + Columns[0] + "='" + data[0] + "'";
             query = query.Replace(", @", "");
 
             if (this.OpenConnection() == true)
@@ -399,6 +424,78 @@ WHERE TABLE_NAME = '{0}' AND TABLE_CATALOG = '{1}'", table_name, database);
             }
         }
 
-        
+        public override List<List<string>> Query(string expression)
+        {
+            string query = expression;
+
+            //Create a list to store the result
+            List<List<string>> list = new List<List<string>>();
+
+            //Open connection
+            if (this.OpenConnection())
+            {
+                //Create Command
+                SqlCommand cmd = new SqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                SqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    List<string> dat = new List<string>();
+                    for (int i = 0; i < dataReader.FieldCount; i++)
+                        dat.Add(dataReader[i].ToString());
+                    list.Add(dat);
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+
+                //return list to be displayed
+                return list;
+            }
+            else
+            {
+                return list;
+            }
+        }
+      
+        public override int Insert(string expression)
+        {
+            string query = expression;
+            int ret = -1;
+            if (this.OpenConnection())
+            {
+                try
+                {
+                    //Create Command
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    //Create a data reader and Execute the command
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+
+                    while (dataReader.Read())
+                    {
+                        object ad = dataReader.GetSqlValue(0);
+                        ret = int.Parse(ad.ToString());
+                    }
+                    //close Data Reader
+                    dataReader.Close();
+
+                    //close Connection
+                    this.CloseConnection();
+
+                    return ret;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    return -1;
+                }
+            }
+            else return -1;
+        }
     }
 }

@@ -1,0 +1,37 @@
+﻿
+namespace ModelNameSpace
+{
+    public class %class_name%
+    {
+%fields%
+        public %class_name%()
+        {
+
+        }
+
+        public %class_name%(List<string> data)
+        {
+%asignation%
+        }
+
+        public List<string> ToObjectArray()
+        {
+            List<string> ret = new List<string>(%num_fields%);
+
+%converto_obj%
+
+            return ret;
+        }
+
+        public static List<%class_name%> ConvertRows(List<List<string>> rows)
+        {
+            List<%class_name%> ret = new  List<%class_name%>();
+            foreach(var row in rows)
+            {
+                %class_name% nobj = new %class_name%(row);
+                ret.Add(nobj);
+            }
+            return ret;
+        }
+    }
+}

@@ -46,9 +46,46 @@ namespace MySQL_Manager
             if (!string.IsNullOrEmpty(common))
                 input = input.Replace(common, "");
             input = input.Replace("_", " ");
+            input = input.Trim();
             if (input.Length>=2)
                 input = input[0].ToString().ToUpper() + input.Substring(1);
-            return input;
+            return input.Trim();
+        }
+
+        public string ConvertType(IDBConnection conn, string t)
+        {
+            string type = t.ToLower().Trim();
+
+            if (type.Contains("bigint"))
+            {
+                type = "Int64";
+            }
+
+            if (type.Contains("integer"))
+            {
+                type = "int";
+            }
+
+            if (type.Contains("real"))
+            {
+                type = "float";
+            }
+
+            if (type.Contains("char") || type.Contains("text"))
+            {
+                type = "string";
+            }
+
+            if (type.Contains("date"))
+            {
+                type = "Nullable<DateTime>";
+            }
+            else if (type.Contains("time"))
+            {
+                type = "Nullable<TimeSpan>";
+            }
+
+            return type;
         }
     }
 }

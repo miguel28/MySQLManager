@@ -65,27 +65,7 @@ namespace MySQL_Manager
             col = 1;
             for (int i = 0; i < cols.Count; i++)
             {
-                string type = colstype[i];
-
-                if (type.Contains("bigint"))
-                {
-                    type = "Int64";
-                }
-
-                if (type.Contains("char") || type.Contains("text"))
-                {
-                    type = "string";
-                }
-
-                if (type.Contains("date"))
-                {
-                    type = "Nullable<DateTime>";
-                }
-                else if (type.Contains("time"))
-                {
-                    type = "Nullable<TimeSpan>";
-                }
-
+                string type = base.ConvertType(dbCon, colstype[i]);
                 sb.AppendLine(string.Format("\t\t\t\t\tworksheet.Cells[i, {0}].Value = ({2})report.{1};", col++, cols[i], type));
             }
 
@@ -95,26 +75,7 @@ namespace MySQL_Manager
             col = 1;
             for (int i = 0; i < cols.Count; i++)
             {
-                string type = colstype[i];
-
-                if (type.Contains("bigint"))
-                {
-                    type = "Int64";
-                }
-
-                if (type.Contains("char") || type.Contains("text"))
-                {
-                    type = "string";
-                }
-
-                if (type.Contains("date"))
-                {
-                    type = "Nullable<DateTime>";
-                }
-                else if (type.Contains("time"))
-                {
-                    type = "Nullable<TimeSpan>";
-                }
+                string type = base.ConvertType(dbCon, colstype[i]);
 
                 if (type.Equals("Int64"))
                     sb.AppendLine(string.Format("\t\t\t\t\telement.{1} = Convert.ToInt64(worksheet.Cells[i, col++].Value);", col++, cols[i], type));

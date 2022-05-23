@@ -10,3 +10,4 @@ im_projman_db_test
 smart_plant_test
 julio_cafe_test
 management
+smart_plant_database

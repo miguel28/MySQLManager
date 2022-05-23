@@ -122,3 +122,43 @@ C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\ASPNetCore_Controller_Template.txt
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\ASPNetCore_Model_Template.txt
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\ASPNetCore_ModelClass_Template.txt
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\ASPNetCore_Controller_Template.txt
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\ASPNetCore_Model_Template.txt
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\ASPNetCore_ModelClass_Template.txt
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\CI_Controller.txt
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\databases.txt
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\MySQL Manager.exe.config
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\MySQL Manager.exe
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\MySQL Manager.pdb
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\FastColoredTextBox.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.data.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.web.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Google.Protobuf.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\EPPlus.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.data.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.web.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csprojAssemblyReference.cache
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmCodeGeneratorFromJson.resources
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmCodeGenerator.resources
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmConnection.resources
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmEditFunctionSettings.resources
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmEditSetting.resources
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmManagerMain.resources
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.Properties.Resources.resources
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.GenerateResource.cache
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.CoreCompileInputs.cache
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.CopyComplete
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.exe
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.pdb
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\servers.txt
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\EntityFramework.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Data.SQLite.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\EntityFramework.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Data.SQLite.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\SimpleModelClass_Template.txt
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\WF_Datagridview_Template.txt

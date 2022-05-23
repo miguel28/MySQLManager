@@ -38,16 +38,15 @@
             this.cboxDatabase = new System.Windows.Forms.ComboBox();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
-            this.radMicrosoftSQL = new System.Windows.Forms.RadioButton();
-            this.radMySQL = new System.Windows.Forms.RadioButton();
+            this.cboxConnType = new System.Windows.Forms.ComboBox();
+            this.lblConnectionType = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCreateConnection
             // 
-            this.btnCreateConnection.Location = new System.Drawing.Point(121, 190);
-            this.btnCreateConnection.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCreateConnection.Location = new System.Drawing.Point(91, 153);
             this.btnCreateConnection.Name = "btnCreateConnection";
-            this.btnCreateConnection.Size = new System.Drawing.Size(124, 50);
+            this.btnCreateConnection.Size = new System.Drawing.Size(93, 41);
             this.btnCreateConnection.TabIndex = 0;
             this.btnCreateConnection.Text = "Create Connection";
             this.btnCreateConnection.UseVisualStyleBackColor = true;
@@ -56,40 +55,36 @@
             // lblServer
             // 
             this.lblServer.AutoSize = true;
-            this.lblServer.Location = new System.Drawing.Point(21, 20);
-            this.lblServer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblServer.Location = new System.Drawing.Point(16, 16);
             this.lblServer.Name = "lblServer";
-            this.lblServer.Size = new System.Drawing.Size(50, 17);
+            this.lblServer.Size = new System.Drawing.Size(38, 13);
             this.lblServer.TabIndex = 1;
             this.lblServer.Text = "Server";
             // 
             // lblDatabase
             // 
             this.lblDatabase.AutoSize = true;
-            this.lblDatabase.Location = new System.Drawing.Point(21, 55);
-            this.lblDatabase.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDatabase.Location = new System.Drawing.Point(16, 45);
             this.lblDatabase.Name = "lblDatabase";
-            this.lblDatabase.Size = new System.Drawing.Size(69, 17);
+            this.lblDatabase.Size = new System.Drawing.Size(53, 13);
             this.lblDatabase.TabIndex = 2;
             this.lblDatabase.Text = "Database";
             // 
             // lblUser
             // 
             this.lblUser.AutoSize = true;
-            this.lblUser.Location = new System.Drawing.Point(21, 90);
-            this.lblUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUser.Location = new System.Drawing.Point(16, 73);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(38, 17);
+            this.lblUser.Size = new System.Drawing.Size(29, 13);
             this.lblUser.TabIndex = 3;
             this.lblUser.Text = "User";
             // 
             // lblPass
             // 
             this.lblPass.AutoSize = true;
-            this.lblPass.Location = new System.Drawing.Point(21, 123);
-            this.lblPass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPass.Location = new System.Drawing.Point(16, 100);
             this.lblPass.Name = "lblPass";
-            this.lblPass.Size = new System.Drawing.Size(69, 17);
+            this.lblPass.Size = new System.Drawing.Size(53, 13);
             this.lblPass.TabIndex = 4;
             this.lblPass.Text = "Password";
             // 
@@ -101,10 +96,9 @@
             this.cboxServ.Items.AddRange(new object[] {
             "localhost",
             "107.170.223.7"});
-            this.cboxServ.Location = new System.Drawing.Point(121, 16);
-            this.cboxServ.Margin = new System.Windows.Forms.Padding(4);
+            this.cboxServ.Location = new System.Drawing.Point(91, 13);
             this.cboxServ.Name = "cboxServ";
-            this.cboxServ.Size = new System.Drawing.Size(229, 24);
+            this.cboxServ.Size = new System.Drawing.Size(273, 21);
             this.cboxServ.TabIndex = 5;
             // 
             // cboxDatabase
@@ -122,61 +116,53 @@
             "im_projman_db_test",
             "smart_plant_test",
             "julio_cafe_test"});
-            this.cboxDatabase.Location = new System.Drawing.Point(121, 55);
-            this.cboxDatabase.Margin = new System.Windows.Forms.Padding(4);
+            this.cboxDatabase.Location = new System.Drawing.Point(91, 45);
             this.cboxDatabase.Name = "cboxDatabase";
-            this.cboxDatabase.Size = new System.Drawing.Size(229, 24);
+            this.cboxDatabase.Size = new System.Drawing.Size(273, 21);
             this.cboxDatabase.TabIndex = 6;
             // 
             // txtUser
             // 
             this.txtUser.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtUser.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtUser.Location = new System.Drawing.Point(121, 90);
-            this.txtUser.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUser.Location = new System.Drawing.Point(91, 73);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(229, 22);
+            this.txtUser.Size = new System.Drawing.Size(273, 20);
             this.txtUser.TabIndex = 7;
             this.txtUser.Text = "root";
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(121, 123);
-            this.txtPass.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPass.Location = new System.Drawing.Point(91, 100);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
-            this.txtPass.Size = new System.Drawing.Size(229, 22);
+            this.txtPass.Size = new System.Drawing.Size(273, 20);
             this.txtPass.TabIndex = 8;
             // 
-            // radMicrosoftSQL
+            // cboxConnType
             // 
-            this.radMicrosoftSQL.AutoSize = true;
-            this.radMicrosoftSQL.Location = new System.Drawing.Point(197, 153);
-            this.radMicrosoftSQL.Name = "radMicrosoftSQL";
-            this.radMicrosoftSQL.Size = new System.Drawing.Size(114, 21);
-            this.radMicrosoftSQL.TabIndex = 9;
-            this.radMicrosoftSQL.Text = "MicrosoftSQL";
-            this.radMicrosoftSQL.UseVisualStyleBackColor = true;
+            this.cboxConnType.FormattingEnabled = true;
+            this.cboxConnType.Location = new System.Drawing.Point(91, 126);
+            this.cboxConnType.Name = "cboxConnType";
+            this.cboxConnType.Size = new System.Drawing.Size(273, 21);
+            this.cboxConnType.TabIndex = 11;
             // 
-            // radMySQL
+            // lblConnectionType
             // 
-            this.radMySQL.AutoSize = true;
-            this.radMySQL.Checked = true;
-            this.radMySQL.Location = new System.Drawing.Point(91, 153);
-            this.radMySQL.Name = "radMySQL";
-            this.radMySQL.Size = new System.Drawing.Size(75, 21);
-            this.radMySQL.TabIndex = 10;
-            this.radMySQL.TabStop = true;
-            this.radMySQL.Text = "MySQL";
-            this.radMySQL.UseVisualStyleBackColor = true;
+            this.lblConnectionType.AutoSize = true;
+            this.lblConnectionType.Location = new System.Drawing.Point(16, 129);
+            this.lblConnectionType.Name = "lblConnectionType";
+            this.lblConnectionType.Size = new System.Drawing.Size(56, 13);
+            this.lblConnectionType.TabIndex = 12;
+            this.lblConnectionType.Text = "ConnType";
             // 
             // frmConnection
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 253);
-            this.Controls.Add(this.radMySQL);
-            this.Controls.Add(this.radMicrosoftSQL);
+            this.ClientSize = new System.Drawing.Size(376, 212);
+            this.Controls.Add(this.lblConnectionType);
+            this.Controls.Add(this.cboxConnType);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.cboxDatabase);
@@ -187,7 +173,6 @@
             this.Controls.Add(this.lblServer);
             this.Controls.Add(this.btnCreateConnection);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmConnection";
             this.Text = "MySQL Connection";
             this.ResumeLayout(false);
@@ -206,8 +191,8 @@
         private System.Windows.Forms.ComboBox cboxDatabase;
         private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.TextBox txtPass;
-        private System.Windows.Forms.RadioButton radMicrosoftSQL;
-        private System.Windows.Forms.RadioButton radMySQL;
+        private System.Windows.Forms.ComboBox cboxConnType;
+        private System.Windows.Forms.Label lblConnectionType;
     }
 }
 

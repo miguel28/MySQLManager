@@ -1,4 +1,4 @@
-dummy_database
+﻿dummy_database
 restaurant_test
 prohealth_test
 empleos_test
@@ -10,6 +10,4 @@ im_projman_db_test
 smart_plant_test
 julio_cafe_test
 management
-repair_db_test
-code_bar_system
-acculab_db
+smart_plant_database

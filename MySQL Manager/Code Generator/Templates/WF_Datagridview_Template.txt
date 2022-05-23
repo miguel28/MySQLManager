@@ -1,0 +1,149 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace NameSpace
+{
+    public class Custom : Form
+    {
+        #region %Plural%
+        protected DataGridView dgv%Plural% = null;
+        protected IDBConnection dbConnection = null;
+        protected string QuerySelect = "SELECT * FROM %table_name%;";
+        protected string QueryDelete = "DELETE FROM %table_name% WHERE %key% = {0}";
+        protected string QueryInsert = "INSERT INTO %table_name% VALUES(NULL,{0})";
+        protected string QueryUpdate = "UPDATE %table_name% SET {0} WHERE %key% = '{1}'";
+
+        private void CreateDataGridView%Plural%()
+        {
+            dgv%Plural% = new DataGridView();
+            dgv%Plural%.CellValidating += dgv%Plural%_CellValidating;
+            dgv%Plural%.RowsRemoved += dgv%Plural%_RowsRemoved;
+            dgv%Plural%.CellEndEdit += dgv%Plural%_CellEndEdit;
+            dgv%Plural%.CellContentClick += dgv%Plural%_CellContentClick;
+            dgv%Plural%.UserDeletingRow += dgv%Plural%_UserDeletingRow;
+%columns_setup%
+        }
+
+        public void SetDatabaseConnection(IDBConnection c)
+        {
+            dbConnection = c;
+        }
+
+        public void ReadAllFromDatabase()
+        {
+            if (dbConnection != null)
+            {
+                var result = dbConnection.Query(QuerySelect);
+                var rowsdata = %class_name%.ConvertRows(result);
+                Populate%Plural%(rowsdata);
+            }
+        }
+
+        public void ReadFromQuery(string query)
+        {
+            if (dbConnection != null)
+            {
+                var result = dbConnection.Query(query);
+                var rowsdata = %class_name%.ConvertRows(result);
+                Populate%Plural%(rowsdata);
+            }
+        }
+
+        public void Populate%Plural%(List<%class_name%> %plural%)
+        {
+            dgv%Plural%.Rows.Clear();
+
+            foreach (var %single% in %plural%)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.Tag = %single%;
+
+%populate_cell_setup%
+                dgv%Plural%.Rows.Add(row);
+            }
+        }
+
+        private void dgv%Plural%_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.RowIndex >= dgv%Plural%.Rows.Count)
+                return;
+%cell_validation%
+        }
+
+        private void dgv%Plural%_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= dgv%Plural%.Rows.Count)
+                return;
+             var row = dgv%Plural%.Rows[e.RowIndex];
+
+             if (!(row.Tag is %class_name%) ) // is new row
+             {
+                %class_name% newobj = new %class_name%();
+
+%row_insert%
+                if (dbConnection != null)
+                {
+                    string query = string.Format(QueryInsert, "%row_insert_query%");
+                    int new_id = dbConnection.Insert(query);
+                    newobj.%key% = new_id;
+                    if (new_id < 0)
+                        return;
+                }
+                row.Tag = newobj;
+             }
+             
+            %class_name% obj = row.Tag as %class_name%;
+            string obj_update = "";
+            if (obj == null)
+                return;
+%row_update_query%
+            if (dbConnection != null)
+            {
+                string query2 = string.Format(QueryUpdate, obj_update, obj.%key%);
+                dbConnection.Query(query2);
+            }
+        }
+
+        private void dgv%Plural%_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            var row = e.Row;
+            if (row.Tag is %class_name%)
+            {
+                try
+                {
+                    %class_name% obj = row.Tag as %class_name%;
+                    if (dbConnection != null)
+                    {
+                        string query2 = string.Format(QueryDelete, obj.%key%);
+                        dbConnection.Query(query2);
+                    }
+                }
+                catch
+                {
+                    e.Cancel = true;
+                }
+            } 
+        }
+
+        private void dgvItems_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            
+            if (e.RowIndex >= dgv%Plural%.Rows.Count)
+                return;
+        }
+
+        private void dgv%Plural%_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= dgv%Plural%.Rows.Count)
+                return;
+        }
+        #endregion
+    }
+}

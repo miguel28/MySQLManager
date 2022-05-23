@@ -2,3 +2,4 @@ sa
 root
 genericuser
 virtual_wallet_u
+repair_user

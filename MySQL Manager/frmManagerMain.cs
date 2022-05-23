@@ -23,6 +23,13 @@ namespace MySQL_Manager
             dbCon = db;
             lstTables.DataSource = dbCon.GetAllTables();
 
+
+            ////SQLliteConnection c = db as SQLliteConnection;
+            //using (var context = new DWContext("DwContext"))
+            //{
+            //    var results = context.Item_categories.Where(x => x.category_id > 0);
+            //}
+
             if (lstTables.Items.Count == 0)
                 MessageBox.Show("No Tables were found check connection settings! ", "Get Table Errors", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

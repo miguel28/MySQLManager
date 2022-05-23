@@ -18,7 +18,7 @@ namespace MySQL_Manager
 
             for (int i = 0; i < cols.Count - 1; i++)
             {
-                string type = types[i].ToLower();
+                string type = base.ConvertType(dbCon, types[i]);
                 if (type.Contains("int") || type.Contains("double"))
                     default_values[i] = "0";
                 if (string.IsNullOrEmpty(default_values[i]))
@@ -47,7 +47,7 @@ namespace MySQL_Manager
             s.AppendLine("$scope._" + single + "_empty ={" );
 		    for(int i = 0; i< cols.Count -1; i++)
             {
-                string type = types[i].ToLower();
+                string type = base.ConvertType(dbCon, types[i]);
                 if (type.Contains("int") || type.Contains("double"))
                     s.AppendLine("\t" + cols[i] + " : " + default_values[i] + ",");
                 else

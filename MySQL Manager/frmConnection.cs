@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
@@ -53,6 +54,10 @@ namespace MySQL_Manager
 
                 txtUser.AutoCompleteCustomSource = collection;
             }
+
+            var connectiontypes = Assembly.GetAssembly(typeof(IDBConnection)).GetTypes().Where(x => x.IsSubclassOf(typeof(IDBConnection))).ToList();
+            cboxConnType.Items.Clear();
+            cboxConnType.DataSource = connectiontypes;
         }
 
         private void CommitChangedDB()
@@ -81,11 +86,15 @@ namespace MySQL_Manager
 
         private void btnCreateConnection_Click(object sender, EventArgs e)
         {
-            IDBConnection con = null;
-            if (radMySQL.Checked)
-                con = new MySQLDBConnection(cboxServ.Text, cboxDatabase.Text, txtUser.Text, txtPass.Text);
-            else 
-                con = new SQLDBConnection(cboxServ.Text, cboxDatabase.Text, txtUser.Text, txtPass.Text);
+            DBConnectionInfo config = new DBConnectionInfo
+            {
+                Server = cboxServ.Text,
+                Database = cboxDatabase.Text,
+                User = txtUser.Text,
+                Password = txtPass.Text
+            };
+            IDBConnection con = Activator.CreateInstance(cboxConnType.SelectedItem as Type, config) as IDBConnection;
+
             CommitChangedDB();
 
             frmManagerMain main = new frmManagerMain(con);

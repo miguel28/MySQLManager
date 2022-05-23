@@ -60,26 +60,7 @@ namespace MySQL_Manager
             s.Clear();
             for(int i =0; i< cols.Count; i++)
             {
-                string type = colstype[i];
-
-                if (type.Contains("bigint"))
-                {
-                    type = "Int64";
-                }
-
-                if (type.Contains("char") || type.Contains("text"))
-                {
-                    type = "string";
-                }
-
-                if (type.Contains("date"))
-                {
-                    type = "Nullable<DateTime>";
-                }
-                else if (type.Contains("time"))
-                {
-                    type = "Nullable<TimeSpan>";
-                }
+                string type = base.ConvertType(dbCon, colstype[i]);
 
                 s.AppendLine(string.Format("\t\t public {0} {1} {2}get; set;{3}", type, cols[i], "{", "}"));
             }

@@ -72,7 +72,8 @@ namespace MySQL_Manager
             {
                 gen.GenerateCode();
                 i++;
-                worker.ReportProgress((int)(((float)i / (float)this.Count)*100), gen.GetName());
+                string name = gen.GetName();
+                worker.ReportProgress((int)(((float)i / (float)this.Count)*100), name);
             }
         }
 

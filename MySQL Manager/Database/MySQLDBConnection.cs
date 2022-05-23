@@ -27,12 +27,26 @@ namespace MySQL_Manager.Database
             connection = new MySqlConnection(connectionString);
         }
 
+        public MySQLDBConnection(DBConnectionInfo info)
+        {
+            server = info.Server;
+            database = info.Database;
+            uid = info.User;
+            password = info.Password;
+            string connectionString;
+            connectionString = "SERVER=" + server + ";" + "DATABASE=" +
+            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
+            connection = new MySqlConnection(connectionString);
+
+        }
+
         //open connection to database
         protected override bool OpenConnection()
         {
             try
             {
-                connection.Open();
+                if (connection.State == System.Data.ConnectionState.Closed)
+                    connection.Open();
                 return true;
             }
             catch (MySqlException ex)
@@ -103,7 +117,6 @@ namespace MySQL_Manager.Database
             {
                 return tables;
             }
-
         }
 
         public override List<string> GetAllColumns(string table)
@@ -289,7 +302,7 @@ namespace MySQL_Manager.Database
 
             //Create a list to store the result
             List<string>[] list = new List<string>[cols];
-            for (int i = 0; i < cols; i++ )
+            for (int i = 0; i < cols; i++)
                 list[i] = new List<string>();
 
             //Open connection
@@ -322,7 +335,7 @@ namespace MySQL_Manager.Database
             }
         }
 
-        public override void InsertReg(string table, List<string> Columns, List<string> data)
+        public override bool InsertReg(string table, List<string> Columns, List<string> data)
         {
             string query = "INSERT INTO " + table + " ";
             query += "(";
@@ -338,20 +351,31 @@ namespace MySQL_Manager.Database
 
             if (this.OpenConnection() == true)
             {
-                //Create Command
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                //Create a data reader and Execute the command
-                MySqlDataReader dataReader = cmd.ExecuteReader();
+                try
+                {
+                    //Create Command
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    //Create a data reader and Execute the command
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
 
-                //close Data Reader
-                dataReader.Close();
+                    //close Data Reader
+                    dataReader.Close();
 
-                //close Connection
-                this.CloseConnection();
+                    //close Connection
+                    this.CloseConnection();
+                }
+                catch
+                {
+                    return false;
+                }
 
+                return true;
                 //return list to be displayed
             }
+            else
+                return false;
         }
+
         public override void UpdateReg(string table, List<string> Columns, List<string> data)
         {
             string query = "UPDATE " + table + " SET ";
@@ -373,6 +397,79 @@ namespace MySQL_Manager.Database
                 //close Connection
                 this.CloseConnection();
             }
+        }
+
+        public override List<List<string>> Query(string expression)
+        {
+            string query = expression;
+
+            //Create a list to store the result
+            List<List<string>> list = new List<List<string>>();
+
+            //Open connection
+            if (this.OpenConnection())
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    List<string> dat = new List<string>();
+                    for (int i = 0; i < dataReader.FieldCount; i++)
+                        dat.Add(dataReader[i].ToString());
+                    list.Add(dat);
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+
+                //return list to be displayed
+                return list;
+            }
+            else
+            {
+                return list;
+            }
+        }
+
+        public override int Insert(string expression)
+        {
+            string query = expression;
+            int ret = -1;
+            if (this.OpenConnection())
+            {
+                try
+                {
+                    //Create Command
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    //Create a data reader and Execute the command
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                    while (dataReader.Read())
+                    {
+                        ret = dataReader.GetInt32(0);
+                    }
+                    //close Data Reader
+                    dataReader.Close();
+
+                    //close Connection
+                    this.CloseConnection();
+
+                    return ret;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    return -1;
+                }
+            }
+            else return -1;
         }
         #endregion
     }
