@@ -138,7 +138,6 @@ C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\De
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\EPPlus.xml
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.data.xml
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.web.xml
-C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csprojAssemblyReference.cache
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmCodeGeneratorFromJson.resources
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmCodeGenerator.resources
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmConnection.resources
@@ -162,3 +161,4 @@ C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\De
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Data.SQLite.xml
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\SimpleModelClass_Template.txt
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\WF_Datagridview_Template.txt
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.AssemblyReference.cache

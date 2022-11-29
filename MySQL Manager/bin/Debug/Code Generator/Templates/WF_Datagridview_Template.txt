@@ -17,7 +17,7 @@ namespace NameSpace
         protected IDBConnection dbConnection = null;
         protected string QuerySelect = "SELECT * FROM %table_name%;";
         protected string QueryDelete = "DELETE FROM %table_name% WHERE %key% = {0}";
-        protected string QueryInsert = "INSERT INTO %table_name% VALUES({0})";
+        protected string QueryInsert = "INSERT INTO %table_name% VALUES(NULL,{0})";
         protected string QueryUpdate = "UPDATE %table_name% SET {0} WHERE %key% = '{1}'";
 
         private void CreateDataGridView%Plural%()
@@ -27,6 +27,7 @@ namespace NameSpace
             dgv%Plural%.RowsRemoved += dgv%Plural%_RowsRemoved;
             dgv%Plural%.CellEndEdit += dgv%Plural%_CellEndEdit;
             dgv%Plural%.CellContentClick += dgv%Plural%_CellContentClick;
+            dgv%Plural%.UserDeletingRow += dgv%Plural%_UserDeletingRow;
 %columns_setup%
         }
 
@@ -110,20 +111,32 @@ namespace NameSpace
             }
         }
 
-        private void dgv%Plural%_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        private void dgv%Plural%_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (e.RowIndex >= dgv%Plural%.Rows.Count)
-                return;
-            var row = dgv%Plural%.Rows[e.RowIndex];
+            var row = e.Row;
             if (row.Tag is %class_name%)
             {
-                %class_name% obj = row.Tag as %class_name%;
-                if (dbConnection != null)
+                try
                 {
-                    string query2 = string.Format(QueryDelete, obj.%key%);
-                    dbConnection.Query(query2);
+                    %class_name% obj = row.Tag as %class_name%;
+                    if (dbConnection != null)
+                    {
+                        string query2 = string.Format(QueryDelete, obj.%key%);
+                        dbConnection.Query(query2);
+                    }
+                }
+                catch
+                {
+                    e.Cancel = true;
                 }
             } 
+        }
+
+        private void dgvItems_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            
+            if (e.RowIndex >= dgv%Plural%.Rows.Count)
+                return;
         }
 
         private void dgv%Plural%_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -15,7 +15,7 @@ namespace ModelNameSpace
         {
             _context = context;
         }
-
+        /*Default Generated Model Methods*/
         public Int64 InsertEntry(%Single% data)
         {
             _context.Add(data);
@@ -50,7 +50,7 @@ namespace ModelNameSpace
 
 		public void Truncate()
 		{
-			_context.Database.ExecuteSqlCommand("TRUNCATE TABLE [%table_name%]");
+			_context.Database.ExecuteSqlRaw("TRUNCATE TABLE [%table_name%]");
 			_context.SaveChanges();
 		}
 
@@ -63,5 +63,6 @@ namespace ModelNameSpace
         {
             return _context.%Plural%.ToList<%Single%>();
         }
+        /*Default Generated Model Methods*/
     }
 }

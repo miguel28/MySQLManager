@@ -81,9 +81,9 @@ namespace MySQL_Manager
             s.AppendLine("	</thead>");
 
             s.AppendLine("	<tbody class=\"searchable\">");
-            s.AppendLine("		<tr ng-repeat=\"" + single + " in " + plural + "\" ng-class=\" parseInt(" + single + "." + cols[0] + ") % 2 === 0 ? 'odd' : 'even' \">");
+            s.AppendLine("		<tr ng-repeat=\"" + single + " in " + plural + "\">");
             foreach (string col in cols)
-                s.AppendLine("		<td>{{" + single + "." + col + "}}</td>");
+                s.AppendLine("			<td>{{" + single + "." + col + "}}</td>");
 
             s.AppendLine("				<td class=\"center \">");
             s.AppendLine("				<a class=\"btn btn-success\" data-toggle=\"tooltip\" title=\"View\" href=\"\" ng-click=\"View_" + Single + "(" + single + ")\">");
@@ -218,7 +218,7 @@ namespace MySQL_Manager
                 {
                     s.AppendLine("			<div class=\"form-group\">");
                     s.AppendLine("				<label for=\"txt_" + cols[i] + "\">" + SanitizeColumnName(cols[i], common) + ":</label>");
-                    s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" readonly id=\"txt_" + cols[i] + "\" ng-value=\"view_" + single + "." + cols[i] + "\"></textarea>");
+                    s.AppendLine("				<textarea class=\"form-control\" rows=\"5\" readonly id=\"txt_" + cols[i] + "\" ng-model=\"view_" + single + "." + cols[i] + "\"></textarea>");
                     s.AppendLine("			</div>");
                 }
                 else if (colstype[i].Contains("int(1)") || colstype[i].Contains("tinyint"))
@@ -302,6 +302,7 @@ namespace MySQL_Manager
             s.AppendLine("\t$scope.LoadAll" + Plural + " = function()");
             s.AppendLine("\t{");
             s.AppendLine("\t\tvar url = '<?php echo site_url('ctl_" + plural + "')?>/getAll" + Plural + "/';");
+            s.AppendLine("\t\tvar url = '@Url.Action(\"getAll" + Plural + "\", \"" + Plural + "\")';");
             s.AppendLine("\t\tvar call = AjaxJSON(url,true);");
             s.AppendLine("\t\tcall.UseLock = false;");
             s.AppendLine("\t\tcall.Call(");
@@ -327,6 +328,7 @@ namespace MySQL_Manager
             s.AppendLine("			return;");
             s.AppendLine();
             s.AppendLine("		var url =  '<?php echo site_url('ctl_" + plural + "')?>/get" + Single + "Info/';");
+            s.AppendLine("		var url = '@Url.Action(\"get" + Single + "Info\", \"" + Plural + "\")';");
 
             s.AppendLine("		var call = AjaxJSON(url,true);");
             s.AppendLine("		call.UseLock = false;");
@@ -380,6 +382,7 @@ namespace MySQL_Manager
             s.AppendLine("		}");
             s.AppendLine("		");
             s.AppendLine("		var url =  '<?php echo site_url('ctl_" + plural + "')?>/update" + Single + "Info/';");
+            s.AppendLine("		var url = '@Url.Action(\"update" + Single + "Info\", \"" + Plural + "\")';");
             s.AppendLine("		var call = AjaxJSON(url,true);");
             s.AppendLine("		var data =");
             s.AppendLine("		{");
@@ -405,6 +408,7 @@ namespace MySQL_Manager
             s.AppendLine("\t$scope.ConfirmDelete_" + Single + " = function()");
             s.AppendLine("\t{");
             s.AppendLine("		var url =  '<?php echo site_url('ctl_" + plural + "')?>/delete" + Single + "Info/';");
+            s.AppendLine("		var url = '@Url.Action(\"delete" + Single + "Info\", \"" + Plural + "\")';");
             s.AppendLine("		var call = AjaxJSON(url,true);");
             s.AppendLine("		var data =");
             s.AppendLine("		{");
@@ -453,7 +457,7 @@ namespace MySQL_Manager
 
             s.AppendLine("\t$scope.AddNew_" + Single + " = function()");
             s.AppendLine("\t{");
-            s.AppendLine("\t\t$scope.edit_" + single + " = JSON.parse(JSON.stringify($scope._" + single + "_empty));");
+            s.AppendLine("\t\t$scope.edit_" + single + " = jsonCopy($scope._" + single + "_empty);");
             s.AppendLine("\t\t$scope._edit_title_" + single + " = 'Create new " + single + "';");
             s.AppendLine("\t\t$('#modal_edit_" + single + "').modal('show');");
             s.AppendLine("\t};");
