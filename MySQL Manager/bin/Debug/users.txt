@@ -3,3 +3,4 @@ root
 genericuser
 virtual_wallet_u
 repair_user
+dtna_user

@@ -132,12 +132,9 @@ C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\De
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\MySQL Manager.pdb
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\FastColoredTextBox.dll
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.data.dll
-C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.web.dll
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Google.Protobuf.dll
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\EPPlus.xml
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.data.xml
-C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\mysql.web.xml
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmCodeGeneratorFromJson.resources
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmCodeGenerator.resources
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmConnection.resources
@@ -162,3 +159,26 @@ C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\De
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\SimpleModelClass_Template.txt
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\WF_Datagridview_Template.txt
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.AssemblyReference.cache
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Google.Protobuf.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Buffers.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.IO.Pipelines.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Memory.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Google.Protobuf.pdb
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Google.Protobuf.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Buffers.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.IO.Pipelines.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Memory.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Threading.Tasks.Extensions.xml

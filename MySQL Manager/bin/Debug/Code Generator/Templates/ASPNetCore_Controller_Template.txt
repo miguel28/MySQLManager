@@ -40,7 +40,7 @@ namespace ModelNameSpace
 		[HttpPost]
 		public IActionResult get%Single%Info()
 		{
-			string id = Request.Form["id"];
+			string? id = Request.Form["id"];
 			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
 			var data = sqlData.GetEntryById(Convert.ToInt64(id));
 
@@ -53,7 +53,7 @@ namespace ModelNameSpace
 		[HttpPost]
 		public IActionResult update%Single%Info()
 		{
-			%Single% data = JsonConvert.DeserializeObject<%Single%>(Request.Form["%single%_info"]);
+			%Single%? data = JsonConvert.DeserializeObject<%Single%>(Request.Form["%single%_info"]);
 			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
 			
 			if (data != null)
@@ -68,7 +68,7 @@ namespace ModelNameSpace
 		[HttpPost]
 		public IActionResult delete%Single%Info()
 		{
-			%Single% data = JsonConvert.DeserializeObject<%Single%>(Request.Form["%single%_info"]);
+			%Single%? data = JsonConvert.DeserializeObject<%Single%>(Request.Form["%single%_info"]);
 			Mdl_%plural% sqlData = new Mdl_%plural%(_context);
 			
 			if (data != null)
