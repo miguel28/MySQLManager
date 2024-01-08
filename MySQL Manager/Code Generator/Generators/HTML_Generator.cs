@@ -70,8 +70,8 @@ namespace MySQL_Manager
             s.AppendLine("</div>");
             s.AppendLine();
 
-
-            s.AppendLine("<table class=\"table table-striped table-bordered bootstrap-datatable datatable dataTable\">");
+			s.AppendLine("<div class=\"tableFixHead\">");
+			s.AppendLine("<table class=\"table table-striped table-bordered bootstrap-datatable\">");
             s.AppendLine("	<thead>");
             s.AppendLine("		<tr role=\"row\">");
             foreach(string col in cols)
@@ -85,7 +85,7 @@ namespace MySQL_Manager
             foreach (string col in cols)
                 s.AppendLine("			<td>{{" + single + "." + col + "}}</td>");
 
-            s.AppendLine("				<td class=\"center \">");
+            s.AppendLine("				<td class=\"center\">");
             s.AppendLine("				<a class=\"btn btn-success\" data-toggle=\"tooltip\" title=\"View\" href=\"\" ng-click=\"View_" + Single + "(" + single + ")\">");
             s.AppendLine("					<i class=\"fa fa-search-plus \"></i>");
             s.AppendLine("				</a>");
@@ -98,8 +98,9 @@ namespace MySQL_Manager
             s.AppendLine("			</td>");
             s.AppendLine("		</tr>");
             s.AppendLine("	</tbody>");
-            s.AppendLine("</table>");
-            s.AppendLine("<!-- List View " + single + " -->");
+			s.AppendLine("</table>");
+			s.AppendLine("</div>");
+			s.AppendLine("<!-- List View " + single + " -->");
             s.AppendLine();
         }
 
@@ -178,10 +179,9 @@ namespace MySQL_Manager
                     s.AppendLine("				<div class=\"form-group\">");
                     s.AppendLine("					<label for=\"txt_" + cols[i] + "\"> " + SanitizeColumnName(cols[i], common) + ":</label>");
                     s.AppendLine("					<div class=\"input-group date form_date\" data-date=\"\" data-date-format=\"dd MM yyyy\" data-link-field=\"dtp1_" + cols[i] + "\" data-link-format=\"yyyy-mm-dd\">");
-                    s.AppendLine("						<input id=\"kick\" class=\"form-control\" size=\"16\" type=\"text\" value=\"\" readonly ng-model=\"edit_" + single + "." + cols[i] + "\">");
+                    s.AppendLine("						<input class=\"form-control\" size=\"16\" type=\"text\" value=\"\" readonly ng-model=\"edit_" + single + "." + cols[i] + "\">");
                     s.AppendLine("						<span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-calendar\"></span></span>");
                     s.AppendLine("					</div>");
-                    s.AppendLine("					<input type=\"hidden\"\tfor=\"txt_" + SanitizeColumnName(cols[i], common) + "\" value=\"\" />");
                     s.AppendLine("				</div>");
                 }
                 else

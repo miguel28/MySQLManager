@@ -182,3 +182,63 @@ C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\De
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Miguel\Desktop\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\ASPNetCore_Controller_Template.txt
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\WF_Datagridview_Template.txt
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\SimpleModelClass_Template.txt
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\ASPNetCore_Model_Template.txt
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\ASPNetCore_ModelClass_Template.txt
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\servers.txt
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\CI_Controller.txt
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\databases.txt
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\MySQL Manager.exe.config
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\MySQL Manager.exe
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\MySQL Manager.pdb
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\BouncyCastle.Crypto.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\EntityFramework.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\EntityFramework.SqlServer.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\FastColoredTextBox.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Google.Protobuf.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\K4os.Compression.LZ4.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\K4os.Hash.xxHash.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\MySql.Data.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Newtonsoft.Json.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Buffers.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Data.SQLite.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Data.SQLite.EF6.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Data.SQLite.Linq.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.IO.Pipelines.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Memory.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Numerics.Vectors.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\BouncyCastle.Crypto.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\EntityFramework.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\EntityFramework.SqlServer.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\EPPlus.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Google.Protobuf.pdb
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Google.Protobuf.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\K4os.Compression.LZ4.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\K4os.Compression.LZ4.Streams.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\K4os.Hash.xxHash.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\MySql.Data.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Buffers.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Data.SQLite.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.IO.Pipelines.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Memory.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Numerics.Vectors.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.AssemblyReference.cache
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmCodeGeneratorFromJson.resources
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmCodeGenerator.resources
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmConnection.resources
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmEditFunctionSettings.resources
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmEditSetting.resources
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frmManagerMain.resources
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.Properties.Resources.resources
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.GenerateResource.cache
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.CoreCompileInputs.cache
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.CopyComplete
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.exe
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.pdb
