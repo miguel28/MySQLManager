@@ -36,7 +36,7 @@
             this.btnCopy = new System.Windows.Forms.Button();
             this.EditCodeGenerator = new System.Windows.Forms.Button();
             this.btnGenerateCode = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabMain = new System.Windows.Forms.TabControl();
             this.tabCI_Model = new System.Windows.Forms.TabPage();
             this.txt_CI_Model_CodeGenerator = new FastColoredTextBoxNS.FastColoredTextBox();
             this.tabEmptyJSON = new System.Windows.Forms.TabPage();
@@ -55,9 +55,13 @@
             this.txt_SimpleModelClass_Generator = new FastColoredTextBoxNS.FastColoredTextBox();
             this.tabWFDataGridview = new System.Windows.Forms.TabPage();
             this.txt_WF_Datagridview_Generator = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.tabBlazorCRUDView = new System.Windows.Forms.TabPage();
+            this.txt_BlazorCRUDView_Generator = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.tabBlazorController = new System.Windows.Forms.TabPage();
+            this.txt_BlazorController_Generator = new FastColoredTextBoxNS.FastColoredTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.grpCodeGenerator.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabMain.SuspendLayout();
             this.tabCI_Model.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_CI_Model_CodeGenerator)).BeginInit();
             this.tabEmptyJSON.SuspendLayout();
@@ -76,6 +80,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_SimpleModelClass_Generator)).BeginInit();
             this.tabWFDataGridview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_WF_Datagridview_Generator)).BeginInit();
+            this.tabBlazorCRUDView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_BlazorCRUDView_Generator)).BeginInit();
+            this.tabBlazorController.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_BlazorController_Generator)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -84,7 +92,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.Controls.Add(this.grpCodeGenerator, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tabMain, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
@@ -148,24 +156,26 @@
             this.btnGenerateCode.UseVisualStyleBackColor = true;
             this.btnGenerateCode.Click += new System.EventHandler(this.btnGenerateCode_Click);
             // 
-            // tabControl1
+            // tabMain
             // 
-            this.tabControl1.Controls.Add(this.tabCI_Model);
-            this.tabControl1.Controls.Add(this.tabEmptyJSON);
-            this.tabControl1.Controls.Add(this.tabCIController);
-            this.tabControl1.Controls.Add(this.tabHTML);
-            this.tabControl1.Controls.Add(this.tabASPCOREModel);
-            this.tabControl1.Controls.Add(this.tabASPCoreClassModel);
-            this.tabControl1.Controls.Add(this.tabASPCoreController);
-            this.tabControl1.Controls.Add(this.tab_SimpleModelClass_Generator);
-            this.tabControl1.Controls.Add(this.tabWFDataGridview);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(2, 102);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(639, 371);
-            this.tabControl1.TabIndex = 7;
+            this.tabMain.Controls.Add(this.tabCI_Model);
+            this.tabMain.Controls.Add(this.tabEmptyJSON);
+            this.tabMain.Controls.Add(this.tabCIController);
+            this.tabMain.Controls.Add(this.tabHTML);
+            this.tabMain.Controls.Add(this.tabASPCOREModel);
+            this.tabMain.Controls.Add(this.tabASPCoreClassModel);
+            this.tabMain.Controls.Add(this.tabASPCoreController);
+            this.tabMain.Controls.Add(this.tab_SimpleModelClass_Generator);
+            this.tabMain.Controls.Add(this.tabWFDataGridview);
+            this.tabMain.Controls.Add(this.tabBlazorCRUDView);
+            this.tabMain.Controls.Add(this.tabBlazorController);
+            this.tabMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabMain.Location = new System.Drawing.Point(2, 102);
+            this.tabMain.Margin = new System.Windows.Forms.Padding(2);
+            this.tabMain.Name = "tabMain";
+            this.tabMain.SelectedIndex = 0;
+            this.tabMain.Size = new System.Drawing.Size(639, 371);
+            this.tabMain.TabIndex = 7;
             // 
             // tabCI_Model
             // 
@@ -393,7 +403,7 @@
         '\''};
             this.txt_ASPCore_Model_Generator.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n^\\s*(case|default)\\s*[^:]" +
     "*(?<range>:)\\s*(?<range>[^;]+);\r\n";
-            this.txt_ASPCore_Model_Generator.AutoScrollMinSize = new System.Drawing.Size(2, 14);
+            this.txt_ASPCore_Model_Generator.AutoScrollMinSize = new System.Drawing.Size(27, 14);
             this.txt_ASPCore_Model_Generator.BackBrush = null;
             this.txt_ASPCore_Model_Generator.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
             this.txt_ASPCore_Model_Generator.CharHeight = 14;
@@ -443,7 +453,7 @@
         '\''};
             this.txt_ASPCore_ModelClass_Generator.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n^\\s*(case|default)\\s*[^:]" +
     "*(?<range>:)\\s*(?<range>[^;]+);\r\n";
-            this.txt_ASPCore_ModelClass_Generator.AutoScrollMinSize = new System.Drawing.Size(2, 14);
+            this.txt_ASPCore_ModelClass_Generator.AutoScrollMinSize = new System.Drawing.Size(27, 14);
             this.txt_ASPCore_ModelClass_Generator.BackBrush = null;
             this.txt_ASPCore_ModelClass_Generator.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
             this.txt_ASPCore_ModelClass_Generator.CharHeight = 14;
@@ -493,7 +503,7 @@
         '\''};
             this.txt_ASPCore_Controller_Generator.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n^\\s*(case|default)\\s*[^:]" +
     "*(?<range>:)\\s*(?<range>[^;]+);\r\n";
-            this.txt_ASPCore_Controller_Generator.AutoScrollMinSize = new System.Drawing.Size(2, 14);
+            this.txt_ASPCore_Controller_Generator.AutoScrollMinSize = new System.Drawing.Size(27, 14);
             this.txt_ASPCore_Controller_Generator.BackBrush = null;
             this.txt_ASPCore_Controller_Generator.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
             this.txt_ASPCore_Controller_Generator.CharHeight = 14;
@@ -543,7 +553,7 @@
         '\''};
             this.txt_SimpleModelClass_Generator.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n^\\s*(case|default)\\s*[^:]" +
     "*(?<range>:)\\s*(?<range>[^;]+);\r\n";
-            this.txt_SimpleModelClass_Generator.AutoScrollMinSize = new System.Drawing.Size(27, 14);
+            this.txt_SimpleModelClass_Generator.AutoScrollMinSize = new System.Drawing.Size(2, 14);
             this.txt_SimpleModelClass_Generator.BackBrush = null;
             this.txt_SimpleModelClass_Generator.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
             this.txt_SimpleModelClass_Generator.CharHeight = 14;
@@ -618,6 +628,107 @@
             this.txt_WF_Datagridview_Generator.TabIndex = 6;
             this.txt_WF_Datagridview_Generator.Zoom = 100;
             // 
+            // tabBlazorCRUDView
+            // 
+            this.tabBlazorCRUDView.Controls.Add(this.txt_BlazorCRUDView_Generator);
+            this.tabBlazorCRUDView.Location = new System.Drawing.Point(4, 22);
+            this.tabBlazorCRUDView.Name = "tabBlazorCRUDView";
+            this.tabBlazorCRUDView.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBlazorCRUDView.Size = new System.Drawing.Size(631, 345);
+            this.tabBlazorCRUDView.TabIndex = 9;
+            this.tabBlazorCRUDView.Text = "BlazorCRUDView";
+            this.tabBlazorCRUDView.UseVisualStyleBackColor = true;
+            // 
+            // txt_BlazorCRUDView_Generator
+            // 
+            this.txt_BlazorCRUDView_Generator.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.txt_BlazorCRUDView_Generator.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n^\\s*(case|default)\\s*[^:]" +
+    "*(?<range>:)\\s*(?<range>[^;]+);\r\n";
+            this.txt_BlazorCRUDView_Generator.AutoScrollMinSize = new System.Drawing.Size(27, 14);
+            this.txt_BlazorCRUDView_Generator.BackBrush = null;
+            this.txt_BlazorCRUDView_Generator.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
+            this.txt_BlazorCRUDView_Generator.CharHeight = 14;
+            this.txt_BlazorCRUDView_Generator.CharWidth = 8;
+            this.txt_BlazorCRUDView_Generator.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_BlazorCRUDView_Generator.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txt_BlazorCRUDView_Generator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_BlazorCRUDView_Generator.Font = new System.Drawing.Font("Courier New", 9.75F);
+            this.txt_BlazorCRUDView_Generator.IsReplaceMode = false;
+            this.txt_BlazorCRUDView_Generator.Language = FastColoredTextBoxNS.Language.CSharp;
+            this.txt_BlazorCRUDView_Generator.LeftBracket = '(';
+            this.txt_BlazorCRUDView_Generator.LeftBracket2 = '{';
+            this.txt_BlazorCRUDView_Generator.Location = new System.Drawing.Point(3, 3);
+            this.txt_BlazorCRUDView_Generator.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_BlazorCRUDView_Generator.Name = "txt_BlazorCRUDView_Generator";
+            this.txt_BlazorCRUDView_Generator.Paddings = new System.Windows.Forms.Padding(0);
+            this.txt_BlazorCRUDView_Generator.RightBracket = ')';
+            this.txt_BlazorCRUDView_Generator.RightBracket2 = '}';
+            this.txt_BlazorCRUDView_Generator.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txt_BlazorCRUDView_Generator.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txt_BlazorCRUDView_Generator.ServiceColors")));
+            this.txt_BlazorCRUDView_Generator.Size = new System.Drawing.Size(625, 339);
+            this.txt_BlazorCRUDView_Generator.TabIndex = 7;
+            this.txt_BlazorCRUDView_Generator.Zoom = 100;
+            // 
+            // tabBlazorController
+            // 
+            this.tabBlazorController.Controls.Add(this.txt_BlazorController_Generator);
+            this.tabBlazorController.Location = new System.Drawing.Point(4, 22);
+            this.tabBlazorController.Name = "tabBlazorController";
+            this.tabBlazorController.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBlazorController.Size = new System.Drawing.Size(631, 345);
+            this.tabBlazorController.TabIndex = 10;
+            this.tabBlazorController.Text = "BlazorController";
+            this.tabBlazorController.UseVisualStyleBackColor = true;
+            // 
+            // txt_BlazorController_Generator
+            // 
+            this.txt_BlazorController_Generator.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.txt_BlazorController_Generator.AutoIndentCharsPatterns = "\r\n^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;]+);\r\n^\\s*(case|default)\\s*[^:]" +
+    "*(?<range>:)\\s*(?<range>[^;]+);\r\n";
+            this.txt_BlazorController_Generator.AutoScrollMinSize = new System.Drawing.Size(27, 14);
+            this.txt_BlazorController_Generator.BackBrush = null;
+            this.txt_BlazorController_Generator.BracketsHighlightStrategy = FastColoredTextBoxNS.BracketsHighlightStrategy.Strategy2;
+            this.txt_BlazorController_Generator.CharHeight = 14;
+            this.txt_BlazorController_Generator.CharWidth = 8;
+            this.txt_BlazorController_Generator.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txt_BlazorController_Generator.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txt_BlazorController_Generator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_BlazorController_Generator.IsReplaceMode = false;
+            this.txt_BlazorController_Generator.Language = FastColoredTextBoxNS.Language.CSharp;
+            this.txt_BlazorController_Generator.LeftBracket = '(';
+            this.txt_BlazorController_Generator.LeftBracket2 = '{';
+            this.txt_BlazorController_Generator.Location = new System.Drawing.Point(3, 3);
+            this.txt_BlazorController_Generator.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_BlazorController_Generator.Name = "txt_BlazorController_Generator";
+            this.txt_BlazorController_Generator.Paddings = new System.Windows.Forms.Padding(0);
+            this.txt_BlazorController_Generator.RightBracket = ')';
+            this.txt_BlazorController_Generator.RightBracket2 = '}';
+            this.txt_BlazorController_Generator.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.txt_BlazorController_Generator.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("txt_BlazorController_Generator.ServiceColors")));
+            this.txt_BlazorController_Generator.Size = new System.Drawing.Size(625, 339);
+            this.txt_BlazorController_Generator.TabIndex = 8;
+            this.txt_BlazorController_Generator.Zoom = 100;
+            // 
             // frmCodeGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -632,7 +743,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tableLayoutPanel1.ResumeLayout(false);
             this.grpCodeGenerator.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabMain.ResumeLayout(false);
             this.tabCI_Model.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txt_CI_Model_CodeGenerator)).EndInit();
             this.tabEmptyJSON.ResumeLayout(false);
@@ -651,6 +762,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txt_SimpleModelClass_Generator)).EndInit();
             this.tabWFDataGridview.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txt_WF_Datagridview_Generator)).EndInit();
+            this.tabBlazorCRUDView.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txt_BlazorCRUDView_Generator)).EndInit();
+            this.tabBlazorController.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txt_BlazorController_Generator)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -662,7 +777,7 @@
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.Button EditCodeGenerator;
         private System.Windows.Forms.Button btnGenerateCode;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.TabPage tabCI_Model;
         private System.Windows.Forms.TabPage tabEmptyJSON;
         private FastColoredTextBoxNS.FastColoredTextBox txt_CI_Model_CodeGenerator;
@@ -682,5 +797,9 @@
         private FastColoredTextBoxNS.FastColoredTextBox txt_SimpleModelClass_Generator;
         private System.Windows.Forms.TabPage tabWFDataGridview;
         private FastColoredTextBoxNS.FastColoredTextBox txt_WF_Datagridview_Generator;
+        private System.Windows.Forms.TabPage tabBlazorCRUDView;
+        private FastColoredTextBoxNS.FastColoredTextBox txt_BlazorCRUDView_Generator;
+        private System.Windows.Forms.TabPage tabBlazorController;
+        private FastColoredTextBoxNS.FastColoredTextBox txt_BlazorController_Generator;
     }
 }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using static Google.Protobuf.Reflection.FieldOptions.Types;
+using System.Drawing;
 
 namespace MySQL_Manager
 {
@@ -62,7 +64,26 @@ namespace MySQL_Manager
             {
                 string type = base.ConvertType(dbCon, colstype[i]);
 
-                s.AppendLine(string.Format("\t\t public {0} {1} {2}get; set;{3}", type, cols[i], "{", "}"));
+                if (i == 0) // primary key
+                {
+                    s.AppendLine(string.Format("\t\t[Key]", type, cols[i], "{", "}"));
+                }
+                else if (colsnulable[i].Contains("NO"))
+                {
+                    s.AppendLine(string.Format("\t\t[Required]", type, cols[i], "{", "}"));
+                }
+
+                if (type.Contains("string"))
+                {
+                    string ctype = colstype[i];
+                    string len = ctype.Replace("varchar(", "").Replace(")", "");
+                    s.AppendLine(string.Format("\t\t[MaxLength({0})]", len, cols[i], "{", "}"));
+                }
+                if (cols[i].ToLower().Contains("email"))
+                {
+                    s.AppendLine(string.Format("\t\t[EmailAddress]", cols[i], "{", "}"));
+                }
+                s.AppendLine(string.Format("\t\tpublic {0} {1} {2}get; set;{3}", type, cols[i], "{", "}"));
             }
             replacer.AddField("%table_name%", setting.TableName);
             replacer.AddField("%class_name%", Single);

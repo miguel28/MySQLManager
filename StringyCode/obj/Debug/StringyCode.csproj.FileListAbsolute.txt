@@ -7,3 +7,13 @@ C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\StringyCode\o
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.csproj.CoreCompileInputs.cache
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.exe
 C:\Users\Miguel\Documents\Visual Studio 2017\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.pdb
+D:\IM Technology\Projects\MySQLManager\StringyCode\bin\Debug\StringyCode.exe.config
+D:\IM Technology\Projects\MySQLManager\StringyCode\bin\Debug\StringyCode.exe
+D:\IM Technology\Projects\MySQLManager\StringyCode\bin\Debug\StringyCode.pdb
+D:\IM Technology\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.csproj.AssemblyReference.cache
+D:\IM Technology\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.frmStringy.resources
+D:\IM Technology\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.Properties.Resources.resources
+D:\IM Technology\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.csproj.GenerateResource.cache
+D:\IM Technology\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.csproj.CoreCompileInputs.cache
+D:\IM Technology\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.exe
+D:\IM Technology\Projects\MySQLManager\StringyCode\obj\Debug\StringyCode.pdb

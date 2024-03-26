@@ -1,0 +1,50 @@
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace ModelNameSpace
+{
+    public class %Plural%Controller : BaseController
+    {
+		public %Plural%Controller(IDbContextFactory<ApplicationDbContext> dbContextFactory) : base(dbContextFactory)
+        {
+            
+        }
+
+		/** Controller Data Handling **/
+		public List<%Single%> getAll%Plural%()
+		{
+			return _context.%Plural%.ToList();
+		}
+
+		public %Single%? get%Single%ById(Int64 id)
+		{
+			return _context.%Plural%.FirstOrDefault(x=>x.%id_field% == id);
+		}
+
+		public Int64 update%Single%(%Single%? data)
+		{
+			if (data.%id_field% == 0)
+			{
+				_context.Add(data);
+			}
+			else
+			{
+				_context.%Plural%.Update(data);
+			}
+			 _context.SaveChanges();
+			 return data.%id_field%;
+		}
+
+		public void delete%Single%(%Single%? %single%)
+		{
+			_context.Remove(%single%);
+            _context.SaveChanges();
+		}
+
+		public void deleteAll%Plural%()
+		{
+			_context.Database.ExecuteSqlRaw("TRUNCATE TABLE [%table_name%]");
+			_context.SaveChanges();
+		}
+		/** Controller Data Handling **/
+    }
+}

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 
 namespace MySQL_Manager.Database
 {
@@ -156,11 +157,10 @@ namespace MySQL_Manager.Database
         public override List<string> GetColsType(string table_name)
         {
             List<string> tables = new List<string>();
-            string query = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = '"
-                + table_name + "' AND TABLE_SCHEMA = '" + database + "'";
+			string query = "desc " + table_name;
 
-            //Open connection
-            if (this.OpenConnection() == true)
+			//Open connection
+			if (this.OpenConnection() == true)
             {
                 //Create Command
                 MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -170,7 +170,7 @@ namespace MySQL_Manager.Database
                 //Read the data and store them in the list
                 while (dataReader.Read())
                 {
-                    tables.Add((string)dataReader[0]);
+                    tables.Add((string)dataReader[1]);
                 }
 
                 //close Data Reader

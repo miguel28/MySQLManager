@@ -44,7 +44,7 @@ namespace MySQL_Manager
         private void Generators_ProgressChange(int progress, string gen)
         {
             progressBar.Value = progress;
-            Control[]controls = this.tabControl1.Controls.Find("txt_" + gen, true);
+            Control[]controls = this.tabMain.Controls.Find("txt_" + gen, true);
             if (controls.Length > 0)
             {
                 FastColoredTextBox txt = (FastColoredTextBox)controls[0];
@@ -59,7 +59,7 @@ namespace MySQL_Manager
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            FastColoredTextBox txt = (FastColoredTextBox)tabControl1.SelectedTab.Controls[0];
+            FastColoredTextBox txt = (FastColoredTextBox)tabMain.SelectedTab.Controls[0];
             if (!string.IsNullOrEmpty(txt.Text))
                 Clipboard.SetText(txt.Text);
         }

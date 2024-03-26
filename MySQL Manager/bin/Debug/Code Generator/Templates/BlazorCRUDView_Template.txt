@@ -1,0 +1,200 @@
+﻿//// %Plural% List View
+@page"/list_%Plural%"
+@using AppNameSpace // replace this
+@inject BaseController controller
+@inject IJSRuntime JSRuntime
+
+<h1>List of %Plural%</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <a class="btn btn-success" role="button" @onclick="AddNew%Single%">
+            <i class="oi oi-plus"></i>
+            Add %Single%
+        </a>
+    </div>
+    <div class="input-group col">
+        <input id="filter_%plural" type="text" class="form-control" placeholder="Search %plural%" />
+        <div class="input-group-append">
+            <button class="btn btn-danger" @onclick="ResetSearch_%Plural%">
+                <i class="oi oi-x"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<br />
+
+@if (%plural%_List == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped align-middle table-bordered">
+        <thead class="table-success">
+            <tr>
+%headers%
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="searchable_%plural">
+            @foreach (var %single% in %plural%_List)
+            {
+                <tr>
+%table_row%
+                    <td>
+                        <a class="btn btn-success" role="button" @onclick="()=>OnShowView_%Single%(%single%)">
+                            <i class="oi oi-magnifying-glass"></i>
+                        </a>
+                        <a class="btn btn-primary" role="button" @onclick="()=>Edit%Single%(%single%)">
+                            <i class="oi oi-pencil"></i>
+                        </a>
+                        <a class="btn btn-danger" role="button" @onclick="()=>Delete%Single%(%single%)">
+                            <i class="oi oi-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (showEditModal_%Single%)
+{
+    <div class="modal" tabindex="-1" role="dialog" style="display:block">
+        <div class="modal-dialog shadow-lg bg-white rounded" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@modal_title_%Plural%</h5>
+                </div>
+                <div class="modal-body">
+                    <EditForm id="from_%plural%" Model="@edit_%single%" OnValidSubmit="Save%Single%Changes">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+%input_widgets%
+                    </EditForm>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="HideModalEdit_%Single%">Cancel</button>
+                    <button type="submit" class="btn btn-primary form="from_%plural%">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<Modal @ref="viewModal_%Single%" Title="%Single% View">
+    <BodyTemplate>
+        <div class="row">
+%detail_data%
+        </div>
+    </BodyTemplate>
+    <FooterTemplate>
+        <Button Color="ButtonColor.Secondary" @onclick="OnHideView_%Single%">Close</Button>
+    </FooterTemplate>
+</Modal>
+<ConfirmDialog @ref="deleteDialog_%Single%" />
+
+@code{
+    [Inject]
+    protected ToastService? ToastService { get; set; }
+    protected %Plural%Controller %plural%Controller = null;
+	protected List<%Single%> %plural%_List = new();
+	protected %Single%? edit_%single% = new();
+    protected %Single%? delete_%single% = new();
+	protected string? SearchString_%Plural% = "";
+    protected string? modal_title_%Plural%;
+    protected bool showEditModal_%Single% = false;
+
+    protected Modal? viewModal_%Single% = null;
+    protected ConfirmDialog? deleteDialog_%Single%;
+
+	protected override async Task OnInitializedAsync()
+    {
+        %plural%Controller = controller.Create<%Plural%Controller>();
+        Load%Plural%();
+    }
+   
+	protected override void OnAfterRender(bool firstRender)
+    {
+        JSRuntime.InvokeVoidAsync("tableFilterEngine", "#filter_%plural", "searchable_%plural", "tr");
+    }
+
+    protected void ResetSearch_%Plural%()
+    {
+        JSRuntime.InvokeVoidAsync("tableClearFilter", "#filter_%plural");
+    }
+
+    private void Init%Single%()
+    {
+%initialization%
+    }
+     protected void Load%Plural%()
+    {
+        %plural%_List = %plural%Controller.getAll%Plural%();
+    }
+
+    protected void AddNew%Single%()
+    {
+        modal_title_%Plural% = "Add new %Single%";
+        Init%Single%();
+        showEditModal_%Single% = true;
+    }
+
+    protected void Edit%Single%(%Single% %single%)
+    {
+        modal_title_%Plural% = "Edit %Single%";
+        edit_%single% = %single%;
+        showEditModal_%Single% = true;
+    }
+
+    protected void HideModalEdit_%Single%()
+    {
+        showEditModal_%Single% = false;
+    }
+
+    protected void Save%Single%Changes()
+    {
+        try
+        {
+            %plural%Controller.update%Single%(edit_%single%);
+            showEditModal_%Single% = false;
+            ToastService.Notify(new(ToastType.Success, $"%Single% details saved successfully."));
+            Load%Plural%();
+        }
+        catch(Exception ex)
+        {
+            ToastService.Notify(new ToastMessage(ToastType.Danger, "Error Saving Changes", ex.Message));
+        }
+    }
+
+    protected async Task Delete%Single%(%Single% %single%)
+    {
+        var confirmation = await deleteDialog_%Single%.ShowAsync(
+            title: "Are you sure you want to delete this?",
+            message1: "This will delete the record. Once deleted can not be rolled back.",
+            message2: "Do you want to proceed?");
+
+        if (confirmation)
+        {
+            %plural%Controller.delete%Single%(%single%);
+            ToastService.Notify(new ToastMessage(ToastType.Danger, "Deleted Correctly"));
+            Load%Plural% ();
+        }
+        else
+        {
+            ToastService.Notify(new(ToastType.Success, $"Canceled"));
+        }
+    }
+
+    protected async Task OnShowView_%Single%(%Single% %single%)
+    {
+        edit_%single% = %single%;
+        await viewModal_%Single%.ShowAsync();
+    }
+
+    protected async Task OnHideView_%Single%()
+    {
+        await viewModal_%Single%.HideAsync();
+    }
+}

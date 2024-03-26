@@ -68,12 +68,12 @@ namespace MySQL_Manager
 
             if (type.Contains("real"))
             {
-                type = "float";
+                type = "double";
             }
 
             if (type.Contains("char") || type.Contains("text"))
             {
-                type = "string";
+                type = "string?";
             }
 
             if (type.Contains("date"))
@@ -85,7 +85,18 @@ namespace MySQL_Manager
                 type = "Nullable<TimeSpan>";
             }
 
+            if (type.Contains("decimal"))
+            {
+                type = "decimal";
+            }
+
             return type;
+        }
+
+        public bool IsTypeNumber(string input)
+        {
+            input = input.Trim().ToLower();
+            return (input.Contains("int") || input.Contains("float") || input.Contains("decimal") || input.Contains("double"));
         }
     }
 }

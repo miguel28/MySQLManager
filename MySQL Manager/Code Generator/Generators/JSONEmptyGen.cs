@@ -19,7 +19,7 @@ namespace MySQL_Manager
             for (int i = 0; i < cols.Count - 1; i++)
             {
                 string type = base.ConvertType(dbCon, types[i]);
-                if (type.Contains("int") || type.Contains("double"))
+                if (IsTypeNumber(type))
                     default_values[i] = "0";
                 if (string.IsNullOrEmpty(default_values[i]))
                     default_values[i] = "";
@@ -29,7 +29,6 @@ namespace MySQL_Manager
         
         private void GenerateBasicFunctions()
         {
-            // Begin the Code Igniter class
             string elementlow = setting.TableName.Replace("tbl_", "");
             string element = elementlow[0].ToString().ToUpper() + elementlow.Substring(1);
             string model_name = setting.TableName.Replace("tbl", "mdl");
@@ -48,13 +47,18 @@ namespace MySQL_Manager
 		    for(int i = 0; i< cols.Count -1; i++)
             {
                 string type = base.ConvertType(dbCon, types[i]);
-                if (type.Contains("int") || type.Contains("double"))
-                    s.AppendLine("\t" + cols[i] + " : " + default_values[i] + ",");
+                if (IsTypeNumber(type))
+                {
+                    if (string.IsNullOrEmpty(default_values[i]))
+						s.AppendLine("\t" + cols[i] + " : 0,");
+                    else
+					    s.AppendLine("\t" + cols[i] + " : " + default_values[i] + ",");
+				}
                 else
                     s.AppendLine("\t" + cols[i] + " : '" + default_values[i] + "',");
             }
             string type1 = types.Last().ToLower();
-            if (type1.Contains("int") || type1.Contains("double"))
+            if (IsTypeNumber(type1))
                 s.AppendLine("\t" + cols.Last() + " : " + default_values.Last() + "");
             else
                 s.AppendLine("\t" + cols.Last() + " : '" + default_values.Last() + "'");

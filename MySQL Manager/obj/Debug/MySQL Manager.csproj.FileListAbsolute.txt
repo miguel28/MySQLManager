@@ -239,6 +239,8 @@ D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.frm
 D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL_Manager.Properties.Resources.resources
 D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.GenerateResource.cache
 D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.CoreCompileInputs.cache
-D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.csproj.CopyComplete
 D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.exe
 D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Manager.pdb
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\BlazorCRUDView_Template.txt
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\bin\Debug\Code Generator\Templates\BlazorController_Template.txt
+D:\IM Technology\Projects\MySQLManager\MySQL Manager\obj\Debug\MySQL Ma.8216F638.Up2Date
