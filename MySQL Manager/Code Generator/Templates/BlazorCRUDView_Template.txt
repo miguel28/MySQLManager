@@ -76,7 +76,7 @@ else
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" @onclick="HideModalEdit_%Single%">Cancel</button>
-                    <button type="submit" class="btn btn-primary form="from_%plural%">Save</button>
+                    <button type="submit" class="btn btn-primary" form="from_%plural%">Save</button>
                 </div>
             </div>
         </div>
